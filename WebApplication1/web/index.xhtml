@@ -4,18 +4,20 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
     <h:head>
-        <title>Facelet Title</title>
+        <title>HUKUK TAKİP 1.0</title>
+        <link href="css/newcss.css" rel="stylesheet" type="text/css"/>
     </h:head>
-    <h:body styleClass="body">
-        <h:form>
-            <h:inputText pt:placeholder="Kullanıcı Adı"/>
-            <h:inputSecret pt:placeholder="Şifre"/>
-            <div class="">
-                <h:commandButton value="KAYIT OL" styleClass=""/>
-            <h:commandButton value="GİRİŞ YAP"/>
-            </div>
-            
+    <h:body style="background-color: #CBDAE2;">
+        <div class="login-page">
+        <div class="form">
+            <h:form>
+            <h:inputText class="input" pt:placeholder="Kullanıcı Adı"/>
+            <h:inputSecret class="input" pt:placeholder="Şifre"/>
+            <h:commandButton class="button"  value="GİRİŞ YAP"/>
+            <h:commandButton class="button" value="KAYIT OL" action="kayitol.xhtml"/>
         </h:form>
+        </div>
+        </div>
         
     </h:body>
 </html>

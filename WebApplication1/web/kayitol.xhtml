@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <link href="css/newcss.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body style="background-color: #CBDAE2; " >
+        <div class="login-page">
+        <div class="form">
+            <h:form>
+            <h:inputText class="input" pt:placeholder="TC KİMLİK NUMARASI"/>
+            <h:inputText class="input" pt:placeholder="AD"/>
+            <h:inputText class="input" pt:placeholder="SOYAD"/>
+            <h:inputText class="input" pt:placeholder="DOĞUM TARİHİ dd-MM-yyyy şeklinde"> 
+                <f:convertDateTime pattern="dd-MM-yyyy"/>
+            </h:inputText> 
+            <h:inputText class="input" pt:placeholder="BÜRO ADI"/>
+            <h:inputText class="input" pt:placeholder="BARO NO"/>
+            <h:inputText class="input" pt:placeholder="KULLANICI ADI"/>
+            <h:inputSecret class="input" pt:placeholder="ŞİFRE"/>
+            <h:commandButton class="button" value="KAYIT OL"/>
+        </h:form>
+        </div>
+        </div>
+      
+    </h:body>
+</html>
+
