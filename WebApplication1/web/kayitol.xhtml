@@ -12,17 +12,27 @@
         <div class="login-page">
         <div class="form">
             <h:form>
-            <h:inputText class="input" pt:placeholder="TC KİMLİK NUMARASI"/>
+            <h:inputText class="input" pt:placeholder="TC KİMLİK NUMARASI" required="true"
+            requiredMessage="TC KİMLİK NUMARANIZI GİRİN!"
+            validatorMessage="TC KİMLİK NUMARANIZ 11 HANEDEN OLUŞMAKTADIR!">
+            <f:validateLength minimum="11" maximum="11" />
+            </h:inputText>
             <h:inputText class="input" pt:placeholder="AD"/>
             <h:inputText class="input" pt:placeholder="SOYAD"/>
-            <h:inputText class="input" pt:placeholder="DOĞUM TARİHİ dd-MM-yyyy şeklinde"> 
-                <f:convertDateTime pattern="dd-MM-yyyy"/>
+            <h:inputText class="input" pt:placeholder="DOĞUM TARİHİ gg-aa-yyyy şeklinde"> 
+            <f:convertDateTime pattern="dd-MM-yyyy"/>
             </h:inputText> 
             <h:inputText class="input" pt:placeholder="BÜRO ADI"/>
             <h:inputText class="input" pt:placeholder="BARO NO"/>
-            <h:inputText class="input" pt:placeholder="KULLANICI ADI"/>
+            <h:inputText class="input" pt:placeholder="KULLANICI ADI" required="true"
+            requiredMessage="KULLANICI ADI GİRİNİZ!"/>
+            <h:inputText class="input" pt:placeholder="E-MAİL"
+            validatorMessage="E-MAİL FORMATINIZ YANLIŞ">
+            <f:validateRegex pattern=
+            "\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" />
+            </h:inputText>
             <h:inputSecret class="input" pt:placeholder="ŞİFRE"/>
-            <h:commandButton class="button" value="KAYIT OL"/>
+            <h:commandButton class="button" value="KAYIT OL" action="yonlendirme.xhtml"/>
         </h:form>
         </div>
         </div>
