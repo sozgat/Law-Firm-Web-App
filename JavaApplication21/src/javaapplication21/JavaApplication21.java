@@ -33,6 +33,7 @@ public class JavaApplication21 {
 
         //MEHMET KODLAR
         System.out.println("Hello World");
+        //BİTTİ BU İŞ :)
     }
     
 }
