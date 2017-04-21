@@ -15,6 +15,7 @@ public class JavaApplication21 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+<<<<<<< HEAD
         
         //MEHMETİN KODLARI
         
@@ -24,6 +25,11 @@ public class JavaApplication21 {
             System.out.println(i);
             i--;
         }
+=======
+        // TODO code application logic here
+    	//SALEMMMM
+    	int a=5;
+>>>>>>> origin/master
     }
     
 }
