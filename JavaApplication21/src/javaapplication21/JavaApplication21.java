@@ -31,6 +31,8 @@ public class JavaApplication21 {
         System.out.println("javaapplication21.JavaApplication21.main()");
         System.out.println("javaapplication21.JavaApplication21.main()");
 
+        //MEHMET KODLAR
+        System.out.println("Hello World");
     }
     
 }
