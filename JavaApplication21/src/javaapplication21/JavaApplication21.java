@@ -15,7 +15,15 @@ public class JavaApplication21 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        //MEHMETİN KODLARI
+        
+        int i=5;
+        while(i>0)
+        {
+            System.out.println(i);
+            i--;
+        }
     }
     
 }
