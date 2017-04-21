@@ -27,6 +27,9 @@ public class JavaApplication21 {
 
         // TODO code application logic here
     	//SALEMMMM
+        //SAİD
+        System.out.println("javaapplication21.JavaApplication21.main()");
+        System.out.println("javaapplication21.JavaApplication21.main()");
 
     }
     
