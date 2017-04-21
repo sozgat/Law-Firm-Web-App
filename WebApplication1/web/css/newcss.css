@@ -7,28 +7,6 @@ and open the template in the editor.
     Created on : 21.Nis.2017, 20:45:09
     Author     : said
 */
-
-.buttons input {
-    margin: 5px;
-    padding: 5px 5px 5px 20px; /* 20px makes room for your background image */
-    border: 1px solid #aaa;
+.body{
+    background-color: #aaa;
 }
-
-.buttons .apply {
-  font-family: "Roboto", sans-serif;
-  text-transform: uppercase;
-  outline: 0;
-  background: #4CAF50;
-  width: 100%;
-  border: 0;
-  padding: 15px;
-  color: #FFFFFF;
-  font-size: 14px;
-  -webkit-transition: all 0.3 ease;
-  transition: all 0.3 ease;
-  cursor: pointer;
-} 
-
-.buttons .cross {
-    background: #eee url(path/to/cross.png) no-repeat 0 50%;
-} 
