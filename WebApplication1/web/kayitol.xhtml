@@ -19,19 +19,24 @@
             </h:inputText>
             <h:inputText class="input" pt:placeholder="AD"/>
             <h:inputText class="input" pt:placeholder="SOYAD"/>
-            <h:inputText class="input" pt:placeholder="DOĞUM TARİHİ gg-aa-yyyy şeklinde"> 
-            <f:convertDateTime pattern="dd-MM-yyyy"/>
-            </h:inputText> 
+            <h:inputText class="input" pt:placeholder="DOĞUM TARİHİ GG/AA/YYYY" required="true"
+            requiredMessage="DOĞUM TARiHİNİZİ GİRİN!"
+            validatorMessage="DOĞUM TARİHİNİZ HATALI GİRDİNİZ! ÖRNEK YAZIM: 01/01/2017">
+            <f:validateRegex pattern=
+            "[0-9]{1,2}(/|-)[0-9]{1,2}(/|-)[0-9]{4}" />
+            </h:inputText>
             <h:inputText class="input" pt:placeholder="BÜRO ADI"/>
             <h:inputText class="input" pt:placeholder="BARO NO"/>
             <h:inputText class="input" pt:placeholder="KULLANICI ADI" required="true"
             requiredMessage="KULLANICI ADI GİRİNİZ!"/>
             <h:inputText class="input" pt:placeholder="E-MAİL"
-            validatorMessage="E-MAİL FORMATINIZ YANLIŞ">
+            validatorMessage="E-MAİL FORMATINIZ YANLIŞ!">
             <f:validateRegex pattern=
             "\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" />
             </h:inputText>
-            <h:inputSecret class="input" pt:placeholder="ŞİFRE"/>
+            <h:inputSecret class="input" pt:placeholder="ŞİFRE" validatorMessage="ŞİFRENİZ EN AZ 1 ADET BÜYÜK HARF, KÜÇÜK GARF VE RAKAM İÇERMELİDİR!" >
+                <f:validateRegex pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"/>      
+            </h:inputSecret>
             <h:commandButton class="button" value="KAYIT OL" action="yonlendirme.xhtml"/>
         </h:form>
         </div>
