@@ -34,6 +34,12 @@ public class JavaApplication21 {
         //MEHMET KODLAR
         System.out.println("Hello World");
         //BİTTİ BU İŞ :)
+        
+                
+        System.out.println("Deneme 1..2..3");   //@Serhat Mercan
+                
+        
+        
     }
     
 }
