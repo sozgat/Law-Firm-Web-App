@@ -14,30 +14,33 @@
             <h:form>
             <h:inputText class="input" pt:placeholder="TC KİMLİK NUMARASI" required="true"
             requiredMessage="TC KİMLİK NUMARANIZI GİRİN!"
-            validatorMessage="TC KİMLİK NUMARANIZ 11 HANEDEN OLUŞMAKTADIR!">
+            validatorMessage="TC KİMLİK NUMARANIZ 11 HANEDEN OLUŞMAKTADIR!"
+            value="#{kayitKontrol.tcKimlikNo}">
             <f:validateLength minimum="11" maximum="11" />
             </h:inputText>
-            <h:inputText class="input" pt:placeholder="AD"/>
-            <h:inputText class="input" pt:placeholder="SOYAD"/>
+            <h:inputText class="input" pt:placeholder="AD" value="#{kayitKontrol.ad}"/>
+            <h:inputText class="input" pt:placeholder="SOYAD" value="#{kayitKontrol.soyad}"/>
             <h:inputText class="input" pt:placeholder="DOĞUM TARİHİ GG/AA/YYYY" required="true"
             requiredMessage="DOĞUM TARiHİNİZİ GİRİN!"
-            validatorMessage="DOĞUM TARİHİNİZ HATALI GİRDİNİZ! ÖRNEK YAZIM: 01/01/2017">
+            validatorMessage="DOĞUM TARİHİNİZ HATALI GİRDİNİZ! ÖRNEK YAZIM: 01/01/2017"
+            value="#{kayitKontrol.dogumTarihi}">
             <f:validateRegex pattern=
             "[0-9]{1,2}(/|-)[0-9]{1,2}(/|-)[0-9]{4}" />
             </h:inputText>
-            <h:inputText class="input" pt:placeholder="BÜRO ADI"/>
-            <h:inputText class="input" pt:placeholder="BARO NO"/>
+            <h:inputText class="input" pt:placeholder="BÜRO ADI" value="#{kayitKontrol.buroAdi}"/>
+            <h:inputText class="input" pt:placeholder="BARO NO" value="#{kayitKontrol.buroNo}"/>
             <h:inputText class="input" pt:placeholder="KULLANICI ADI" required="true"
-            requiredMessage="KULLANICI ADI GİRİNİZ!"/>
+                         requiredMessage="KULLANICI ADI GİRİNİZ!" value="#{kayitKontrol.kullaniciAdi}"/>
             <h:inputText class="input" pt:placeholder="E-MAİL"
-            validatorMessage="E-MAİL FORMATINIZ YANLIŞ!">
+                         validatorMessage="E-MAİL FORMATINIZ YANLIŞ!" value="#{kayitKontrol.email}">
             <f:validateRegex pattern=
             "\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" />
             </h:inputText>
-            <h:inputSecret class="input" pt:placeholder="ŞİFRE" validatorMessage="ŞİFRENİZ EN AZ 1 ADET BÜYÜK HARF, KÜÇÜK GARF VE RAKAM İÇERMELİDİR!" >
+            <h:inputSecret class="input" pt:placeholder="ŞİFRE" validatorMessage="ŞİFRENİZ EN AZ 1 ADET BÜYÜK HARF, KÜÇÜK GARF VE RAKAM İÇERMELİDİR!" 
+                           value="#{kayitKontrol.sifre}">
                 <f:validateRegex pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"/>      
             </h:inputSecret>
-            <h:commandButton class="button" value="KAYIT OL" action="yonlendirme.xhtml"/>
+            <h:commandButton class="button" value="KAYIT OL" action="kayitKontrolJsf.xhtml"/>
         </h:form>
         </div>
         </div>
