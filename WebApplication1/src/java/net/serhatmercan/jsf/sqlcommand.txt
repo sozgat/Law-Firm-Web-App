@@ -1,0 +1,25 @@
+/*Beyler benim olusturdugum veritabanini sizde pc nize eklemek icin asagidakileri bir seferlik uygulayin.
+Netbeansda projemiz acikken, Projects-Files-Services sekmelerinden Servicesi aciyoruz,
+Databases menusunu aciyoruz, sonra icindeki Java DB menusune sag tiklayip Create Database secenegini seciyoruz,
+Ayarlari su sekilde dolduruyoruz;
+Database Name:HUKUKWEBDB
+User Name:hukukwebdb
+Password:1234
+Confirm Password:1234
+Bu degerleri girdikten sonra ok butonuna tikliyoruz, ve veritabanimiz asagida olusuyor,
+jdbc:derby://localhost:1527/HUKUKWEBDB[hukukwebdb on HUKUKWEBDB] bu secenege sag tiklayip Execute Command a tiklayin,
+acilan sayfaya, asagidaki kodlari kopyalayip yapistirin, Run SQL butonuna basin (Kisayol Ctrl+Shift+E).
+TBLKULLANICILAR2 tablosu sorunsuz eklendiyse isimiz bitti, sadece bir kez bu islemi yapmamiz yeterli. */
+
+CREATE TABLE TBLKULLANICILAR2
+(
+id INT GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1) PRIMARY KEY,
+ad VARCHAR(50),
+soyad VARCHAR(50),
+dogumTarih DATE, 
+tcKimlikNo VARCHAR(11) NOT NULL,
+kullaniciAd VARCHAR(100) NOT NULL,
+sifre VARCHAR(100) NOT NULL,
+email VARCHAR(150) NOT NULL,
+buroNo INT 
+);

@@ -6,16 +6,16 @@
         <title>Facelet Title</title>
     </h:head>
     <h:body>
-        <h:form>
-            <h:outputText value="TC Kimlik No: #{kayitKontrol.tcKimlikNo}"/><br/>
-            <h:outputText value="Ad: #{kayitKontrol.ad}"/><br/>
-            <h:outputText value="Soyad: #{kayitKontrol.soyad}"/><br/>
-            <h:outputText value="Dogum Tarihi: #{kayitKontrol.dogumTarihi}"/><br/>
-            <h:outputText value="Buro Adi: #{kayitKontrol.buroAdi}"/><br/>
-            <h:outputText value="Buro No: #{kayitKontrol.buroNo}"/><br/>
-            <h:outputText value="Kullanıcı Adı: #{kayitKontrol.kullaniciAdi}"/><br/>
-            <h:outputText value="Sifre: #{kayitKontrol.sifre}"/><br/>
-            <h:outputText value="Email: #{kayitKontrol.email}"/><br/>
+        <h:form><!--kayitKontrol Class ismini degistirdim bean ismini ekledim.(Mehmet)-->
+            <h:outputText value="TC Kimlik No: #{BeanKayitKontrol.tcKimlikNo}"/><br/>
+            <h:outputText value="Ad: #{BeanKayitKontrol.ad}"/><br/>
+            <h:outputText value="Soyad: #{BeanKayitKontrol.soyad}"/><br/>
+            <h:outputText value="Dogum Tarihi: #{BeanKayitKontrol.dogumTarihi}"/><br/>
+            <h:outputText value="Buro Adi: #{BeanKayitKontrol.buroAdi}"/><br/>
+            <h:outputText value="Buro No: #{BeanKayitKontrol.buroNo}"/><br/>
+            <h:outputText value="Kullanıcı Adı: #{BeanKayitKontrol.kullaniciAdi}"/><br/>
+            <h:outputText value="Sifre: #{BeanKayitKontrol.sifre}"/><br/>
+            <h:outputText value="Email: #{BeanKayitKontrol.email}"/><br/>
             <h:commandButton value="Geri Dön" action="yonlendirme.xhtml"/>
         </h:form>
     </h:body>

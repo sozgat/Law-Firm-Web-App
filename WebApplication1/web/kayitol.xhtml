@@ -15,32 +15,32 @@
             <h:inputText class="input" pt:placeholder="TC KİMLİK NUMARASI" required="true"
             requiredMessage="TC KİMLİK NUMARANIZI GİRİN!"
             validatorMessage="TC KİMLİK NUMARANIZ 11 HANEDEN OLUŞMAKTADIR!"
-            value="#{kayitKontrol.tcKimlikNo}">
+            value="#{BeanKayitKontrol.tcKimlikNo}">
             <f:validateLength minimum="11" maximum="11" />
             </h:inputText>
-            <h:inputText class="input" pt:placeholder="AD" value="#{kayitKontrol.ad}"/>
-            <h:inputText class="input" pt:placeholder="SOYAD" value="#{kayitKontrol.soyad}"/>
+            <h:inputText class="input" pt:placeholder="AD" value="#{BeanKayitKontrol.ad}"/>
+            <h:inputText class="input" pt:placeholder="SOYAD" value="#{BeanKayitKontrol.soyad}"/>
             <h:inputText class="input" pt:placeholder="DOĞUM TARİHİ GG/AA/YYYY" required="true"
             requiredMessage="DOĞUM TARiHİNİZİ GİRİN!"
             validatorMessage="DOĞUM TARİHİNİZ HATALI GİRDİNİZ! ÖRNEK YAZIM: 01/01/2017"
-            value="#{kayitKontrol.dogumTarihi}">
+            value="#{BeanKayitKontrol.dogumTarihi}">
             <f:validateRegex pattern=
             "[0-9]{1,2}(/|-)[0-9]{1,2}(/|-)[0-9]{4}" />
             </h:inputText>
-            <h:inputText class="input" pt:placeholder="BÜRO ADI" value="#{kayitKontrol.buroAdi}"/>
-            <h:inputText class="input" pt:placeholder="BARO SİCİL NO" value="#{kayitKontrol.buroNo}"/>
+            <h:inputText class="input" pt:placeholder="BÜRO ADI" value="#{BeanKayitKontrol.buroAdi}"/>
+            <h:inputText class="input" pt:placeholder="BARO SİCİL NO" value="#{BeanKayitKontrol.buroNo}"/>
             <h:inputText class="input" pt:placeholder="KULLANICI ADI" required="true"
-                         requiredMessage="KULLANICI ADI GİRİNİZ!" value="#{kayitKontrol.kullaniciAdi}"/>
+                         requiredMessage="KULLANICI ADI GİRİNİZ!" value="#{BeanKayitKontrol.kullaniciAdi}"/>
             <h:inputText class="input" pt:placeholder="E-MAİL"
-                         validatorMessage="E-MAİL FORMATINIZ YANLIŞ!" value="#{kayitKontrol.email}">
+                         validatorMessage="E-MAİL FORMATINIZ YANLIŞ!" value="#{BeanKayitKontrol.email}">
             <f:validateRegex pattern=
             "\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" />
             </h:inputText>
             <h:inputSecret class="input" pt:placeholder="ŞİFRE" validatorMessage="ŞİFRENİZ EN AZ 1 ADET BÜYÜK HARF, KÜÇÜK GARF VE RAKAM İÇERMELİDİR!" 
-                           value="#{kayitKontrol.sifre}">
+                           value="#{BeanKayitKontrol.sifre}">
                 <f:validateRegex pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"/>      
             </h:inputSecret>
-            <h:commandButton class="button" value="KAYIT OL" action="kayitKontrolJsf.xhtml"/>
+            <h:commandButton class="button" value="KAYIT OL" action="#{BeanKayitKontrol.kaydet()}"/>
         </h:form>
         </div>
         </div>
