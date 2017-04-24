@@ -4,27 +4,30 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : 21.Nis.2017, 20:45:09
+    Created on : 23.Nis.2017, 20:06:18
     Author     : said
 */
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
 
-.login-page {
-  width: 360px;
-  padding: 3% 0 0;
-  margin: auto;
+table {
+    border-collapse: collapse;
+    width: 100%;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-.form {
-  position: relative;
-  z-index: 1;
-  background: #FFFFFF;
-  max-width: 360px;
-  margin: 0 auto 25px;
-  padding: 35px;
-  text-align: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+
+th, td{
+    font-family: "Roboto", sans-serif;
+    text-align: left;
+    padding: 8px;
 }
-.input {
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #6698B3;
+    color: white;
+
+}
+.input2 {
   font-family: "Roboto", sans-serif;
   outline: 0;
   background: #f2f2f2;
@@ -32,6 +35,7 @@ and open the template in the editor.
   border: 0;
   margin: 0 0 15px;
   padding: 15px;
+  border-radius: 5px;
   box-sizing: border-box;
   font-size: 14px;
 }
@@ -47,10 +51,10 @@ and open the template in the editor.
   color: #FFFFFF;
   font-size: 14px;
   -webkit-transition: all 0.3 ease;
+  border-radius: 5px;
   transition: all 0.3 ease;
   cursor: pointer;
 }
 .button:hover,.button:active,.button:focus {
   background: #A8CDE0;
 }
-

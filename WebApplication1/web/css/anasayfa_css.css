@@ -1,38 +1,53 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : 23.Nis.2017, 00:37:25
-    Author     : said
-*/
 ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color:#6698B3;
+    background-color: #6698B3;
 }
 
 li {
     float: left;
 }
 
-li a {
+li a, .dropbtn {
     font-family: "Roboto", sans-serif;
-    display: block;
+    display: inline-block;
     color: white;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }
 
-li a:hover:not(.active) {
+li a:hover, .dropdown:hover .dropbtn {
     background-color: #A8CDE0;
 }
-p {
-    text-align: center;
-    font-family: "Roboto", sans-serif;
+
+li.dropdown {
+    display: inline-block;
 }
 
+.dropdown-content {
+    
+    display: none;
+    position: absolute;
+    background-color: #6698B3;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    font-family: "Roboto", sans-serif;
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #A8CDE0}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
