@@ -38,7 +38,7 @@
             <h:inputText class="input" pt:placeholder="KULLANICI ADI" required="true"
                          requiredMessage="KULLANICI ADI GİRİNİZ!" value="#{BeanKayitKontrol.kullaniciAdi}"/>
            
-            <h:inputSecret class="input" pt:placeholder="ŞİFRE" validatorMessage="ŞİFRENİZ EN AZ 1 ADET BÜYÜK HARF, KÜÇÜK GARF VE RAKAM İÇERMELİDİR!" 
+            <h:inputSecret class="input" pt:placeholder="ŞİFRE" validatorMessage="ŞİFRENİZ EN AZ 1 ADET BÜYÜK HARF, KÜÇÜK HARF VE RAKAM İÇERMELİDİR!" 
                            value="#{BeanKayitKontrol.sifre}">
                 <f:validateRegex pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"/>      
             </h:inputSecret>
