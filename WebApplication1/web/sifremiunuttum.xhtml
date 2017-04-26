@@ -1,12 +1,72 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>ŞİFREMİ UNUTTUM</title>
+        <link href="css/kayitol.css" rel="stylesheet" type="text/css"/>
+        <style>
+         .modalDialog {
+	position: fixed;
+	font-family: "Roboto", sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+}
+.modalDialog:target {
+	opacity:1;
+	pointer-events: auto;
+}
+
+.modalDialog > div {
+	width: 400px;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	border-radius: 10px;
+	background: #2C6C8E;
+	background: -moz-linear-gradient(#2C6C8E, #2C6C8E);
+	background: -webkit-linear-gradient(#CBDAE2, #CBDAE2);
+	background: -o-linear-gradient(#2C6C8E, #2C6C8E);
+}
+        </style>
     </h:head>
     <h:body style="background-color: #CBDAE2">
-        
+        <div class="login-page">
+        <div class="form">
+        <h:form>
+            <p style="color: #2C6C8E">E-posta adresiniz</p>
+            <h:inputText class="input" pt:placeholder="E-MAİL"
+            validatorMessage="E-MAİL FORMATINIZ YANLIŞ!">
+            <f:validateRegex pattern=
+            "\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" /> </h:inputText>
+            
+            <br></br>
+            <br></br>
+            
+            <a class="button" href="#openModal" style="width: ;height: auto" > ŞİFREMİ GÖNDER</a>
+            
+        </h:form>
+            </div>
+            </div>
+                  <div id="openModal" class="modalDialog">
+	<div>
+		<a href="#close" title="Close" class="close">X</a>
+		<h2>ŞİFRENİZ GÖNDERİLDİ!</h2>
+		<p>Lütfen mail kutunuzu kontrol edin!</p>
+                <a href="index.xhtml" style="color:  #2C6C8E ">GİRİŞ SAYFASINA GİT</a>
+	</div>
+</div>
     </h:body>
 </html>
 

@@ -27,15 +27,17 @@
             <f:validateRegex pattern=
             "[0-9]{1,2}(/|-)[0-9]{1,2}(/|-)[0-9]{4}" />
             </h:inputText>
+            
             <h:inputText class="input" pt:placeholder="BÜRO ADI" value="#{BeanKayitKontrol.buroAdi}"/>
             <h:inputText class="input" pt:placeholder="BARO SİCİL NO" value="#{BeanKayitKontrol.buroNo}"/>
-            <h:inputText class="input" pt:placeholder="KULLANICI ADI" required="true"
-                         requiredMessage="KULLANICI ADI GİRİNİZ!" value="#{BeanKayitKontrol.kullaniciAdi}"/>
-            <h:inputText class="input" pt:placeholder="E-MAİL"
+             <h:inputText class="input" pt:placeholder="E-MAİL"
                          validatorMessage="E-MAİL FORMATINIZ YANLIŞ!" value="#{BeanKayitKontrol.email}">
             <f:validateRegex pattern=
             "\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" />
             </h:inputText>
+            <h:inputText class="input" pt:placeholder="KULLANICI ADI" required="true"
+                         requiredMessage="KULLANICI ADI GİRİNİZ!" value="#{BeanKayitKontrol.kullaniciAdi}"/>
+           
             <h:inputSecret class="input" pt:placeholder="ŞİFRE" validatorMessage="ŞİFRENİZ EN AZ 1 ADET BÜYÜK HARF, KÜÇÜK GARF VE RAKAM İÇERMELİDİR!" 
                            value="#{BeanKayitKontrol.sifre}">
                 <f:validateRegex pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"/>      
