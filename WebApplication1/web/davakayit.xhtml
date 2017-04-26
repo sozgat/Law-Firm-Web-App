@@ -77,7 +77,7 @@ li.dropdown {
             <li class="dropdown">
            <a href="javascript:void(0)" class="dropbtn">İCRA</a>
         <div class="dropdown-content">
-         <a href="kayit.xhtml">İCRA KAYIT</a>
+            <a href="icrakayit.xhtml">İCRA KAYIT</a>
         <a href="#">İCRA DÜZENLE</a>
         </div></li>
             
@@ -93,41 +93,56 @@ li.dropdown {
                 <caption style="font-family: sans-serif;text-align: center; font-size: 25px ;box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);background-color: #6698B3;color: #FFFFFF">
                     Mahkeme Bilgileri</caption>
                 <tr>
-                    <td>MAHKEME ADI:</td>
-                    <td><h:inputText style="border-radius: 5px ;" /></td>
-                    <td>KARAR NO:</td>
-                    <td><h:inputText style="border-radius: 5px ;" /></td>
+                    <td>MAHKEME TİPİ:</td>
+                    <td><select style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" id="taraf" name="taraf">
+                    <option value="sulh">SULH HUKUK MAHKEMESİ</option>
+                    <option value="asliyle">ASLİYLE HUKUK MAHKEMESİ</option>
+                    <option value="ticaret">TİCARET MAHKEMESİ</option>
+                    <option value="is">İŞ MAHKEMESİ</option>
+                    <option value="sulhceza">SULH CEZA MAHKEMESİ</option>
+                    <option value="agirceza">AĞIR CEZA MAHKEMESİ</option>
+                        </select></td>
+                    <td>HAKİM:</td> 
+                    <td><h:inputText style="border-radius: 5px ;" /> </td>
+                    
 
+                </tr>
+                <tr>
+                    <td>MAHKEME YERİ: </td>
+                    <td><h:inputText style="border-radius: 5px ;"/> </td>
+                    <td>HÜKÜM TARİHİ:</td>
+                    <td><h:inputText style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" /> </td>
                 </tr>
                 <tr>
                     <td>DAVANIN TİPİ: </td>
                     <td><select style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" id="taraf" name="taraf">
-                    <option value="davacı"> KİRA DAVASI</option>
-                    <option value="davalı">AİLE HUKUKU DAVASI</option>
-                    <option value="sahit">NÜFUS DAVASI</option>
-                    <option value="sahit">KİŞİLER HUKUKU DAVASI</option>
-                    <option value="sahit">MİRAS HUKUKU DAVASI</option>
-                    <option value="sahit">BORÇLAR HUKUKU DAVASI</option>
+                    <option value="kira"> KİRA DAVASI</option>
+                    <option value="aile">AİLE HUKUKU DAVASI</option>
+                    <option value="nufus">NÜFUS DAVASI</option>
+                    <option value="kisiler">KİŞİLER HUKUKU DAVASI</option>
+                    <option value="miras">MİRAS HUKUKU DAVASI</option>
+                    <option value="borclar">BORÇLAR HUKUKU DAVASI</option>
                         </select></td>
-                    <td>DAVA NO: </td>
+                    
+                    <td>DAVANIN TARİHİ: </td>
                     <td><h:inputText style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" /> </td>
                 </tr>
                 <tr>
                     <td>DAVANIN KONUSU: </td>
                     <td><h:inputText style="border-radius: 5px ;" /> </td>
-                    <td>DAVANIN TARİHİ: </td>
-                    <td><h:inputText style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" /> </td>
+                    <td>KARAR NO:</td>
+                    <td><h:inputText style="border-radius: 5px ;" pt:placeholder="örn: 2017/999"/></td>
                 </tr>
                 <tr>
-                    <td>HÜKÜM TARİHİ:</td>
-                    <td><h:inputText style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" /> </td>
-                    <td>HÜKÜM KESİNLEŞME TARİHİ:</td> 
-                    <td><h:inputText style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" /> </td>
+                    <td>DAVA ESAS NO: </td>
+                    <td><h:inputText style="border-radius: 5px ;"/> </td>
+                    <td>TOPLAM HARCAMA:</td>
+                    <td><h:inputText style="border-radius: 5px ;"/></td>
                 </tr>
             </table>
             
-            <br />
-                     <select style="background-color: #FFFFFF; width: 25%; height: 30px" id="taraf" name="taraf">
+    <br></br>
+                     <select style="background-color: #FFFFFF; width: 25%; height: 30px;padding: 0 20px 0 ;margin: 0 525px 0" id="taraf" name="taraf">
                      <option value="davacı"> DAVACI  (MÜŞTEKİ)  BİLGİLERİ </option>
                     <option value="davalı">DAVALI  (SANIK)  BİLGİLERİ</option>
                     <option value="sahit">ŞAHİT  BİLGİLERİ</option>
@@ -149,7 +164,7 @@ li.dropdown {
  
             </table>
             <table>
-                 <caption style="font-family: sans-serif;text-align: center; font-size: 25px ;                              box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);background-color: #6698B3                              ;color: #FFFFFF">
+                 <caption style="font-family: sans-serif;text-align: center; font-size: 25px ;box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);background-color: #6698B3                              ;color: #FFFFFF">
                     Savunması</caption>
                  <tr>
                      <td style="text-align: center"><h:inputTextarea  style="width: 600px;  height: 75px; border-radius: 5px"/></td>
