@@ -11,9 +11,9 @@
         <div class="login-page">
         <div class="form">
             <h:form>
-            <h:inputText class="input" pt:placeholder="Kullanıcı Adı"/>
-            <h:inputSecret class="input" pt:placeholder="Şifre"/>
-            <h:commandButton class="button"  value="GİRİŞ YAP" action="anasayfa.xhtml"/>
+                <h:inputText class="input" pt:placeholder="Kullanıcı Adı" value="#{BeanKullaniciGiris.kullaniciAd}"/>
+                <h:inputSecret class="input" pt:placeholder="Şifre" value="#{BeanKullaniciGiris.sifre}"/>
+            <h:commandButton class="button"  value="GİRİŞ YAP" action="#{BeanKullaniciGiris.girisKontrol}"/>
             <h:commandButton class="button" value="KAYIT OL" action="kayitol.xhtml"/>
             <p> <a href="faces/sifremiunuttum.xhtml" style="color: #2C6C8E; text-decoration: none"> Şifremi Unuttum</a></p>
             
