@@ -129,6 +129,7 @@ public class KayitKontrol { // Class isimleri buyuk harfle basliyor.
             ps.execute();
             System.out.println("Kayit eklendi.");
             
+            
         } catch (SQLException ex) {
             Logger.getLogger(KayitKontrol.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Kayit sirasinda hata olustu!");//(Mehmet)HTML kismindada Hata mesaji verebilriiz.
@@ -137,7 +138,7 @@ public class KayitKontrol { // Class isimleri buyuk harfle basliyor.
         finally
         {
             DbFunctions.baglantiKapa(baglanti);
-            return "kayitKontrolJsf.xhtml";
+           return "yonlendirme.xhtml";
         }
         
     }

@@ -133,20 +133,30 @@ li.dropdown {
                     <td>KARAR NO:</td>
                     <td><h:inputText style="border-radius: 5px ;" pt:placeholder="örn: 2017/999"/></td>
                 </tr>
+
                 <tr>
                     <td>DAVA ESAS NO: </td>
                     <td><h:inputText style="border-radius: 5px ;"/> </td>
-                    <td>TOPLAM HARCAMA:</td>
-                    <td><h:inputText style="border-radius: 5px ;"/></td>
+                    <td>MAHKEME KARARI</td>
+                    <td><select style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" id="taraf" name="taraf">
+                    <option value="belirsiz">BELİRSİZ</option>
+                    <option value="beraat">BERAAT KARARI</option>
+                    <option value="mahkumiyet">MAHKUMİYET KARARI</option>
+                    <option value="güvenliktedbiri">GÜVENLİK TEDBİRİ KARARI</option>
+                    <option value="davanınreddi">DAVANIN REDDİ KARARI</option>
+                    <option value="düsmekarari">DÜŞME KARARI</option>
+                        </select></td>
                 </tr>
             </table>
-            
     <br></br>
                      <select style="background-color: #FFFFFF; width: 25%; height: 30px;padding: 0 20px 0 ;margin: 0 525px 0" id="taraf" name="taraf">
                      <option value="davacı"> DAVACI  (MÜŞTEKİ)  BİLGİLERİ </option>
                     <option value="davalı">DAVALI  (SANIK)  BİLGİLERİ</option>
                     <option value="sahit">ŞAHİT  BİLGİLERİ</option>
                     </select>
+    <h:commandButton  class="button" style="width: 20%;padding: 0 50px 0 ;margin: 0 560px 0" value="EKLE"/>
+    <br></br>
+    <br></br>
          <table>
                 <tr>
                     <td>ADI:</td>
