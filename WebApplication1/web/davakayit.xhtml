@@ -96,6 +96,7 @@ li.dropdown {
         <link href="css/davakayit.css" rel="stylesheet" type="text/css" />
         <link href="css/inputbox.css" rel="stylesheet" type="text/css" />
         <link href="css/eklesilkaydetbutton.css" rel="stylesheet" type="text/css"/>
+        <link  href="css/davamasrafihesapla.css" rel="stylesheet" type="text/css"/>
     </h:head>
         <h:body style="background-color: #CBDAE2">
                 <ul>
@@ -255,11 +256,11 @@ li.dropdown {
 		<a href="#close" title="Close" class="close">X</a>
 		<h2>DAVA MASRAFI HESAPLA</h2>
                 <h:form>
-                <table>
+                    <table class="davamasraftable">
                     <tr>
                         <td>MAHKEME TÜRÜ:</td>
-                        <td>
-                            <select style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" id="taraf" name="taraf">
+                        <td class="">
+                            <select style="background-color: #FFFFFF; width: 80%; height: 20px; border-radius: 5px" id="taraf" name="taraf">
                     <option value="sulh">SULH HUKUK MAHKEMESİ</option>
                     <option value="asliyle">ASLİYLE HUKUK MAHKEMESİ</option>
                     <option value="ticaret">TİCARET MAHKEMESİ</option>
@@ -337,7 +338,7 @@ li.dropdown {
                         <td><h:inputText/></td>'TL
                     </tr>
                     <tr>
-                        <td> <h:commandButton value="HESAPLA"></h:commandButton></td>
+                        <td> <h:commandButton value="HESAPLA" ></h:commandButton></td>
                         <td> <h:commandButton value="TEMİZLE"/> </td>
                     </tr>
                    
