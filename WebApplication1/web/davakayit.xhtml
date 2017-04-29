@@ -61,6 +61,37 @@ li.dropdown {
 .dropdown:hover .dropdown-content {
     display: block;
 }
+         .modalDialog {
+	position: fixed;
+	font-family: "Roboto", sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+}
+.modalDialog:target {
+	opacity:1;
+	pointer-events: auto;
+}
+
+.modalDialog > div {
+	width: 800px;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	border-radius: 10px;
+	background: #2C6C8E;
+	background: -moz-linear-gradient(#2C6C8E, #2C6C8E);
+	background: -webkit-linear-gradient(#CBDAE2, #CBDAE2);
+	background: -o-linear-gradient(#2C6C8E, #2C6C8E);
+}
         </style>
         <link href="css/davakayit.css" rel="stylesheet" type="text/css" />
         <link href="css/inputbox.css" rel="stylesheet" type="text/css" />
@@ -149,7 +180,11 @@ li.dropdown {
                     <option value="düsmekarari">DÜŞME KARARI</option>
                         </select></td>
                 </tr>
+                <tr>
+                    <td><a class="eklekaydet" href="#openModal" style="text-decoration: none" > DAVA MASRAFI HESAPLA </a></td>
+                </tr>
             </table>
+   
     <br></br>
                      
          <p style="font-family: sans-serif;text-align: center; font-size: 25px ;box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);background-color: #6698B3;color: #FFFFFF">
@@ -215,5 +250,101 @@ li.dropdown {
             </tr>
                         </table>
 </h:form>
+    <div id="openModal" class="modalDialog">
+	<div>
+		<a href="#close" title="Close" class="close">X</a>
+		<h2>DAVA MASRAFI HESAPLA</h2>
+                <h:form>
+                <table>
+                    <tr>
+                        <td>MAHKEME TÜRÜ:</td>
+                        <td>
+                            <select style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" id="taraf" name="taraf">
+                    <option value="sulh">SULH HUKUK MAHKEMESİ</option>
+                    <option value="asliyle">ASLİYLE HUKUK MAHKEMESİ</option>
+                    <option value="ticaret">TİCARET MAHKEMESİ</option>
+                    <option value="is">İŞ MAHKEMESİ</option>
+                    <option value="sulhceza">SULH CEZA MAHKEMESİ</option>
+                    <option value="agirceza">AĞIR CEZA MAHKEMESİ</option>
+                        </select>
+                        </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>DAVA DEĞERİ GİRİN:</td>
+                            <td><h:inputText/></td>
+                            <td>
+                                <h:selectManyCheckbox>
+                                    <f:selectItem itemValue="harc" itemLabel="HARÇ"></f:selectItem>
+                                </h:selectManyCheckbox>
+                            </td>
+                        </tr>
+                    <tr>
+                        <td>ŞAHİT SAYISI:</td>
+                        <td> <select name="tanikcmb" id="tanikcmb" size="1">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                         </td>
+                    </tr>
+                    <tr>
+                        <td>TARAF SAYISI:</td>
+                        <td>
+                            <select name="taraf" id="taraf" size="1">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </td>
+                        <td>AVUKAT SAYISI:</td>
+                        <td>
+                            <select name="avukatsayisi" id="avukatsayisi" size="1">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>DAVA MASRAFI</td>
+                        <td><h:inputText/></td>'TL
+                    </tr>
+                    <tr>
+                        <td> <h:commandButton value="HESAPLA"></h:commandButton></td>
+                        <td> <h:commandButton value="TEMİZLE"/> </td>
+                    </tr>
+                   
+                    
+                </table>
+		</h:form>
+	</div>
+    </div>
 </h:body>
 </html>
