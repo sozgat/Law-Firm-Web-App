@@ -3,13 +3,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
        xmlns:h="http://xmlns.jcp.org/jsf/html"
        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-       xmlns:f="http://xmlns.jcp.org/jsf/core"
-       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>DAVA KAYIT</title>
-                <link href="css/davakayit.css" rel="stylesheet" type="text/css" />
-                <link href="css/inputbox.css" rel="stylesheet" type="text/css" />
-                <link  href="css/eklesilkaydetbutton.css" rel="stylesheet" type="text/css"/>
                 <style>
             ul {
     list-style-type: none;
@@ -65,7 +61,8 @@ li.dropdown {
     display: block;
 }
         </style>
-         
+        <link href="css/davakayit.css" rel="stylesheet" type="text/css" />
+        <link href="css/inputbox.css" rel="stylesheet" type="text/css" />
     </h:head>
         <h:body style="background-color: #CBDAE2">
                 <ul>
@@ -152,70 +149,38 @@ li.dropdown {
                 </tr>
             </table>
     <br></br>
-    <p style="font-family: sans-serif;text-align: center; font-size: 25px ;box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);background-color: #6698B3;color: #FFFFFF">
-        Davalı, Davacı, Şahit İşlemleri</p>
-    
-    </h:form>
-                    <h:form>
-                        <table class="table2">
-                <ui:repeat value="#{userController.davaGroup}" var="d">
-                <tr>                    
-                    <td class="td2">
-                        <h:selectOneMenu style="background-color: #FFFFFF; width: 50%; height: 20px; border-radius: 5px" value="#{d.davaTuru}">
-                                <f:selectItem itemLabel="Davacı Müşteki Bilgileri" itemValue="Davacı Müşteki Bilgileri"/>
-                                <f:selectItem itemLabel="Davalı (Sanık) Bilgileri" itemValue="Davalı (Sanik) Bilgileri"/>
-                                <f:selectItem itemLabel="Şahit Bilgileri" itemValue="Şahit Bilgileri"/>
-                            </h:selectOneMenu>
-                        </td>
-                    <td class="td2">
-                        <h:commandButton value="SİL"  class="sil"  action="#{userController.remove(d)}">
-                            
-                            <f:ajax render="@form" execute="@form"/>
-                            </h:commandButton>
-                        </td>
+                     <select style="background-color: #FFFFFF; width: 25%; height: 30px;padding: 0 20px 0 ;margin: 0 525px 0" id="taraf" name="taraf">
+                     <option value="davacı"> DAVACI  (MÜŞTEKİ)  BİLGİLERİ </option>
+                    <option value="davalı">DAVALI  (SANIK)  BİLGİLERİ</option>
+                    <option value="sahit">ŞAHİT  BİLGİLERİ</option>
+                    </select>
+    <h:commandButton  class="button" style="width: 20%;padding: 0 50px 0 ;margin: 0 560px 0" value="EKLE"/>
+    <br></br>
+    <br></br>
+         <table>
+                <tr>
+                    <td>ADI:</td>
+                    <td><h:inputText style="border-radius: 5px ;" /></td>
+                    <td>TC KİMLİK NO:</td>
+                    <td><h:inputText style="border-radius: 5px ;" /></td>
+                   
                 </tr>
                 <tr>
-                    <td> ADI:</td>
-                    <td> <h:inputText style="border-radius: 5px ;" value="#{d.ad}"/> </td>
-                    
-                     <td>TC KİMLİK NO:</td>
-                     <td><h:inputText style="border-radius: 5px ;" value="#{d.tcKimlikNo}"/></td>
+                     <td>SOYADI:</td>
+                     <td><h:inputText style="border-radius: 5px ;" /></td>
+                    <td>DOĞUM TARİHİ:</td>
+                    <td><h:inputText style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" /></td>
                 </tr>
-                    <tr>
-                        <td> SOYADI: </td>
-                        <td>
-                        <h:inputText style="border-radius: 5px ;" value="#{d.soyad}"/>
-                    </td>
-                        <td>
-                            DOĞUM TARİHİ: </td>
-                        <td>
-                            <h:inputText style="border-radius: 5px ;" value="#{d.dogumTarihi}" pt:placeholder="GG/AA/YYYY"/>
-                        </td>
-                </tr>
-                    <tr style="height: 25%">
-                        <td>
-                            SAVUNMASI:
-                        </td>
-                        <td style="height: 100%">
-                            <h:inputTextarea style="width: 100%; height: 80px;max-width: 100%;max-height: 80px; border-radius: 5px" rows="15"></h:inputTextarea>
-                        </td>
-                        <td></td>
-                        <td></td>
-
-                    </tr>
-                    
-            </ui:repeat>
-            <tr>
-                    <td>
-                        <h:commandButton value="EKLE" class="eklekaydet"  action="#{userController.add()}">
-                            <f:ajax render="@form" execute="@form"/>
-                        </h:commandButton>
-                        <h:commandButton value="KAYDET" class="eklekaydet" action="#{userController.save()}"/>                        
-                    </td>
-            </tr>
+ 
             </table>
-                        
-        </h:form>            
-
+            <table>
+                 <caption style="font-family: sans-serif;text-align: center; font-size: 25px ;box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);background-color: #6698B3                              ;color: #FFFFFF">
+                    Savunması</caption>
+                 <tr>
+                     <td style="text-align: center"><h:inputTextarea  style="width: 600px;  height: 75px; border-radius: 5px"/></td>
+                     <td> <h:commandButton value="KAYDET" style="border-radius: 5px ;" class="button" /> </td>
+                 </tr>
+            </table>
+</h:form>
 </h:body>
 </html>

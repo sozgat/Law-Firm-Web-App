@@ -73,7 +73,7 @@ public class KullaniciGiris {
                 {
                     System.out.println("Sifrenizi hatali girdiniz!");
                     DbFunctions.baglantiKapa(baglanti);
-                    return "sifrehatali.xhtml";//(Mehmet)Sifre Hatali popup'i verdirebiliriz. Ben farketmemiz icin bu sayfaya yonlendiridim.
+                    return "yonlendirme.xhtml";//(Mehmet)Sifre Hatali popup'i verdirebiliriz. Ben farketmemiz icin bu sayfaya yonlendiridim.
                 }
             }
             else
