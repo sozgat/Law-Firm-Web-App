@@ -256,11 +256,11 @@ li.dropdown {
 		<a href="#close" title="Close" class="close">X</a>
 		<h2>DAVA MASRAFI HESAPLA</h2>
                 <h:form>
-                    <table class="davamasraftable">
+                    <table>
                     <tr>
                         <td>MAHKEME TÜRÜ:</td>
                         <td class="">
-                            <select style="background-color: #FFFFFF; width: 80%; height: 20px; border-radius: 5px" id="taraf" name="taraf">
+                            <select style="background-color: #FFFFFF; width: 220px; height: 30px; border-radius: 5px" id="taraf" name="taraf">
                     <option value="sulh">SULH HUKUK MAHKEMESİ</option>
                     <option value="asliyle">ASLİYLE HUKUK MAHKEMESİ</option>
                     <option value="ticaret">TİCARET MAHKEMESİ</option>
@@ -270,15 +270,14 @@ li.dropdown {
                         </select>
                         </td>
                         </tr>
-                        <tr>
-                            <td></td>
-                        </tr>
+                     
                         <tr>
                             <td>DAVA DEĞERİ GİRİN:</td>
                             <td><h:inputText/></td>
                             <td>
                                 <h:selectManyCheckbox>
-                                    <f:selectItem itemValue="harc" itemLabel="HARÇ"></f:selectItem>
+                                    <f:selectItem itemValue="maktuharc" itemLabel="MAKTU HARÇ"></f:selectItem>
+                                    <f:selectItem itemValue="nispiharc" itemLabel="NİSPİ HARÇ"></f:selectItem>
                                 </h:selectManyCheckbox>
                             </td>
                         </tr>
@@ -316,8 +315,7 @@ li.dropdown {
                                 <option value="10">10</option>
                             </select>
                         </td>
-                        <td>AVUKAT SAYISI:</td>
-                        <td>
+                        <td>AVUKAT SAYISI:
                             <select name="avukatsayisi" id="avukatsayisi" size="1">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
@@ -334,16 +332,17 @@ li.dropdown {
                         </td>
                     </tr>
                     <tr>
-                        <td>DAVA MASRAFI</td>
-                        <td><h:inputText/></td>'TL
-                    </tr>
-                    <tr>
+                        <td></td>
                         <td> <h:commandButton value="HESAPLA" ></h:commandButton></td>
-                        <td> <h:commandButton value="TEMİZLE"/> </td>
+                        <td> <h:commandButton value="TEMİZLE" type="reset"/> </td>  
+                        <td></td>
                     </tr>
-                   
-                    
+   
                 </table>
+                    <br></br>    
+                    <p> DAVA MASRAFI:
+                        <h:inputText/> TL
+                    </p>
 		</h:form>
 	</div>
     </div>
