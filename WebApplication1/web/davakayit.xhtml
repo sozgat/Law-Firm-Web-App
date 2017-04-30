@@ -203,12 +203,7 @@ li.dropdown {
                                 <f:selectItem itemLabel="Şahit Bilgileri" itemValue="Şahit Bilgileri"/>
                             </h:selectOneMenu>
                         </td>
-                    <td class="td2">
-                        <h:commandButton value="SİL"  class="sil"  action="#{userController.remove(d)}">
-                            
-                            <f:ajax render="@form" execute="@form"/>
-                            </h:commandButton>
-                        </td>
+                    
                 </tr>
                      <tr>
                          <td> ADI:</td>
@@ -228,25 +223,30 @@ li.dropdown {
                             <h:inputText style="border-radius: 5px ;" value="#{d.dogumTarihi}" pt:placeholder="GG/AA/YYYY"/>
                         </td>
                 </tr>
-                    <tr style="height: 25%">
+                    <tr>
                         <td>
                             SAVUNMASI:
                         </td>
-                        <td style="height: 100%">
-                            <h:inputTextarea style="width: 100%; height: 80px;max-width: 100%;max-height: 80px; border-radius: 5px" rows="15"></h:inputTextarea>
+                        <td>
+                            <h:inputTextarea style="width: 500px; height: 80px;max-width: 500px;max-height: 80px; border-radius: 5px" rows="15"></h:inputTextarea>
                         </td>
-                        <td></td>
-                        <td></td>
+                        <td><h:commandButton  class="button" type="reset" value="TEMİZLE"/> </td>
+                        <td class="td2">
+                            <h:commandButton value="SİL"  class="sil"   action="#{userController.remove(d)}">
+                            
+                            <f:ajax render="@form" execute="@form"/>
+                            </h:commandButton>
+                        </td>
 
                     </tr>
                     
             </ui:repeat>
             <tr>
                     <td>
-                        <h:commandButton value="EKLE" class="eklekaydet"  action="#{userController.add()}">
+                        <h:commandButton value="EKLE" class="eklekaydet" style="width: 150px"  action="#{userController.add()}">
                             <f:ajax render="@form" execute="@form"/>
                         </h:commandButton>
-                        <h:commandButton value="KAYDET" class="eklekaydet" action="#{userController.save()}"/>                        
+                        <h:commandButton value="KAYDET" class="eklekaydet"  style="width: 150px" action="#{userController.save()}"/>                        
                     </td>
             </tr>
                         </table>

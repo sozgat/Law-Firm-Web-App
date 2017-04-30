@@ -55,6 +55,6 @@ th {
   transition: all 0.3 ease;
   cursor: pointer;
 }
-.button:hover,.button:active,.button:focus {
+.button:hover,.button:focus {
   background: #A8CDE0;
 }

@@ -8,14 +8,14 @@ and open the template in the editor.
     Author     : said
 */
 .sil{
-    font-family: "Roboto", sans-serif;
+  font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-  background: #6698B3;
-  width: 20%;
+  background-color: #6698B3;
+  width: 50px;
   border: 0;
   margin: 0 0 5px;
-  padding: 5px;
+  padding: 5px ;
   color: #FFFFFF;
   font-size: 14px;
   -webkit-transition: all 0.3 ease;
@@ -28,7 +28,7 @@ and open the template in the editor.
   text-transform: uppercase;
   outline: 0;
   background: #6698B3;
-  width: 20%;
+  width: 35%;
   border: 0;
   margin: 0 0 5px;
   padding: 5px;
@@ -43,5 +43,5 @@ and open the template in the editor.
     background-color: #2C6C8E;
 }
 .sil:hover{
-    background-color: #2C6C8E;
+    background-color: #FF0000;
 }
