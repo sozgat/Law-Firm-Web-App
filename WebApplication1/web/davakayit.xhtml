@@ -133,8 +133,6 @@ li.dropdown {
                     <option value="asliyle">ASLİYLE HUKUK MAHKEMESİ</option>
                     <option value="ticaret">TİCARET MAHKEMESİ</option>
                     <option value="is">İŞ MAHKEMESİ</option>
-                    <option value="sulhceza">SULH CEZA MAHKEMESİ</option>
-                    <option value="agirceza">AĞIR CEZA MAHKEMESİ</option>
                         </select></td>
                     <td>HAKİM:</td> 
                     <td><h:inputText style="border-radius: 5px ;" /> </td>
@@ -265,15 +263,13 @@ li.dropdown {
                     <option value="asliyle">ASLİYLE HUKUK MAHKEMESİ</option>
                     <option value="ticaret">TİCARET MAHKEMESİ</option>
                     <option value="is">İŞ MAHKEMESİ</option>
-                    <option value="sulhceza">SULH CEZA MAHKEMESİ</option>
-                    <option value="agirceza">AĞIR CEZA MAHKEMESİ</option>
                         </select>
                         </td>
                         </tr>
                      
                         <tr>
                             <td>DAVA DEĞERİ GİRİN:</td>
-                            <td><h:inputText/></td>
+                            <td><h:inputText/> TL</td> 
                             <td>
                                 <h:selectManyCheckbox>
                                     <f:selectItem itemValue="maktuharc" itemLabel="MAKTU HARÇ"></f:selectItem>
@@ -281,6 +277,24 @@ li.dropdown {
                                 </h:selectManyCheckbox>
                             </td>
                         </tr>
+                    <tr>
+                         <td>TARAF SAYISI:</td>
+                        <td>
+                            <select name="taraf" id="taraf" size="1">
+                                <option value="0">0</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                            </select>
+                        </td>
+                    </tr>
                     <tr>
                         <td>ŞAHİT SAYISI:</td>
                         <td> <select name="tanikcmb" id="tanikcmb" size="1">
@@ -297,39 +311,8 @@ li.dropdown {
                                 <option value="10">10</option>
                             </select>
                          </td>
-                    </tr>
-                    <tr>
-                        <td>TARAF SAYISI:</td>
-                        <td>
-                            <select name="taraf" id="taraf" size="1">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
-                        </td>
-                        <td>AVUKAT SAYISI:
-                            <select name="avukatsayisi" id="avukatsayisi" size="1">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
-                        </td>
+                       
+                        <td></td>
                     </tr>
                     <tr>
                         <td></td>
@@ -340,7 +323,7 @@ li.dropdown {
    
                 </table>
                     <br></br>    
-                    <p> DAVA MASRAFI:
+                    <p> TOPLAM HARÇ VE GİDER AVANSI:
                         <h:inputText/> TL
                     </p>
 		</h:form>
