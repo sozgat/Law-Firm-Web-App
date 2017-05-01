@@ -3,65 +3,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
-        <title>İCRA KAYIT</title>
-        <style>
-            ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #6698B3;
-}
+        <title>DAVALARI GÖR</title>
+       <link type="text/css" rel="stylesheet" href="css/anasayfa_css.css"/> 
+       <link type="text/css" rel="stylesheet" href="css/davalarigortablo.css"/>
 
-li {
-    float: left;
-}
-
-li a, .dropbtn {
-    font-family: "Roboto", sans-serif;
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li a:hover, .dropdown:hover .dropbtn {
-    background-color: #A8CDE0;
-}
-
-li.dropdown {
-    display: inline-block;
-}
-
-.dropdown-content {
-    
-    display: none;
-    position: absolute;
-    background-color: #6698B3;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    font-family: "Roboto", sans-serif;
-    color: white;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
-
-.dropdown-content a:hover {background-color: #A8CDE0}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-        </style>
     </h:head>
     <h:body style="background-color: #CBDAE2">
-          <ul>
+       <ul>
             <li><a href="anasayfa.xhtml">ANASAYFA</a></li>
             
             <li class="dropdown">
@@ -80,7 +28,51 @@ li.dropdown {
             
             <li><a href="takvim.xhtml">TAKVİM</a></li>
             <li><a href="index.xhtml">ÇIKIŞ</a></li>
+            
         </ul>
+        
+        <h2>My Customers</h2>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name"/>
+
+<table id="myTable">
+  <tr class="header">
+    <th style="width:60%;">Name</th>
+    <th style="width:40%;">Country</th>
+  </tr>
+  <tr>
+    <td>Alfreds Futterkiste</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Berglunds snabbkop</td>
+    <td>Sweden</td>
+  </tr>
+  <tr>
+    <td>Island Trading</td>
+    <td>UK</td>
+  </tr>
+  <tr>
+    <td>Koniglich Essen</td>
+    <td>Germany</td>
+  </tr>
+  <tr>
+    <td>Laughing Bacchus Winecellars</td>
+    <td>Canada</td>
+  </tr>
+  <tr>
+    <td>Magazzini Alimentari Riuniti</td>
+    <td>Italy</td>
+  </tr>
+  <tr>
+    <td>North/South</td>
+    <td>UK</td>
+  </tr>
+  <tr>
+    <td>Paris specialites</td>
+    <td>France</td>
+  </tr>
+</table>
     </h:body>
 </html>
 

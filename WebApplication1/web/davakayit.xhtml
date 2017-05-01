@@ -106,7 +106,7 @@ li.dropdown {
            <a href="javascript:void(0)" class="dropbtn">DAVA</a>
         <div class="dropdown-content">
          <a href="davakayit.xhtml">DAVA KAYIT</a>
-        <a href="#">DAVA DÜZENLE</a>
+         <a href="davalarigor.xhtml">DAVALARI GÖR</a>
         </div></li>
             <li class="dropdown">
            <a href="javascript:void(0)" class="dropbtn">İCRA</a>
@@ -181,6 +181,10 @@ li.dropdown {
                 </tr>
                 <tr>
                     <td><a class="eklekaydet" href="#openModal" style="text-decoration: none" > DAVA MASRAFI HESAPLA </a></td>
+                    <td> TOPLAM HARÇ VE GİDER AVANSI:
+                        <h:inputText style="border-radius: 5px ;"/> TL</td>
+                    <td>AVUKAT ADI SOYADI:</td>
+                    <td><h:inputText style="border-radius: 5px ;"/></td>
                 </tr>
             </table>
    
@@ -195,10 +199,10 @@ li.dropdown {
                 <ui:repeat value="#{userController.davaGroup}" var="d">
                 <tr>                    
                     <td class="td2">
-                        <h:selectOneMenu style="background-color: #FFFFFF; width: 50%; height: 20px; border-radius: 5px" value="#{d.davaTuru}">
-                                <f:selectItem itemLabel="Davacı Müşteki Bilgileri" itemValue="Davacı Müşteki Bilgileri"/>
-                                <f:selectItem itemLabel="Davalı (Sanık) Bilgileri" itemValue="Davalı (Sanik) Bilgileri"/>
-                                <f:selectItem itemLabel="Şahit Bilgileri" itemValue="Şahit Bilgileri"/>
+                        <h:selectOneMenu style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" value="#{d.davaTuru}">
+                                <f:selectItem itemLabel="DAVACI (MÜŞTEKİ) BİLGİLERİ" itemValue="Davacı Müşteki Bilgileri"/>
+                                <f:selectItem itemLabel="DAVALI (SANIK) BİLGİLERİ" itemValue="Davalı (Sanik) Bilgileri"/>
+                                <f:selectItem itemLabel="ŞAHİT BİLGİLERİ" itemValue="Şahit Bilgileri"/>
                             </h:selectOneMenu>
                         </td>
                     
@@ -269,7 +273,7 @@ li.dropdown {
                      
                         <tr>
                             <td>DAVA DEĞERİ GİRİN:</td>
-                            <td><h:inputText/> TL</td> 
+                            <td><h:inputText style="border-radius: 5px ;"/> TL</td> 
                             <td>
                                 <h:selectManyCheckbox>
                                     <f:selectItem itemValue="maktuharc" itemLabel="MAKTU HARÇ"></f:selectItem>
@@ -280,7 +284,7 @@ li.dropdown {
                     <tr>
                          <td>TARAF SAYISI:</td>
                         <td>
-                            <select name="taraf" id="taraf" size="1">
+                            <select name="taraf" id="taraf" size="1" style="border-radius: 5px ;">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -297,7 +301,7 @@ li.dropdown {
                     </tr>
                     <tr>
                         <td>ŞAHİT SAYISI:</td>
-                        <td> <select name="tanikcmb" id="tanikcmb" size="1">
+                        <td> <select name="tanikcmb" id="tanikcmb" size="1" style="border-radius: 5px ;">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -316,15 +320,15 @@ li.dropdown {
                     </tr>
                     <tr>
                         <td></td>
-                        <td> <h:commandButton value="HESAPLA" ></h:commandButton></td>
-                        <td> <h:commandButton value="TEMİZLE" type="reset"/> </td>  
+                        <td> <h:commandButton value="HESAPLA"  style="border-radius: 5px ;"></h:commandButton></td>
+                        <td> <h:commandButton value="TEMİZLE" style="border-radius: 5px ;" type="reset"/> </td>  
                         <td></td>
                     </tr>
    
                 </table>
                     <br></br>    
                     <p> TOPLAM HARÇ VE GİDER AVANSI:
-                        <h:inputText/> TL
+                        <h:inputText style="border-radius: 5px ;"/> TL
                     </p>
 		</h:form>
 	</div>
