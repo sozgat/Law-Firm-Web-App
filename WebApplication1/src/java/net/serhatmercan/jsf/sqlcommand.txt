@@ -23,3 +23,45 @@ sifre VARCHAR(100) NOT NULL,
 email VARCHAR(150) NOT NULL,
 buroNo INT 
 );
+
+CREATE TABLE TBLMAHKEME_BILGILER
+(
+davaEsasNo INT PRIMARY KEY NOT NULL,
+mahkemeTipi VARCHAR(50),
+mahkemeYeri VARCHAR(500),
+davaTipi VARCHAR(50),
+davaKonusu VARCHAR(200),
+hakimAd VARCHAR(50),
+hukumTarih DATE, 
+davaTarih DATE,
+kararYil DATE,
+kararNo INT,
+mahkemeKarar VARCHAR(100),
+davaMasrafId INT/*FOREIGN KEY EKLENCEK*/,
+avukatId INT/*FOREIGN KEY EKLENCEK TBLKULLANICILAR dan id degeri cekilecek*/
+);
+
+CREATE TABLE TBLDAVA_BILGILER
+(
+id INT GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1) PRIMARY KEY,
+davaTuru VARCHAR(50),
+ad VARCHAR(100),
+soyad VARCHAR(100),
+tcKimlikNo VARCHAR(11),
+dogumTarih DATE,
+savunma VARCHAR(500),
+davaEsasNo INT/*FOREIGN KEY EKLENCEK*/
+);
+
+CREATE TABLE TBLMASRAFLAR
+(
+id INT GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1) PRIMARY KEY,
+mahkemeHarci DOUBLE,
+davaDegeri DOUBLE,
+maktuHarc DOUBLE,
+nispiHarc DOUBLE,
+tarafSayisiTutar DOUBLE,
+sahitSayisiTutar DOUBLE,
+avukatUcreti DOUBLE,
+digerMasraflar DOUBLE
+);

@@ -1,4 +1,4 @@
-package UserController;
+package net.serhatmercan.jsf;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,18 +11,18 @@ import javax.faces.bean.SessionScoped;
 
 public class UserController {
     
-    private List<DavaKayit> davaGroup = null;
+    private List<DavaBilgileri> davaGroup = null;
     
     @PostConstruct
     public void init(){
-        davaGroup = new ArrayList<DavaKayit>();
+        davaGroup = new ArrayList<DavaBilgileri>();
     }
 
     public void add(){
-        davaGroup.add(new DavaKayit());
+        davaGroup.add(new DavaBilgileri());
     }
     
-    public void remove(DavaKayit e){
+    public void remove(DavaBilgileri e){
         davaGroup.remove(e);
     }
     
@@ -30,11 +30,11 @@ public class UserController {
         return "result.xhtml?faces-redirect=true";
     }
 
-    public List<DavaKayit> getDavaGroup() {
+    public List<DavaBilgileri> getDavaGroup() {
         return davaGroup;
     }
 
-    public void setDavaGroup(List<DavaKayit> davaGroup) {
+    public void setDavaGroup(List<DavaBilgileri> davaGroup) {
         this.davaGroup = davaGroup;
     }
     
