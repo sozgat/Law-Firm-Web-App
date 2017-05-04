@@ -128,13 +128,12 @@ li.dropdown {
                     Mahkeme Bilgileri</caption>
                 <tr>
                     <td>MAHKEME TİPİ:</td>
-                    <td><select style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" id="taraf" name="taraf">
-                    <option value="sulh">SULH HUKUK MAHKEMESİ</option>
-                    <option value="asliyle">ASLİYLE HUKUK MAHKEMESİ</option>
-                    <option value="ticaret">TİCARET MAHKEMESİ</option>
-                    <option value="is">İŞ MAHKEMESİ</option>
-                        </select></td>
-                    <td>HAKİM:</td> 
+                    <td><h:selectOneMenu style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" value="#{BeanDavaKayit.mahkemeTipi}">
+                            <f:selectItem itemValue="SULH HUKUK MAHKEMESİ" itemLabel="SULH HUKUK MAHKEMESİ"/>
+                            <f:selectItem itemValue="ASLİYLE HUKUK MAHKEMESİ" itemLabel="ASLİYLE HUKUK MAHKEMESİ"/>
+                            <f:selectItem itemValue="TİCARET MAHKEMESİ" itemLabel="TİCARET MAHKEMESİ"/>
+                            <f:selectItem itemValue="İŞ MAHKEMESİ" itemLabel="İŞ MAHKEMESİ"/>
+                        </h:selectOneMenu></td>
                     <td><h:inputText style="border-radius: 5px ;" /> </td>
                     
 
@@ -147,14 +146,14 @@ li.dropdown {
                 </tr>
                 <tr>
                     <td>DAVANIN TİPİ: </td>
-                    <td><select style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" id="taraf" name="taraf">
-                    <option value="kira"> KİRA DAVASI</option>
-                    <option value="aile">AİLE HUKUKU DAVASI</option>
-                    <option value="nufus">NÜFUS DAVASI</option>
-                    <option value="kisiler">KİŞİLER HUKUKU DAVASI</option>
-                    <option value="miras">MİRAS HUKUKU DAVASI</option>
-                    <option value="borclar">BORÇLAR HUKUKU DAVASI</option>
-                        </select></td>
+                    <td><h:selectOneMenu style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" id="taraf" value="#{BeanDavaKayit.davaTipi}" >
+                            <f:selectItem itemValue="KİRA DAVASI" itemLabel="KİRA DAVASI"/>
+                            <f:selectItem itemValue="AİLE HUKUKU DAVASI" itemLabel="AİLE HUKUKU DAVASI"/>
+                            <f:selectItem itemValue="NÜFUS DAVASI" itemLabel="NÜFUS DAVASI"/>
+                            <f:selectItem itemValue="KİŞİLER HUKUKU DAVASI" itemLabel="KİŞİLER HUKUKU DAVASI"/>
+                            <f:selectItem itemValue="MİRAS HUKUKU DAVASI" itemLabel="MİRAS HUKUKU DAVASI"/>
+                            <f:selectItem itemValue="BORÇLAR HUKUKU DAVASI" itemLabel="BORÇLAR HUKUKU DAVASI"/>
+                        </h:selectOneMenu></td>
                     
                     <td>DAVANIN TARİHİ: </td>
                     <td><h:inputText style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" /> </td>
@@ -170,14 +169,14 @@ li.dropdown {
                     <td>DAVA ESAS NO: </td>
                     <td><h:inputText style="border-radius: 5px ;"/> </td>
                     <td>MAHKEME KARARI</td>
-                    <td><select style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" id="taraf" name="taraf">
-                    <option value="belirsiz">BELİRSİZ</option>
-                    <option value="beraat">BERAAT KARARI</option>
-                    <option value="mahkumiyet">MAHKUMİYET KARARI</option>
-                    <option value="güvenliktedbiri">GÜVENLİK TEDBİRİ KARARI</option>
-                    <option value="davanınreddi">DAVANIN REDDİ KARARI</option>
-                    <option value="düsmekarari">DÜŞME KARARI</option>
-                        </select></td>
+                    <td><h:selectOneMenu style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" value="#{BeanDavaKayit.mahkemeKarari}" >
+                            <f:selectItem itemValue="BELİRSİZ" itemLabel="BELİRSİZ" />
+                            <f:selectItem itemValue="BERAAT KARARI" itemLabel="BERAAT KARARI"/>
+                            <f:selectItem itemValue="MAHKUMİYET KARARI" itemLabel="MAHKUMİYET KARARI"/>
+                            <f:selectItem itemValue="GÜVENLİK TEDBİRİ KARARI" itemLabel="GÜVENLİK TEDBİRİ KARARI"/>
+                            <f:selectItem itemValue="DAVANIN REDDİ KARARI" itemLabel="DAVANIN REDDİ KARARI"/>
+                            <f:selectItem itemValue="DÜŞME KARARI" itemLabel="DÜŞME KARARI"/>
+                        </h:selectOneMenu></td>
                 </tr>
                 <tr>
                     <td><a class="eklekaydet" href="#openModal" style="text-decoration: none" > DAVA MASRAFI HESAPLA </a></td>
@@ -199,7 +198,7 @@ li.dropdown {
                 <ui:repeat value="#{userController.davaGroup}" var="d">
                 <tr>                    
                     <td class="td2">
-                        <h:selectOneMenu style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" value="#{d.davaTuru}">
+                        <h:selectOneMenu style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" value="#{BeanDavaKayit.davaTuru}"><!--d.davaTuru-->
                                 <f:selectItem itemLabel="DAVACI (MÜŞTEKİ) BİLGİLERİ" itemValue="Davacı Müşteki Bilgileri"/>
                                 <f:selectItem itemLabel="DAVALI (SANIK) BİLGİLERİ" itemValue="Davalı (Sanik) Bilgileri"/>
                                 <f:selectItem itemLabel="ŞAHİT BİLGİLERİ" itemValue="Şahit Bilgileri"/>
@@ -209,20 +208,20 @@ li.dropdown {
                 </tr>
                      <tr>
                          <td> ADI:</td>
-                    <td> <h:inputText style="border-radius: 5px ;" value="#{d.ad}"/> </td>
+                    <td> <h:inputText style="border-radius: 5px ;" value="#{BeanDavaKayit.ad}"/> </td>
                     
                      <td>TC KİMLİK NO:</td>
-                     <td><h:inputText style="border-radius: 5px ;" value="#{d.tcKimlikNo}"/></td>
+                     <td><h:inputText style="border-radius: 5px ;" value="#{BeanDavaKayit.tcKimlikNo}"/></td>
                 </tr>
                     <tr>
                         <td> SOYADI: </td>
                         <td>
-                        <h:inputText style="border-radius: 5px ;" value="#{d.soyad}"/>
+                        <h:inputText style="border-radius: 5px ;" value="#{BeanDavaKayit.soyad}"/>
                     </td>
                         <td>
                             DOĞUM TARİHİ: </td>
                         <td>
-                            <h:inputText style="border-radius: 5px ;" value="#{d.dogumTarihi}" pt:placeholder="GG/AA/YYYY"/>
+                            <h:inputText style="border-radius: 5px ;" value="#{BeanDavaKayit.dogumTarihi}" pt:placeholder="GG/AA/YYYY"/>
                         </td>
                 </tr>
                     <tr>
@@ -230,7 +229,7 @@ li.dropdown {
                             SAVUNMASI:
                         </td>
                         <td>
-                            <h:inputTextarea style="width: 500px; height: 80px;max-width: 500px;max-height: 80px; border-radius: 5px" rows="15"></h:inputTextarea>
+                            <h:inputTextarea style="width: 500px; height: 80px;max-width: 500px;max-height: 80px; border-radius: 5px" rows="15" value="#{BeanDavaKayit.savunmasi}"></h:inputTextarea>
                         </td>
                         <td><h:commandButton  class="button" type="reset" value="TEMİZLE"/> </td>
                         <td class="td2">
@@ -248,7 +247,7 @@ li.dropdown {
                         <h:commandButton value="EKLE" class="eklekaydet" style="width: 150px"  action="#{userController.add()}">
                             <f:ajax render="@form" execute="@form"/>
                         </h:commandButton>
-                        <h:commandButton value="KAYDET" class="eklekaydet"  style="width: 150px" action="#{userController.save()}"/>                        
+                        <h:commandButton value="KAYDET" class="eklekaydet"  style="width: 150px" action="#{BeanDavaKayit.kaydet()}"/>                        
                     </td>
             </tr>
                         </table>
@@ -262,12 +261,12 @@ li.dropdown {
                     <tr>
                         <td>MAHKEME TÜRÜ:</td>
                         <td class="">
-                            <select style="background-color: #FFFFFF; width: 220px; height: 30px; border-radius: 5px" id="taraf" name="taraf">
-                    <option value="sulh">SULH HUKUK MAHKEMESİ</option>
-                    <option value="asliyle">ASLİYLE HUKUK MAHKEMESİ</option>
-                    <option value="ticaret">TİCARET MAHKEMESİ</option>
-                    <option value="is">İŞ MAHKEMESİ</option>
-                        </select>
+                            <h:selectOneMenu style="background-color: #FFFFFF; width: 220px; height: 30px; border-radius: 5px" value="#{BeanDavaKayit.mahkemeHarciId}">
+                                <f:selectItem itemValue="0" itemLabel="SULH HUKUK MAHKEMESİ" />
+                                <f:selectItem itemValue="1" itemLabel="ASLİYLE HUKUK MAHKEMESİ"/>
+                                <f:selectItem itemValue="2" itemLabel="TİCARET MAHKEMESİ" />
+                                <f:selectItem itemValue="3" itemLabel="İŞ MAHKEMESİ" />
+                            </h:selectOneMenu>
                         </td>
                         </tr>
                      
@@ -275,7 +274,7 @@ li.dropdown {
                             <td>DAVA DEĞERİ GİRİN:</td>
                             <td><h:inputText style="border-radius: 5px ;"/> TL</td> 
                             <td>
-                                <h:selectManyCheckbox>
+                                <h:selectManyCheckbox><!--Value degerini eklemedim daha sonra kontrol edilecek!-->
                                     <f:selectItem itemValue="maktuharc" itemLabel="MAKTU HARÇ"></f:selectItem>
                                     <f:selectItem itemValue="nispiharc" itemLabel="NİSPİ HARÇ"></f:selectItem>
                                 </h:selectManyCheckbox>
@@ -284,43 +283,43 @@ li.dropdown {
                     <tr>
                          <td>TARAF SAYISI:</td>
                         <td>
-                            <select name="taraf" id="taraf" size="1" style="border-radius: 5px ;">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
+                            <h:selectOneMenu value="#{BeanDavaKayit.tarafSayisi}">
+                                <f:selectItem itemValue="0" itemLabel="0"/>
+                                <f:selectItem itemValue="1" itemLabel="1"/>
+                                <f:selectItem itemValue="2" itemLabel="2"/>
+                                <f:selectItem itemValue="3" itemLabel="3"/>
+                                <f:selectItem itemValue="4" itemLabel="4"/>
+                                <f:selectItem itemValue="5" itemLabel="5"/>
+                                <f:selectItem itemValue="6" itemLabel="6"/>
+                                <f:selectItem itemValue="7" itemLabel="7"/>
+                                <f:selectItem itemValue="8" itemLabel="8"/>
+                                <f:selectItem itemValue="9" itemLabel="9"/>
+                                <f:selectItem itemValue="10" itemLabel="10"/>
+                            </h:selectOneMenu>
                         </td>
                     </tr>
                     <tr>
                         <td>ŞAHİT SAYISI:</td>
-                        <td> <select name="tanikcmb" id="tanikcmb" size="1" style="border-radius: 5px ;">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                            </select>
+                        <td> <h:selectOneMenu id="tanikcmb" value="#{BeanDavaKayit.sahitSayisi}">
+                                <f:selectItem itemValue="0" itemLabel="0"/>
+                                <f:selectItem itemValue="1" itemLabel="1"/>
+                                <f:selectItem itemValue="2" itemLabel="2"/>
+                                <f:selectItem itemValue="3" itemLabel="3"/>
+                                <f:selectItem itemValue="4" itemLabel="4"/>
+                                <f:selectItem itemValue="5" itemLabel="5"/>
+                                <f:selectItem itemValue="6" itemLabel="6"/>
+                                <f:selectItem itemValue="7" itemLabel="7"/>
+                                <f:selectItem itemValue="8" itemLabel="8"/>
+                                <f:selectItem itemValue="9" itemLabel="9"/>
+                                <f:selectItem itemValue="10" itemLabel="10"/>
+                            </h:selectOneMenu>
                          </td>
                        
                         <td></td>
                     </tr>
                     <tr>
                         <td></td>
-                        <td> <h:commandButton value="HESAPLA"  style="border-radius: 5px ;"></h:commandButton></td>
+                        <td> <h:commandButton action="#{BeanDavaKayit.harcHesapla()}" value="HESAPLA"  style="border-radius: 5px ;"></h:commandButton></td>
                         <td> <h:commandButton value="TEMİZLE" style="border-radius: 5px ;" type="reset"/> </td>  
                         <td></td>
                     </tr>
@@ -328,7 +327,7 @@ li.dropdown {
                 </table>
                     <br></br>    
                     <p> TOPLAM HARÇ VE GİDER AVANSI:
-                        <h:inputText style="border-radius: 5px ;"/> TL
+                        <h:inputText value="#{BeanDavaKayit.toplamTutar}" style="border-radius: 5px ;"/> TL
                     </p>
 		</h:form>
 	</div>
