@@ -46,7 +46,7 @@
         <div class="form">
         <h:form>
             <p style="color: #2C6C8E">E-posta adresiniz</p>
-            <h:inputText class="input" pt:placeholder="E-MAİL"
+            <h:inputText value="#{BeanSifremiUnuttum.to}" class="input" pt:placeholder="E-MAİL"
             validatorMessage="E-MAİL FORMATINIZ YANLIŞ!">
             <f:validateRegex pattern=
             "\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" /> </h:inputText>
@@ -54,7 +54,7 @@
             <br></br>
             <br></br>
             
-            <a class="button" href="#openModal" style="text-decoration: none" > ŞİFREMİ GÖNDER</a>
+            <a class="button" href="#{BeanSifremiUnuttum.mailGonder()}" style="text-decoration: none" > ŞİFREMİ GÖNDER</a>
             
         </h:form>
             </div>
