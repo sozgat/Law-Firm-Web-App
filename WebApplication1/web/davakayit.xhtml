@@ -205,6 +205,12 @@ li.dropdown {
                                 <f:selectItem itemLabel="ŞAHİT BİLGİLERİ" itemValue="Şahit Bilgileri"/>
                             </h:selectOneMenu>
                         </td>
+                    <td class="td2">
+                            <h:commandButton value="SİL"  class="sil"   action="#{userController.remove(d)}">
+                            
+                            <f:ajax render="@form" execute="@form"/>
+                            </h:commandButton>
+                        </td>
                     
                 </tr>
                      <tr>
@@ -233,12 +239,7 @@ li.dropdown {
                             <h:inputTextarea style="width: 500px; height: 80px;max-width: 500px;max-height: 80px; border-radius: 5px" rows="15" value="#{BeanDavaKayit.savunmasi}"></h:inputTextarea>
                         </td>
                         <td><h:commandButton  class="button" type="reset" value="TEMİZLE"/> </td>
-                        <td class="td2">
-                            <h:commandButton value="SİL"  class="sil"   action="#{userController.remove(d)}">
-                            
-                            <f:ajax render="@form" execute="@form"/>
-                            </h:commandButton>
-                        </td>
+                        <td></td>
 
                     </tr>
                     
