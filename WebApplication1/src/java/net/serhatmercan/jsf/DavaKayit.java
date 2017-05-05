@@ -27,8 +27,8 @@ public class DavaKayit{
     //Harc Degiskenleri
     private double davaDegeri;
     private int mahkemeHarciId;//0-Sulh, 1-Asliye, 2-Ticaret, 3-İş
-    private int maktuHarc=0;//0 veya 1
-    private int nispiHarc=0;//0 veya 1
+    private int maktuHarc=1;//0 veya 1
+    private int nispiHarc=1;//0 veya 1
     private int tarafSayisi;//0-10
     private int sahitSayisi;//0-10
     private double toplamTutar;
@@ -337,7 +337,7 @@ public class DavaKayit{
         }
         
         String sqlKomut = "INSERT INTO TBLMASRAFLAR(mahkemeHarci, davaDegeri, maktuHarc, nispiHarc, tarafSayisiTutar, sahitSayisiTutar, avukatUcreti, digerMasraflar)" 
-                + "VALUES("+mahkemeHarci+","+davaDegeri+","+maktuHarc+", "+nispiHarc+","+tarafSayisiTutar+","+sahitSayisiTutar+","+Masraflar.avukatUcreti+","+Masraflar.digerMasraflar+")";
+                + "VALUES("+mahkemeHarci+","+davaDegeri+","+Masraflar.maktuHarc+", "+nispiHarc+","+tarafSayisiTutar+","+sahitSayisiTutar+","+Masraflar.avukatUcreti+","+Masraflar.digerMasraflar+")";
         
         try 
         {
@@ -426,4 +426,10 @@ public class DavaKayit{
             return "anasayfa.xhtml";//iki tabloyada veriler eklendi. davalari goruntuleye gidebilir.
         }
     }
+    public void clear(){
+        setTarafSayisi(-1);
+        setSahitSayisi(-1);
+        setDavaDegeri(0);
+        setToplamTutar(0);
+}//end clear`
 }

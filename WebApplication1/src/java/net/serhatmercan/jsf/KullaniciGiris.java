@@ -13,8 +13,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -50,8 +52,10 @@ public class KullaniciGiris {
         
         if(baglanti == null)
         {
+            
             //(Mehmet)Kullaniciya Veritabanina Baglanti Hatasi mesaji gosterelim. said sayfanin biyerine textbox mi eklersin duruma gore buraya ekleriz.
-            return "index.xhtml";
+             FacesContext.getCurrentInstance().addMessage("myForm:newPassword1", new FacesMessage("VERİ TABANINA BAĞLANMADI", "VERİ TABANINA BAĞLANMADI"));
+            return "";
         }
         
         String sqlSorgu = "Select * From TBLKULLANICILAR2 Where KULLANICIAD='"+getKullaniciAd()+"'";
@@ -73,20 +77,26 @@ public class KullaniciGiris {
                 {
                     System.out.println("Sifrenizi hatali girdiniz!");
                     DbFunctions.baglantiKapa(baglanti);
-                    return "yonlendirme.xhtml";//(Mehmet)Sifre Hatali popup'i verdirebiliriz. Ben farketmemiz icin bu sayfaya yonlendiridim.
+                     FacesContext.getCurrentInstance().addMessage("myForm:newPassword1", new FacesMessage("ŞİFRENİZİ HATALI GİRDİNİZ!", "ŞİFRENİZİ HATALI GİRDİNİZ!"));
+                    return "";
+                    //(Mehmet)Sifre Hatali popup'i verdirebiliriz. Ben farketmemiz icin bu sayfaya yonlendiridim.
                 }
             }
             else
             {
                 DbFunctions.baglantiKapa(baglanti);
-                return "index.xhtml";//(Mehmet)Boyle bir kullanici bulunamadi mesaji verdiricez.
+                FacesContext.getCurrentInstance().addMessage("myForm:newPassword1", 
+                        new FacesMessage("BÖYLE BİR KULLANICI BULUNAMADI!", "BÖYLE BİR KULLANICI BULUNAMADI!"));
+                    return "";
+                //(Mehmet)Boyle bir kullanici bulunamadi mesaji verdiricez.
             }
         } 
         catch (SQLException ex) {
             Logger.getLogger(KullaniciGiris.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Sorgulama yaparken hata olustu!");
             DbFunctions.baglantiKapa(baglanti);
-            return "index.xhtml";//(Mehmet)Veritabani sorgulamasinda hata meydana geldi mesaji
+            FacesContext.getCurrentInstance().addMessage("myForm:newPassword1", new FacesMessage("VERİ TABANI SORGULAMA HATASI", "VERİ TABANI ERİŞİM SORUNU"));
+            return "";//(Mehmet)Veritabani sorgulamasinda hata meydana geldi mesaji
         }
     }
 }
