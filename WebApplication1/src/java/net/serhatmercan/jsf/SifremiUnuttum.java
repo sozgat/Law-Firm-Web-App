@@ -8,30 +8,24 @@ package net.serhatmercan.jsf;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.mail.*;
-//import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
-//import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
-//import javax.mail.internet.MimeMultipart;
 
 /**
  *
  * @author Toshiba
  */
 @ManagedBean(name = "BeanSifremiUnuttum")
-@RequestScoped
+@SessionScoped
 public class SifremiUnuttum {
     
     final String user = "hukukwebproje@gmail.com";
     final String pass = "hukukweb1";
     
-    private String to;
-    
-    public SifremiUnuttum() {
-    }
+    private String to="";
 
     public String getTo() {
         return to;
@@ -45,38 +39,36 @@ public class SifremiUnuttum {
     {
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
-        
-        Session session = Session.getInstance(props, new Authenticator() 
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+
+        Authenticator authenticator = new Authenticator()
         {
-            protected PasswordAuthentication gePasswordAuthentication()
+            protected PasswordAuthentication getPasswordAuthentication()
             {
-                return new PasswordAuthentication(user, pass);
+                return new PasswordAuthentication( user, pass );
             }
-        });
-        
+        };
+        Session session = Session.getInstance( props, authenticator );
         
         try 
         {
             Message message = new MimeMessage(session);
             message.setFrom(new InternetAddress(user));
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
-            message.setSubject("Sifre Degistirme Istegi");
-            message.setText("Sifrenizi degistirmek icin linke tiklayabilirsiniz.\nSifre degistirme istegini siz yapmadiysaniz hemen sistem yoneticiniz ile irtibata geciniz.");
+            message.setSubject("Şifre Değiştirme İsteği");
+            message.setText("Şifrenizi değiştirmek için linke tıklayabilirsiniz.\nLink : http://localhost:8080/WebApplication1/faces/sifreDegistirmeOnay.xhtml?"+to
+                    + "\nŞifre değiştirme isteğini siz yapmadıysanız hemen sistem yöneticiniz ile irtibata geçiniz.");
             
             Transport.send(message);
-            return "#openModal";
-            
-            //Ustteki kod calismazsa alttaki yontemi deneyecez.
-            //MimeBodyPart messageBodyPart = new MimeBodyPart();
-            //messageBodyPart.setText("Sifrenizi degistirmek icin linke tiklayabilirsiniz.\nSifre degistirme istegini siz yapmadiysaniz hemen sistem yoneticiniz ile irtibata geciniz.");
-            
-            //Multipart multipart = new MimeMultipart();
-            //multipart.addBodyPart(messageBodyPart);
+            return "index.xhtml";
         }
         catch (MessagingException ex) 
         {
             Logger.getLogger(SifremiUnuttum.class.getName()).log(Level.SEVERE, null, ex);
-            return "index.xhtml";//Mesaj gonderilemedi modal sayfasi vermeliyiz!
+            return ex.toString();//Said returnu hata sayfasina yonlendirirsin, hata mesaji olarakta gonderebilirsen ex.toString i gonder
         }
     }
 }
