@@ -13,7 +13,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import net.serhatmercan.jsf.DavaBilgileri;
 
 /**
  *
@@ -54,37 +53,6 @@ public class DavaKayit{
     private String dogumTarihi;
     private String savunmasi;
 
-    public DavaKayit() {
-    }
-
-    public DavaKayit(double davaDegeri, int mahkemeHarciId, int tarafSayisi, int sahitSayisi, double toplamTutar, String avukatId, String mahkemeTipi, String mahkemeYeri, String davaTipi, String davaKonusu, int davaEsasNo, String hakimAd, String hukumTarihi, String davaTarihi, String kararNo, String mahkemeKarari, double davaMasrafi, String davaTuru, String ad, String soyad, String tcKimlikNo, String dogumTarihi, String savunmasi) {
-        this.davaDegeri = davaDegeri;
-        this.mahkemeHarciId = mahkemeHarciId;
-        this.tarafSayisi = tarafSayisi;
-        this.sahitSayisi = sahitSayisi;
-        this.toplamTutar = toplamTutar;
-        this.avukatId = avukatId;
-        this.mahkemeTipi = mahkemeTipi;
-        this.mahkemeYeri = mahkemeYeri;
-        this.davaTipi = davaTipi;
-        this.davaKonusu = davaKonusu;
-        this.davaEsasNo = davaEsasNo;
-        this.hakimAd = hakimAd;
-        this.hukumTarihi = hukumTarihi;
-        this.davaTarihi = davaTarihi;
-        this.kararNo = kararNo;
-        this.mahkemeKarari = mahkemeKarari;
-        this.davaMasrafi = davaMasrafi;
-        this.davaTuru = davaTuru;
-        this.ad = ad;
-        this.soyad = soyad;
-        this.tcKimlikNo = tcKimlikNo;
-        this.dogumTarihi = dogumTarihi;
-        this.savunmasi = savunmasi;
-    }
-
-    
-    
     public String getDavaTuru() {
         return davaTuru;
     }
@@ -134,7 +102,7 @@ public class DavaKayit{
     }
     
     /*-----------------------------------------------------------------*/
-    
+
     public String getMahkemeTipi() {
         return mahkemeTipi;
     }
@@ -221,14 +189,6 @@ public class DavaKayit{
 
     public void setDavaMasrafi(double davaMasrafi) {
         this.davaMasrafi = davaMasrafi;
-    }
-
-    public String getAvukatId() {
-        return avukatId;
-    }
-
-    public void setAvukatId(String avukatId) {
-        this.avukatId = avukatId;
     }
 
     public int getDavaMasrafId() {
@@ -337,7 +297,7 @@ public class DavaKayit{
         }
         
         String sqlKomut = "INSERT INTO TBLMASRAFLAR(mahkemeHarci, davaDegeri, maktuHarc, nispiHarc, tarafSayisiTutar, sahitSayisiTutar, avukatUcreti, digerMasraflar)" 
-                + "VALUES("+mahkemeHarci+","+davaDegeri+","+Masraflar.maktuHarc+", "+nispiHarc+","+tarafSayisiTutar+","+sahitSayisiTutar+","+Masraflar.avukatUcreti+","+Masraflar.digerMasraflar+")";
+                + "VALUES("+mahkemeHarci+","+davaDegeri+","+maktuHarc*Masraflar.maktuHarc+", "+nispiHarc*Masraflar.nispiHarc+","+tarafSayisiTutar+","+sahitSayisiTutar+","+Masraflar.avukatUcreti+","+Masraflar.digerMasraflar+")";
         
         try 
         {
@@ -388,16 +348,17 @@ public class DavaKayit{
         }
         
         String sqlKomut = "INSERT INTO TBLMAHKEME_BILGILER(davaEsasNo, mahkemeTipi, mahkemeYeri, davaTipi, davaKonusu, hakimAd, hukumTarih, davaTarih, kararYil, kararNo"
-                + ", mahkemeKarar, davaMasrafId, avukatId) VALUES("+getDavaEsasNo()+",'"+getMahkemeTipi()+"','"+getMahkemeYeri()+"', '"+getDavaTipi()+"','"+getDavaKonusu()+"','"+getHakimAd()+"',"+DbFunctions.stringToDate(getHukumTarihi())+","+DbFunctions.stringToDate(getDavaTarihi())+","+DbFunctions.stringToDate(getKararNo())+","+getKararNo()
-                + ", '"+getMahkemeKarari()+"',"+getDavaMasrafId()+","+getAvukatId()+")";
+                + ", mahkemeKarar, davaMasrafId, avukatId) VALUES("+davaEsasNo+",'"+mahkemeTipi+"','"+mahkemeYeri+"', '"+davaTipi+"','"+davaKonusu+"','"+hakimAd+"',"+DbFunctions.stringToDate("10/11/2000")+","+DbFunctions.stringToDate("09/08/2001")+","+DbFunctions.stringToDateKarar("2005/555",0)+","+DbFunctions.stringToDateKarar("2005/555",1)
+                + ", '"+mahkemeKarari+"',"+davaMasrafId+","+187+")";
         
-        try 
-        {    
+        try
+        {
             ps=baglanti.prepareStatement(sqlKomut);
             ps.execute();
             System.out.println("MahkemeBilgiler Tablosuna Kayit Eklendi.");
-        } 
-        catch (SQLException ex) {
+        }
+        catch (SQLException ex)
+        {
             Logger.getLogger(DavaKayit.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("MahkemeBilgiler tablosuna kayit eklenirken hata olustu!");
             return "yonlendirme.xhtml";
@@ -415,9 +376,9 @@ public class DavaKayit{
             Logger.getLogger(DavaKayit.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("DavaBilgiler tablosuna kayit eklenirken hata olustu!");
             //Onceki mahkemebilgiler tablosuna eklenen verinin silinmesi gerekiyor.
-            sqlKomut="DELETE FROM TBLMAHKEME_BILGILER WHERE davaEsasNo="+getDavaEsasNo();
+            /*sqlKomut="DELETE FROM TBLMAHKEME_BILGILER WHERE davaEsasNo="+getDavaEsasNo();
             ps=baglanti.prepareStatement(sqlKomut);
-            ps.execute();
+            ps.execute();*/
             return "sifremiunuttum.xhtml";//tbldavabilgiler tablosuna veri eklenirken hata olustu. farketmek icin bu sayfaya gonderdim. Hata mesaji gostermeliyiz.
         }
         finally

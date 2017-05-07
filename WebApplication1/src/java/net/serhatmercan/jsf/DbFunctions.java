@@ -48,4 +48,13 @@ public class DbFunctions {
         String[] formats = date.split("/");
         return "{d'"+formats[2]+"-"+formats[1]+"-"+formats[0]+"'}";
     }
+    
+    public static String stringToDateKarar(String date, int sira)//sira=0 kararYil, sira=1 kararNo
+    {
+        String[] formats = date.split("/");
+        if(sira == 0)
+            return "{d'"+formats[0]+"-01-01'}";
+        else 
+            return formats[1];
+    }
 }

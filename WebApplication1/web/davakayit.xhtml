@@ -121,8 +121,7 @@ li.dropdown {
         </ul>
         <br />
         <br />
-<h:form style="border-radius: 5px">
-
+<h:form>
             <table>
                 <caption style="font-family: sans-serif;text-align: center; font-size: 25px ;box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);background-color: #6698B3;color: #FFFFFF">
                     Mahkeme Bilgileri</caption>
@@ -161,14 +160,14 @@ li.dropdown {
                 </tr>
                 <tr>
                     <td>DAVANIN KONUSU: </td>
-                    <td><h:inputText value="#{BeanDavaKayit.davaKonusu}" style="border-radius: 5px ;" /> </td>
+                    <td><h:inputText style="border-radius: 5px ;" value="#{BeanDavaKayit.davaKonusu}"/> </td>
                     <td>KARAR NO:</td>
                     <td><h:inputText value="#{BeanDavaKayit.kararNo}" style="border-radius: 5px ;" pt:placeholder="örn: 2017/999"/></td>
                 </tr>
 
                 <tr>
                     <td>DAVA ESAS NO: </td>
-                    <td><h:inputText value="#{BeanDavaKayit.davaEsasNo}" style="border-radius: 5px ;"/> </td>
+                    <td><h:inputText style="border-radius: 5px ;" value="#{BeanDavaKayit.davaEsasNo}"/></td>
                     <td>MAHKEME KARARI</td>
                     <td><h:selectOneMenu style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" value="#{BeanDavaKayit.mahkemeKarari}" >
                             <f:selectItem itemValue="BELİRSİZ" itemLabel="BELİRSİZ" />
@@ -184,7 +183,7 @@ li.dropdown {
                     <td> TOPLAM HARÇ VE GİDER AVANSI:
                         <h:inputText style="border-radius: 5px ;" value="#{BeanDavaKayit.toplamTutar}" /> TL</td>
                     <td>AVUKAT ADI SOYADI:</td>
-                    <td><h:inputText value="#{BeanDavaKayit.avukatId}" style="border-radius: 5px ;"/></td>
+                    <td><h:inputText style="border-radius: 5px ;" value="#{BeanDavaKayit}"/></td>
                 </tr>
             </table>
    
@@ -192,8 +191,7 @@ li.dropdown {
                      
          <p style="font-family: sans-serif;text-align: center; font-size: 25px ;box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);background-color: #6698B3;color: #FFFFFF">
         Davalı, Davacı, Şahit İşlemleri</p>
-    
-    </h:form>
+</h:form>
                     <h:form>
                         <table class="table2">
                 <ui:repeat value="#{userController.davaGroup}" var="d">
