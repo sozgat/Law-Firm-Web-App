@@ -32,12 +32,13 @@ public class DavaKayit{
     private int sahitSayisi;//0-10
     private double toplamTutar;
     //Mahkeme Bilgileri
-    private String avukatId;//Sistemde aktif olan avukattan id bilgisini cekicez.
+    private int mahkemeBilgilerId;//DB de primary keyimiz.
+    private String avukatAdSoyad;
     private String mahkemeTipi;
     private String mahkemeYeri;
     private String davaTipi;
     private String davaKonusu;
-    private int davaEsasNo;//DB de primary keyimiz.
+    private int davaEsasNo;
     private String hakimAd;
     private String hukumTarihi;
     private String davaTarihi;
@@ -103,6 +104,14 @@ public class DavaKayit{
     
     /*-----------------------------------------------------------------*/
 
+    public int getMahkemeBilgilerId() {
+        return mahkemeBilgilerId;
+    }
+
+    public void setMahkemeBilgilerId(int mahkemeBilgilerId) {
+        this.mahkemeBilgilerId = mahkemeBilgilerId;
+    }
+    
     public String getMahkemeTipi() {
         return mahkemeTipi;
     }
@@ -324,12 +333,12 @@ public class DavaKayit{
             if(rs.next())
                 davaMasrafId = rs.getInt("id");//mahkemebilgileri tablosuna kayit eklerken davamasrafid degerini burdan alicaz.
             else
-                return "kayitKontrolJsf.xhtml";//hata mesaji verdirmeliyiz
+                return "kayitKontrolJsf.xhtml";//hata mesaji verdirmeliyiz(masraflar tablosundan veri cekilirken hata olustu)
         }
         catch (SQLException ex) 
         {
             Logger.getLogger(DavaKayit.class.getName()).log(Level.SEVERE, null, ex);
-            return "kayitKontrolJsf.xhtml";//hata mesaji verdirmeliyiz
+            return "kayitKontrolJsf.xhtml";//hata mesaji verdirmeliyiz(masraflar tablosundan veri cekilirken hata olustu)
         }
         
         DbFunctions.baglantiKapa(baglanti);
@@ -348,8 +357,8 @@ public class DavaKayit{
         }
         
         String sqlKomut = "INSERT INTO TBLMAHKEME_BILGILER(davaEsasNo, mahkemeTipi, mahkemeYeri, davaTipi, davaKonusu, hakimAd, hukumTarih, davaTarih, kararYil, kararNo"
-                + ", mahkemeKarar, davaMasrafId, avukatId) VALUES("+davaEsasNo+",'"+mahkemeTipi+"','"+mahkemeYeri+"', '"+davaTipi+"','"+davaKonusu+"','"+hakimAd+"',"+DbFunctions.stringToDate("10/11/2000")+","+DbFunctions.stringToDate("09/08/2001")+","+DbFunctions.stringToDateKarar("2005/555",0)+","+DbFunctions.stringToDateKarar("2005/555",1)
-                + ", '"+mahkemeKarari+"',"+davaMasrafId+","+187+")";
+                + ", mahkemeKarar, avukatAdSoyad, davaMasrafId) VALUES("+davaEsasNo+",'"+mahkemeTipi+"','"+mahkemeYeri+"', '"+davaTipi+"','"+davaKonusu+"','"+hakimAd+"',"+DbFunctions.stringToDate("10/11/2000")+","+DbFunctions.stringToDate("09/08/2001")+","+DbFunctions.stringToDateKarar("2005/555",0)+","+DbFunctions.stringToDateKarar("2005/555",1)
+                + ", '"+mahkemeKarari+"','"+avukatAdSoyad+"',"+davaMasrafId+")";
         
         try
         {
@@ -363,11 +372,32 @@ public class DavaKayit{
             System.out.println("MahkemeBilgiler tablosuna kayit eklenirken hata olustu!");
             return "yonlendirme.xhtml";
         }
+        //Simdi mahkemebilgiler tablosundaki son eklenen verinin id sini cekicez.
+        ResultSet rs = null;
+        
+        String sqlSorgu = "Select * From TBLMAHKEME_BILGILER ORDER BY id DESC";
         
         try 
         {
-            sqlKomut="INSERT INTO TBLDAVA_BILGILER(davaTuru, ad, soyad, tcKimlikNo, dogumTarih, savunma, davaEsasNo)"
-                    + "VALUES('"+getDavaTuru()+"', '"+getAd()+"', '"+getSoyad()+"','"+getTcKimlikNo()+"',"+DbFunctions.stringToDate(getDogumTarihi())+",'"+getSavunmasi()+"',"+getDavaEsasNo()+")";
+            ps = baglanti.prepareStatement(sqlSorgu);
+            ps.execute();
+            rs = ps.getResultSet();
+            
+            if(rs.next())
+                mahkemeBilgilerId = rs.getInt("id");//davaBilgiler tablosuna kayit eklerken mahkemeBilgilerId degerini burdan alicaz.
+            else
+                return "kayitKontrolJsf.xhtml";//hata mesaji verdirmeliyiz(mahkemeBilgiler tablosundan veri cekilirken hata olustu)
+        }
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(DavaKayit.class.getName()).log(Level.SEVERE, null, ex);
+            return "kayitKontrolJsf.xhtml";//hata mesaji verdirmeliyiz(mahkemeBilgiler tablosundan veri cekilirken hata olustu)
+        }
+        
+        try 
+        {
+            sqlKomut="INSERT INTO TBLDAVA_BILGILER(davaTuru, ad, soyad, tcKimlikNo, dogumTarih, savunma, idMahkemeBilgiler)"
+                    + "VALUES('"+getDavaTuru()+"', '"+getAd()+"', '"+getSoyad()+"','"+getTcKimlikNo()+"',"+DbFunctions.stringToDate(getDogumTarihi())+",'"+getSavunmasi()+"',"+getMahkemeBilgilerId()+")";
             ps=baglanti.prepareStatement(sqlKomut);
             ps.execute();
             System.out.println("DavaBilgiler tablosuna kayit eklendi.");
@@ -376,9 +406,9 @@ public class DavaKayit{
             Logger.getLogger(DavaKayit.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("DavaBilgiler tablosuna kayit eklenirken hata olustu!");
             //Onceki mahkemebilgiler tablosuna eklenen verinin silinmesi gerekiyor.
-            /*sqlKomut="DELETE FROM TBLMAHKEME_BILGILER WHERE davaEsasNo="+getDavaEsasNo();
+            sqlKomut="DELETE FROM TBLMAHKEME_BILGILER WHERE id="+getMahkemeBilgilerId();
             ps=baglanti.prepareStatement(sqlKomut);
-            ps.execute();*/
+            ps.execute();
             return "sifremiunuttum.xhtml";//tbldavabilgiler tablosuna veri eklenirken hata olustu. farketmek icin bu sayfaya gonderdim. Hata mesaji gostermeliyiz.
         }
         finally

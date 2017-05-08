@@ -143,7 +143,7 @@ li.dropdown {
                 </tr>
                 <tr>
                     <td>DAVANIN KONUSU: </td>
-                    <td><h:inputText style="border-radius: 5px ;" /> </td>
+                    <td><h:inputText style="border-radius: 5px ;" value="#{BeanIcraKayit.davaKonusu}" /> </td>
                     <td>KARAR NO:</td>
                     <td><h:inputText style="border-radius: 5px ;" pt:placeholder="örn: 2017/999"/></td>
                 </tr>
@@ -243,7 +243,7 @@ li.dropdown {
                         <h:commandButton value="EKLE" class="eklekaydet"  style="width: 150px" action="#{icraUserController.add()}">
                             <f:ajax render="@form" execute="@form"/>
                         </h:commandButton>
-                        <h:commandButton value="KAYDET" class="eklekaydet" style="width: 150px" action="#{icraUserController.save()}"/>                        
+                        <h:commandButton value="KAYDET" class="eklekaydet" style="width: 150px" action="#{BeanIcraKayit.kaydet()}"/><!--icraUserController.save()-->
                     </td>
             </tr>
                         </table>

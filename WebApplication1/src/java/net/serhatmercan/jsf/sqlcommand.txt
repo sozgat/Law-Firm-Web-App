@@ -26,7 +26,8 @@ buroNo INT
 
 CREATE TABLE TBLMAHKEME_BILGILER
 (
-davaEsasNo INT PRIMARY KEY NOT NULL,
+id INT GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1) PRIMARY KEY,
+davaEsasNo INT NOT NULL,
 mahkemeTipi VARCHAR(50),
 mahkemeYeri VARCHAR(500),
 davaTipi VARCHAR(50),
@@ -37,8 +38,8 @@ davaTarih DATE,
 kararYil DATE,
 kararNo INT,
 mahkemeKarar VARCHAR(100),
-davaMasrafId INT/*FOREIGN KEY EKLENCEK*/,
-avukatId INT/*FOREIGN KEY EKLENCEK TBLKULLANICILAR dan id degeri cekilecek*/
+avukatAdSoyad VARCHAR(150),
+davaMasrafId INT
 );
 
 CREATE TABLE TBLDAVA_BILGILER
@@ -50,7 +51,7 @@ soyad VARCHAR(100),
 tcKimlikNo VARCHAR(11),
 dogumTarih DATE,
 savunma VARCHAR(500),
-davaEsasNo INT/*FOREIGN KEY EKLENCEK*/
+idMahkemeBilgiler INT/*mahkemebilgiler tablosunun id si*/
 );
 
 CREATE TABLE TBLMASRAFLAR
@@ -64,4 +65,34 @@ tarafSayisiTutar DOUBLE,
 sahitSayisiTutar DOUBLE,
 avukatUcreti DOUBLE,
 digerMasraflar DOUBLE
+);
+
+CREATE TABLE TBLICRA_BILGILER
+(
+id INT GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1) PRIMARY KEY,
+tip VARCHAR(50),
+ad VARCHAR(100),
+soyad VARCHAR(100),
+tcKimlikNo VARCHAR(11),
+dogumTarih DATE,
+savunma VARCHAR(500),
+idIcralar INT/*icra kayit tablosunun id si*/
+);
+
+CREATE TABLE TBLICRALAR
+(
+id INT GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1) PRIMARY KEY,
+davaKonusu VARCHAR(100),
+mahkemeYeri VARCHAR(500),
+hakimAdSoyad VARCHAR(150),
+avukatAdSoyad VARCHAR(150),
+durusmaTarihi DATE, /*Yapilmis gecmis durusmalarin tarihi*/
+hukumTarihi DATE,
+kararYil DATE,
+kararNo INT,
+ipotekKonulanUrunler VARCHAR(1500),
+rehinKonulanUrunler VARCHAR(1500),
+hacizAlinanUrunler VARCHAR(1500),
+alacakToplamTutari DOUBLE,
+hacizToplamTutari DOUBLE
 );
