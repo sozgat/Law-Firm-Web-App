@@ -1,7 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>DAVALARI GÖR</title>
        <link type="text/css" rel="stylesheet" href="css/anasayfa_css.css"/> 
@@ -30,9 +32,56 @@
             <li><a href="index.xhtml">ÇIKIŞ</a></li>
             
         </ul>
-        
-        
-
+        <br></br>
+        <h:form>
+        <table>
+            <tr>
+                <th>MAHKEME TİPİ</th>
+                <th>DAVA TİPİ</th>
+                <th>DAVA ESAS NO</th>
+                <th>DURUŞMA TARİHİ</th>
+                <th>AVUKAT ADI SOYADI</th>
+                 <th>MAHKEME KARARI</th>
+            </tr>
+            <tr>
+                 <td><h:selectOneMenu style="background-color: #FFFFFF; width: 220px; height: 20px; border-radius: 5px" value="#{BeanDavaKayit.mahkemeTipi}">
+                         <f:selectItem itemValue="SEÇİLMEDİ" itemLabel="SEÇİLMEDİ"/>
+                            <f:selectItem itemValue="SULH HUKUK MAHKEMESİ" itemLabel="SULH HUKUK MAHKEMESİ"/>
+                            <f:selectItem itemValue="ASLİYLE HUKUK MAHKEMESİ" itemLabel="ASLİYLE HUKUK MAHKEMESİ"/>
+                            <f:selectItem itemValue="TİCARET MAHKEMESİ" itemLabel="TİCARET MAHKEMESİ"/>
+                            <f:selectItem itemValue="İŞ MAHKEMESİ" itemLabel="İŞ MAHKEMESİ"/>
+                        </h:selectOneMenu></td>
+                <td><h:selectOneMenu style="background-color: #FFFFFF; width: 205px; height: 20px; border-radius: 5px" id="taraf" value="#{BeanDavaKayit.davaTipi}" >
+                            <f:selectItem itemValue="SEÇİLMEDİ" itemLabel="SEÇİLMEDİ"/>   
+                            <f:selectItem itemValue="KİRA DAVASI" itemLabel="KİRA DAVASI"/>
+                            <f:selectItem itemValue="AİLE HUKUKU DAVASI" itemLabel="AİLE HUKUKU DAVASI"/>
+                            <f:selectItem itemValue="NÜFUS DAVASI" itemLabel="NÜFUS DAVASI"/>
+                            <f:selectItem itemValue="KİŞİLER HUKUKU DAVASI" itemLabel="KİŞİLER HUKUKU DAVASI"/>
+                            <f:selectItem itemValue="MİRAS HUKUKU DAVASI" itemLabel="MİRAS HUKUKU DAVASI"/>
+                            <f:selectItem itemValue="BORÇLAR HUKUKU DAVASI" itemLabel="BORÇLAR HUKUKU DAVASI"/>
+                        </h:selectOneMenu></td>
+                <td><h:inputText style=" border-radius: 5px"></h:inputText></td>
+                        <td><h:inputText style="width: 40px;  border-radius: 5px" pt:placeholder="  GG">
+                    
+                            </h:inputText><h:inputText style="width: 40px;  border-radius: 5px" pt:placeholder="  AA">
+                                
+                            </h:inputText><h:inputText style="width: 80px; border-radius: 5px" pt:placeholder="     YYYY"></h:inputText></td>
+                <td><h:inputText style="width: 120px; border-radius: 5px" pt:placeholder="SAİD"></h:inputText>
+                <h:inputText style="width: 120px; border-radius: 5px" pt:placeholder="ÖZGAT"></h:inputText>
+                </td>
+                <td><h:selectOneMenu style="background-color: #FFFFFF; width: 205px; height: 20px; border-radius: 5px" value="#{BeanDavaKayit.mahkemeKarari}" >
+                         <f:selectItem itemValue="SEÇİLMEDİ" itemLabel="SEÇİLMEDİ" />
+                            <f:selectItem itemValue="BELİRSİZ" itemLabel="BELİRSİZ" />
+                            <f:selectItem itemValue="BERAAT KARARI" itemLabel="BERAAT KARARI"/>
+                            <f:selectItem itemValue="MAHKUMİYET KARARI" itemLabel="MAHKUMİYET KARARI"/>
+                            <f:selectItem itemValue="GÜVENLİK TEDBİRİ KARARI" itemLabel="GÜVENLİK TEDBİRİ KARARI"/>
+                            <f:selectItem itemValue="DAVANIN REDDİ KARARI" itemLabel="DAVANIN REDDİ KARARI"/>
+                            <f:selectItem itemValue="DÜŞME KARARI" itemLabel="DÜŞME KARARI"/>
+                        </h:selectOneMenu></td>
+                <td><h:commandButton value="ARA"></h:commandButton></td>    
+            </tr>
+        </table>
+        </h:form>
     </h:body>
 </html>
 

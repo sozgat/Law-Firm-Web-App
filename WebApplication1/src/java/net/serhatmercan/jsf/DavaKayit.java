@@ -370,7 +370,7 @@ public class DavaKayit{
         {
             Logger.getLogger(DavaKayit.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("MahkemeBilgiler tablosuna kayit eklenirken hata olustu!");
-            return "yonlendirme.xhtml";
+            return "hataolustu.xhtml";
         }
         //Simdi mahkemebilgiler tablosundaki son eklenen verinin id sini cekicez.
         ResultSet rs = null;
