@@ -20,18 +20,18 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class IcraUserController {
     
-    private List<DavaBilgileri> davaGroup = null;
+    private List<DavaIslemleri> davaGroup = null;
     
     @PostConstruct
     public void init(){
-        davaGroup = new ArrayList<DavaBilgileri>();
+        davaGroup = new ArrayList<DavaIslemleri>();
     }
 
     public void add(){
-        davaGroup.add(new DavaBilgileri());
+        davaGroup.add(new DavaIslemleri());
     }
     
-    public void remove(DavaBilgileri e){
+    public void remove(DavaIslemleri e){
         davaGroup.remove(e);
     }
     
@@ -39,11 +39,11 @@ public class IcraUserController {
         return "result.xhtml?faces-redirect=true";
     }
 
-    public List<DavaBilgileri> getDavaGroup() {
+    public List<DavaIslemleri> getDavaGroup() {
         return davaGroup;
     }
 
-    public void setDavaGroup(List<DavaBilgileri> davaGroup) {
+    public void setDavaGroup(List<DavaIslemleri> davaGroup) {
         this.davaGroup = davaGroup;
     }
 }

@@ -1,5 +1,5 @@
 package net.serhatmercan.jsf;
-public class DavaBilgileri {
+public class DavaIslemleri {
 
     private String davaTuru;
     private String ad;
@@ -8,11 +8,11 @@ public class DavaBilgileri {
     private String dogumTarihi;
     private String savunmasi;
     
-    public DavaBilgileri(){
+    public DavaIslemleri(){
         
     }
     
-    public DavaBilgileri(String davaTuru, String ad, String soyad, String tcKimlikNo, String dogumTarihi, String savunmasi) {
+    public DavaIslemleri(String davaTuru, String ad, String soyad, String tcKimlikNo, String dogumTarihi, String savunmasi) {
         this.davaTuru = davaTuru;
         this.ad = ad;
         this.soyad = soyad;

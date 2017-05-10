@@ -121,32 +121,33 @@ li.dropdown {
         </ul>
         <br />
         <br />
+                
 <h:form>
             <table>
                 <caption style="font-family: sans-serif;text-align: center; font-size: 25px ;box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);background-color: #6698B3;color: #FFFFFF">
                     Mahkeme Bilgileri</caption>
                 <tr>
                     <td>MAHKEME TİPİ:</td>
-                    <td><h:selectOneMenu style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" value="#{BeanDavaKayit.mahkemeTipi}">
+                    <td><h:selectOneMenu style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" value="#{mahkemeBilgileri.mahkemeTipi}">
                             <f:selectItem itemValue="SULH HUKUK MAHKEMESİ" itemLabel="SULH HUKUK MAHKEMESİ"/>
                             <f:selectItem itemValue="ASLİYLE HUKUK MAHKEMESİ" itemLabel="ASLİYLE HUKUK MAHKEMESİ"/>
                             <f:selectItem itemValue="TİCARET MAHKEMESİ" itemLabel="TİCARET MAHKEMESİ"/>
                             <f:selectItem itemValue="İŞ MAHKEMESİ" itemLabel="İŞ MAHKEMESİ"/>
                         </h:selectOneMenu></td>
                     <td>HAKİM:</td>
-                    <td><h:inputText value="#{BeanDavaKayit.hakimAd}" style="border-radius: 5px ;" /> </td>
+                    <td><h:inputText value="#{mahkemeBilgileri.hakimAd}" style="border-radius: 5px ;" /> </td>
                     
 
                 </tr>
                 <tr>
                     <td>MAHKEME YERİ:</td>
-                    <td><h:inputText value="#{BeanDavaKayit.mahkemeYeri}" style="border-radius: 5px ;" /> </td>
+                    <td><h:inputText value="#{mahkemeBilgileri.mahkemeYeri}" style="border-radius: 5px ;" /> </td>
                     <td>HÜKÜM TARİHİ:</td>
-                    <td> <h:inputText value="#{BeanDavaKayit.hukumTarihi}" style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" /> </td>
+                    <td> <h:inputText value="#{mahkemeBilgileri.hukumTarihi}" style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" /> </td>
                 </tr>
                 <tr>
                     <td>DAVANIN TİPİ: </td>
-                    <td><h:selectOneMenu style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" id="taraf" value="#{BeanDavaKayit.davaTipi}" >
+                    <td><h:selectOneMenu style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" id="taraf" value="#{mahkemeBilgileri.davaTipi}" >
                             <f:selectItem itemValue="KİRA DAVASI" itemLabel="KİRA DAVASI"/>
                             <f:selectItem itemValue="AİLE HUKUKU DAVASI" itemLabel="AİLE HUKUKU DAVASI"/>
                             <f:selectItem itemValue="NÜFUS DAVASI" itemLabel="NÜFUS DAVASI"/>
@@ -156,20 +157,20 @@ li.dropdown {
                         </h:selectOneMenu></td>
                     
                     <td>DURUŞMA TARİHİ: </td>
-                    <td><h:inputText value="#{BeanDavaKayit.davaTarihi}" style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" /> </td>
+                    <td><h:inputText value="#{mahkemeBilgileri.davaTarihi}" style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" /> </td>
                 </tr>
                 <tr>
                     <td>DAVANIN KONUSU: </td>
-                    <td><h:inputText style="border-radius: 5px ;" value="#{BeanDavaKayit.davaKonusu}"/> </td>
+                    <td><h:inputText style="border-radius: 5px ;" value="#{mahkemeBilgileri.davaKonusu}"/> </td>
                     <td>KARAR NO:</td>
-                    <td><h:inputText value="#{BeanDavaKayit.kararNo}" style="border-radius: 5px ;" pt:placeholder="örn: 2017/999"/></td>
+                    <td><h:inputText value="#{mahkemeBilgileri.kararNo}" style="border-radius: 5px ;" pt:placeholder="örn: 2017/999"/></td>
                 </tr>
 
                 <tr>
                     <td>DAVA ESAS NO: </td>
-                    <td><h:inputText style="border-radius: 5px ;" value="#{BeanDavaKayit.davaEsasNo}"/></td>
+                    <td><h:inputText style="border-radius: 5px ;" value="#{mahkemeBilgileri.davaEsasNo}"/></td>
                     <td>MAHKEME KARARI</td>
-                    <td><h:selectOneMenu style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" value="#{BeanDavaKayit.mahkemeKarari}" >
+                    <td><h:selectOneMenu style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" value="#{mahkemeBilgileri.mahkemeKarari}" >
                             <f:selectItem itemValue="BELİRSİZ" itemLabel="BELİRSİZ" />
                             <f:selectItem itemValue="BERAAT KARARI" itemLabel="BERAAT KARARI"/>
                             <f:selectItem itemValue="MAHKUMİYET KARARI" itemLabel="MAHKUMİYET KARARI"/>
@@ -181,30 +182,31 @@ li.dropdown {
                 <tr>
                     <td><a class="eklekaydet" href="#openModal" style="text-decoration: none" > DAVA MASRAFI HESAPLA </a></td>
                     <td> TOPLAM HARÇ VE GİDER AVANSI:
-                        <h:inputText style="border-radius: 5px ;" value="#{BeanDavaKayit.toplamTutar}" /> TL</td>
+                        <h:inputText style="border-radius: 5px ;" /> TL</td>
                     <td>AVUKAT ADI SOYADI:</td>
-                    <td><h:inputText style="border-radius: 5px ;" value="#{BeanDavaKayit}"/></td>
+                    <td><h:inputText style="border-radius: 5px ;" /></td>
                 </tr>
             </table>
    
     <br></br>
-                     
+                <h:commandButton value="KAYDET" class="eklekaydet"  style="width: 150px" action="#{mahkemeBilgileri.mahkemeBilgileriKaydet()}"/>                        
+                        <!-- onclick="#{davaIslemleriKontrol.save()}"  -->             
          <p style="font-family: sans-serif;text-align: center; font-size: 25px ;box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);background-color: #6698B3;color: #FFFFFF">
         Davalı, Davacı, Şahit İşlemleri</p>
 </h:form>
                     <h:form>
                         <table class="table2">
-                <ui:repeat value="#{userController.davaGroup}" var="d">
+                            <ui:repeat value="#{davaIslemleriKontrol.davaGrup}" var="d">
                 <tr>                    
                     <td class="td2">
-                        <h:selectOneMenu style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" value="#{BeanDavaKayit.davaTuru}"><!--d.davaTuru-->
+                        <h:selectOneMenu style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" value="#{d.davaTuru}"><!--d.davaTuru-->
                                 <f:selectItem itemLabel="DAVACI (MÜŞTEKİ) BİLGİLERİ" itemValue="Davacı Müşteki Bilgileri"/>
                                 <f:selectItem itemLabel="DAVALI (SANIK) BİLGİLERİ" itemValue="Davalı (Sanik) Bilgileri"/>
                                 <f:selectItem itemLabel="ŞAHİT BİLGİLERİ" itemValue="Şahit Bilgileri"/>
                             </h:selectOneMenu>
                         </td>
                     <td class="td2">
-                            <h:commandButton value="SİL"  class="sil"   action="#{userController.remove(d)}">
+                        <h:commandButton value="SİL"  class="sil"   action="#{davaIslemleriKontrol.remove(d)}">
                             
                             <f:ajax render="@form" execute="@form"/>
                             </h:commandButton>
@@ -213,20 +215,20 @@ li.dropdown {
                 </tr>
                      <tr>
                          <td> ADI:</td>
-                    <td> <h:inputText style="border-radius: 5px ;" value="#{BeanDavaKayit.ad}"/> </td>
+                         <td> <h:inputText style="border-radius: 5px ;" value="#{d.ad}"/> </td>
                     
                      <td>TC KİMLİK NO:</td>
-                     <td><h:inputText style="border-radius: 5px ;" value="#{BeanDavaKayit.tcKimlikNo}"/></td>
+                     <td><h:inputText style="border-radius: 5px ;" value="#{d.tcKimlikNo}"/></td>
                 </tr>
                     <tr>
                         <td> SOYADI: </td>
                         <td>
-                        <h:inputText style="border-radius: 5px ;" value="#{BeanDavaKayit.soyad}"/>
+                            <h:inputText style="border-radius: 5px ;" value="#{d.soyad}"/>
                     </td>
                         <td>
                             DOĞUM TARİHİ: </td>
                         <td>
-                            <h:inputText style="border-radius: 5px ;" value="#{BeanDavaKayit.dogumTarihi}" pt:placeholder="GG/AA/YYYY"/>
+                            <h:inputText style="border-radius: 5px ;" value="#{d.dogumTarihi}" pt:placeholder="GG/AA/YYYY"/>
                         </td>
                 </tr>
                     <tr>
@@ -234,7 +236,7 @@ li.dropdown {
                             SAVUNMASI:
                         </td>
                         <td>
-                            <h:inputTextarea style="width: 500px; height: 80px;max-width: 500px;max-height: 80px; border-radius: 5px" rows="15" value="#{BeanDavaKayit.savunmasi}"></h:inputTextarea>
+                            <h:inputTextarea style="width: 500px; height: 80px;max-width: 500px;max-height: 80px; border-radius: 5px" rows="15" value="#{d.savunmasi}"></h:inputTextarea>
                         </td>
                         <td><h:commandButton  class="button" type="reset" value="TEMİZLE"/> </td>
                         <td></td>
@@ -244,14 +246,16 @@ li.dropdown {
             </ui:repeat>
             <tr>
                     <td>
-                        <h:commandButton value="EKLE" class="eklekaydet" style="width: 150px"  action="#{userController.add()}">
+                        <h:commandButton value="EKLE" class="eklekaydet" style="width: 150px"  action="#{davaIslemleriKontrol.add()}">
                             <f:ajax render="@form" execute="@form"/>
-                        </h:commandButton>
-                        <h:commandButton value="KAYDET" class="eklekaydet"  style="width: 150px" action="#{BeanDavaKayit.kaydet()}"/>                        
+                        </h:commandButton>                        
                     </td>
             </tr>
                         </table>
 </h:form>
+
+                    
+        
     <div id="openModal" class="modalDialog">
 	<div>
 		<a href="#close" title="Close" class="close">X</a>

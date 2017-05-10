@@ -47,7 +47,7 @@ public class DavaKayit{
     private double davaMasrafi;//DavaMasraf adinda ayri bi class olusturup hesabi orda yapariz.
     private int davaMasrafId;
     //Dava Bilgileri
-    private String davaTuru;
+    /*private String davaTuru;
     private String ad;
     private String soyad;
     private String tcKimlikNo;
@@ -100,7 +100,7 @@ public class DavaKayit{
 
     public void setSavunmasi(String savunmasi) {
         this.savunmasi = savunmasi;
-    }
+    }*/
     
     /*-----------------------------------------------------------------*/
 
@@ -394,7 +394,7 @@ public class DavaKayit{
             return "kayitKontrolJsf.xhtml";//hata mesaji verdirmeliyiz(mahkemeBilgiler tablosundan veri cekilirken hata olustu)
         }
         
-        try 
+        /*try 
         {
             sqlKomut="INSERT INTO TBLDAVA_BILGILER(davaTuru, ad, soyad, tcKimlikNo, dogumTarih, savunma, idMahkemeBilgiler)"
                     + "VALUES('"+getDavaTuru()+"', '"+getAd()+"', '"+getSoyad()+"','"+getTcKimlikNo()+"',"+DbFunctions.stringToDate(getDogumTarihi())+",'"+getSavunmasi()+"',"+getMahkemeBilgilerId()+")";
@@ -415,7 +415,8 @@ public class DavaKayit{
         {
             DbFunctions.baglantiKapa(baglanti);
             return "anasayfa.xhtml";//iki tabloyada veriler eklendi. davalari goruntuleye gidebilir.
-        }
+        }*/
+        return "";
     }
     public void clear(){
         setTarafSayisi(-1);
