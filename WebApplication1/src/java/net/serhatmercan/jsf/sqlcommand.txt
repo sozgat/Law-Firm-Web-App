@@ -62,7 +62,7 @@ mahkemeTuruToplam DOUBLE,
 harcToplam DOUBLE,
 tarafSayisiToplam DOUBLE,
 sahitSayisiToplam DOUBLE,
-toplamTutar DOUBLE,
+toplamTutar DOUBLE
 );
 
 CREATE TABLE TBLICRA_BILGILER

@@ -131,6 +131,6 @@ public class IcraKayit
     
     public String kaydet()
     {
-        return davaKonusu;//Deneme
+        return "icrabilgilerkayit.xhtml";//Deneme
     }
 }

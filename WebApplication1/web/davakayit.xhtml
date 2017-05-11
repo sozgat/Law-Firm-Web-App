@@ -189,70 +189,12 @@ li.dropdown {
             </table>
    
     <br></br>
-                <h:commandButton value="KAYDET" class="eklekaydet"  style="width: 150px" action="#{mahkemeBilgileri.mahkemeBilgileriKaydet()}"/>                        
-                        <!-- onclick="#{davaIslemleriKontrol.save()}"  -->             
-         <p style="font-family: sans-serif;text-align: center; font-size: 25px ;box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);background-color: #6698B3;color: #FFFFFF">
-        Davalı, Davacı, Şahit İşlemleri</p>
+                <h:commandButton value="MAHKEME BİLGİLERİNİ KAYDET" class="eklekaydet"  style="width: 250px;text-align: center; margin: 0 550px 0" 
+                                 action="#{mahkemeBilgileri.mahkemeBilgileriKaydet()}"/>                        
+                                  
+         
 </h:form>
-                    <h:form>
-                        <table class="table2">
-                            <ui:repeat value="#{davaIslemleriKontrol.davaGrup}" var="d">
-                <tr>                    
-                    <td class="td2">
-                        <h:selectOneMenu style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" value="#{d.davaTuru}"><!--d.davaTuru-->
-                                <f:selectItem itemLabel="DAVACI (MÜŞTEKİ) BİLGİLERİ" itemValue="Davacı Müşteki Bilgileri"/>
-                                <f:selectItem itemLabel="DAVALI (SANIK) BİLGİLERİ" itemValue="Davalı (Sanik) Bilgileri"/>
-                                <f:selectItem itemLabel="ŞAHİT BİLGİLERİ" itemValue="Şahit Bilgileri"/>
-                            </h:selectOneMenu>
-                        </td>
-                    <td class="td2">
-                        <h:commandButton value="SİL"  class="sil"   action="#{davaIslemleriKontrol.remove(d)}">
-                            
-                            <f:ajax render="@form" execute="@form"/>
-                            </h:commandButton>
-                        </td>
                     
-                </tr>
-                     <tr>
-                         <td> ADI:</td>
-                         <td> <h:inputText style="border-radius: 5px ;" value="#{d.ad}"/> </td>
-                    
-                     <td>TC KİMLİK NO:</td>
-                     <td><h:inputText style="border-radius: 5px ;" value="#{d.tcKimlikNo}"/></td>
-                </tr>
-                    <tr>
-                        <td> SOYADI: </td>
-                        <td>
-                            <h:inputText style="border-radius: 5px ;" value="#{d.soyad}"/>
-                    </td>
-                        <td>
-                            DOĞUM TARİHİ: </td>
-                        <td>
-                            <h:inputText style="border-radius: 5px ;" value="#{d.dogumTarihi}" pt:placeholder="GG/AA/YYYY"/>
-                        </td>
-                </tr>
-                    <tr>
-                        <td>
-                            SAVUNMASI:
-                        </td>
-                        <td>
-                            <h:inputTextarea style="width: 500px; height: 80px;max-width: 500px;max-height: 80px; border-radius: 5px" rows="15" value="#{d.savunmasi}"></h:inputTextarea>
-                        </td>
-                        <td><h:commandButton  class="button" type="reset" value="TEMİZLE"/> </td>
-                        <td></td>
-
-                    </tr>
-                    
-            </ui:repeat>
-            <tr>
-                    <td>
-                        <h:commandButton value="EKLE" class="eklekaydet" style="width: 150px"  action="#{davaIslemleriKontrol.add()}">
-                            <f:ajax render="@form" execute="@form"/>
-                        </h:commandButton>                        
-                    </td>
-            </tr>
-                        </table>
-</h:form>
 
                     
         

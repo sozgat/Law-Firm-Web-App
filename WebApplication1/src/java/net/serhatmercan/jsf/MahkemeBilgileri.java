@@ -152,7 +152,7 @@ public class MahkemeBilgileri {
             return "hataolustu.xhtml";
         }
         
-        return "";
+        return "davabilgilerikayit.xhtml";
     }
     
     
