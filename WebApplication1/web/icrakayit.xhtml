@@ -129,43 +129,43 @@ li.dropdown {
                    İcra Mahkeme Bilgileri</caption>
                 <tr>
                     <td>MAHKEME YERİ: </td>
-                    <td><h:inputText style="border-radius: 5px ;"/> </td>
+                    <td><h:inputText value="#{icraKayit.mahkemeYeri}" style="border-radius: 5px ;"/> </td>
                     <td>HAKİM:</td> 
-                    <td><h:inputText style="border-radius: 5px ;" /> </td>
+                    <td><h:inputText value="#{icraKayit.hakimAdSoyad}" style="border-radius: 5px ;" /> </td>
                     
 
                 </tr>
                 <tr>
                     <td>DURUŞMA TARİHİ: </td>
-                    <td><h:inputText style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" /> </td>
+                    <td><h:inputText value="#{icraKayit.durusmaTarihi}" style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" /> </td>
                     <td>HÜKÜM TARİHİ:</td>
-                    <td><h:inputText style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" /> </td>
+                    <td><h:inputText value="#{icraKayit.hukumTarihi}" style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" /> </td>
                 </tr>
                 <tr>
                     <td>DAVANIN KONUSU: </td>
-                    <td><h:inputText style="border-radius: 5px ;" value="#{BeanIcraKayit.davaKonusu}" /> </td>
+                    <td><h:inputText value="#{icraKayit.davaKonusu}" style="border-radius: 5px ;"  /> </td>
                     <td>KARAR NO:</td>
-                    <td><h:inputText style="border-radius: 5px ;" pt:placeholder="örn: 2017/999"/></td>
+                    <td><h:inputText value="#{icraKayit.kararNo}" style="border-radius: 5px ;" pt:placeholder="örn: 2017/999"/></td>
                 </tr>
                 <tr>
                     <td>BORÇ TUTARI:</td>
-                    <td><h:inputText style="border-radius: 5px ;"  /> TL</td>
+                    <td><h:inputText value="#{icraKayit.alacakToplamTutari}" style="border-radius: 5px ;"  /> TL</td>
                     <td>AVUKAT ADI SOYADI:</td>
-                    <td><h:inputText  style="border-radius: 5px ;"/></td>
+                    <td><h:inputText value="#{icraKayit.avukatAdSoyad}" style="border-radius: 5px ;"  /></td>
                 </tr>
                 <tr>
                     <td>
                             İPOTEK KONULAN ÜRÜNLER:
                         </td>
                         <td style="height: 100%">
-                            <h:inputTextarea style="width: 400px; height: 80px;max-width: 400px;max-height: 80px; border-radius: 5px" rows="15"> 
+                            <h:inputTextarea value="#{icraKayit.ipotekKonulanUrunler}" style="width: 400px; height: 80px;max-width: 400px;max-height: 80px; border-radius: 5px" rows="15"> 
                             </h:inputTextarea>
                         </td>
                     <td>
                             REHİN KONULAN ÜRÜNLER:
                         </td>
                         <td style="height: 100%">
-                            <h:inputTextarea style="width: 400px; height: 80px;max-width: 400px;max-height: 80px; border-radius: 5px" rows="15"> 
+                            <h:inputTextarea value="#{icraKayit.rehinKonulanUrunler}" style="width: 400px; height: 80px;max-width: 400px;max-height: 80px; border-radius: 5px" rows="15"> 
                             </h:inputTextarea>
                         </td>
                 </tr>
@@ -174,17 +174,17 @@ li.dropdown {
                             HACİZ ALINAN ÜRÜNLER:
                         </td>
                         <td style="height: 100%">
-                            <h:inputTextarea style="width: 400px; height: 80px;max-width: 400px;max-height: 80px; border-radius: 5px" rows="15"> 
+                            <h:inputTextarea value="#{icraKayit.hacizAlinanUrunler}" style="width: 400px; height: 80px;max-width: 400px;max-height: 80px; border-radius: 5px" rows="15"> 
                             </h:inputTextarea>
                         </td>
                     <td>HACİZ ALINAN ÜRÜN TOPLAM TUTARI:</td>
-                    <td><h:inputText style="border-radius: 5px ;" /> TL</td>
+                    <td><h:inputText value="#{icraKayit.hacizToplamTutari}" style="border-radius: 5px ;" /> TL</td>
                         
                 </tr>
                 
             </table>
                <br></br>
-            <h:commandButton value="İCRA BİLGİLERİNİ KAYDET" class="eklekaydet"  style="width: 250px;text-align: center; margin: 0 550px 0" 
+               <h:commandButton action="#{icraKayit.kaydet()}" value="İCRA BİLGİLERİNİ KAYDET" class="eklekaydet"  style="width: 250px;text-align: center; margin: 0 550px 0" 
                               />
                 </h:form>
 
