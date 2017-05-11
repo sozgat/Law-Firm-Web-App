@@ -24,13 +24,13 @@ import javax.faces.bean.SessionScoped;
 public class DavaKayit{
 
     //Harc Degiskenleri
-    private double davaDegeri;
+    /*private double davaDegeri;
     private int mahkemeHarciId;//0-Sulh, 1-Asliye, 2-Ticaret, 3-İş
     private int maktuHarc=1;//0 veya 1
     private int nispiHarc=1;//0 veya 1
     private int tarafSayisi;//0-10
     private int sahitSayisi;//0-10
-    private double toplamTutar;
+    private double toplamTutar;*/
     //Mahkeme Bilgileri
     private int mahkemeBilgilerId;//DB de primary keyimiz.
     private String avukatAdSoyad;
@@ -210,7 +210,7 @@ public class DavaKayit{
     
     /*-------------------------------------------------------------------*/
 
-    public double getDavaDegeri() {
+    /*public double getDavaDegeri() {
         return davaDegeri;
     }
 
@@ -343,7 +343,7 @@ public class DavaKayit{
         
         DbFunctions.baglantiKapa(baglanti);
         return "";//Said buraya ne eklememiz gerekiyo? hesapla butonuna basinca ekran kapanmasin sadece tutar yazsin istiyoruz.
-    }
+    }*/
     
     public String kaydet()
     {
@@ -418,10 +418,10 @@ public class DavaKayit{
         }*/
         return "";
     }
-    public void clear(){
+    /*public void clear(){
         setTarafSayisi(-1);
         setSahitSayisi(-1);
         setDavaDegeri(0);
         setToplamTutar(0);
-}//end clear`
+}//end clear`*/
 }
