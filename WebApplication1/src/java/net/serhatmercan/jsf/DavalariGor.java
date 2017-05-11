@@ -102,5 +102,6 @@ public class DavalariGor implements Serializable
     {
         ArrayList mahkemeBilgileri=null;
         ArrayList davaBilgileri;
+        return mahkemeBilgileri;//Select ten donen veriler arrayliste eklenicek, sonra return edilecek.
     }
 }

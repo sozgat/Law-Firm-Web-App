@@ -135,6 +135,7 @@ public class IcraKayit
         vti.sqlKomut ="INSERT INTO TBLICRALAR(DAVAKONUSU, MAHKEMEYERI, HAKIMADSOYAD, AVUKATADSOYAD, DURUSMATARIHI, HUKUMTARIHI, "
                      +"KARARYIL, KARARNO, IPOTEKKONULANURUNLER, REHINKONULANURUNLER, HACIZALINANURUNLER, ALACAKTOPLAMTUTARI, HACIZTOPLAMTUTARI) "
                      +"VALUES('"+davaKonusu+"','"+mahkemeYeri+"','"+hakimAdSoyad+"','"+avukatAdSoyad+"',"+DbFunctions.stringToDate(durusmaTarihi)+","
+                               +DbFunctions.stringToDate(hukumTarihi)+","+DbFunctions.stringToDateKarar(kararNo,0)+","+DbFunctions.stringToDateKarar(kararNo,1)+",'"
                                +ipotekKonulanUrunler+"','"+rehinKonulanUrunler+"','"+hacizAlinanUrunler+"',"+alacakToplamTutari+","
                                +hacizToplamTutari+")";
         //Sadece SQL Kısmı doğru yazılacak 
