@@ -9,19 +9,21 @@
     </h:head>
     <h:body style="background-color: #CBDAE2;">
         <div class="login-page">
-        <div class="form">
-            <h:form id="myForm">
-                <h:inputText class="input" pt:placeholder="Kullanıcı Adı" value="#{BeanKullaniciGiris.kullaniciAd}"/>
-                <h:inputSecret class="input" pt:placeholder="Şifre" value="#{BeanKullaniciGiris.sifre}"/>
-                <h:message class="error" for="newPassword1" id="newPassword1Error" />
-            <h:commandButton class="button"  value="GİRİŞ YAP" action="#{BeanKullaniciGiris.girisKontrol}"/>
-            <h:commandButton class="button" value="KAYIT OL" action="kayitol.xhtml"/>
-            <p> <a href="faces/sifremiunuttum.xhtml" style="color: #2C6C8E; text-decoration: none"> Şifremi Unuttum</a></p>
-            
-        </h:form>
+            <div class="form">
+                <h:form id="myForm">
+                    <h:inputText class="input" pt:placeholder="Kullanıcı Adı" value="#{BeanKullaniciGiris.kullaniciAd}"/>
+                    <h:inputSecret class="input" pt:placeholder="Şifre" value="#{BeanKullaniciGiris.sifre}"/>
+                    <h:message class="error" for="newPassword1" id="newPassword1Error" />
+                    <h:commandButton class="button"  value="GİRİŞ YAP" action="#{BeanKullaniciGiris.girisKontrol}"/>
+                    <h:commandButton class="button" value="KAYIT OL" action="kayitol.xhtml"/>
+                    <p> <a href="faces/sifremiunuttum.xhtml" style="color: #2C6C8E; text-decoration: none"> Şifremi Unuttum</a></p>
+
+                </h:form>
+            </div>
         </div>
-        </div>
-        
+
+        <br />
+       
     </h:body>
 </html>
 
