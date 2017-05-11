@@ -1,5 +1,6 @@
 package net.serhatmercan.jsf;
 
+import java.text.DecimalFormat;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import static jdk.nashorn.internal.objects.NativeMath.round;
@@ -101,8 +102,8 @@ public class DavaMasrafi {
     public double harcHesapla()
     {
         double toplam=0;
-        if     (harcTuru.equals("maktu")) toplam=31.4;
-        else if(harcTuru.equals("nispi")) toplam=(davaDegeri/1000*(68.31));
+        if     (harcTuru.equals("maktu")) toplam = 31.4;
+        else if(harcTuru.equals("nispi")) toplam =(davaDegeri/1000*(68.31));
         return toplam;
     }
                
@@ -129,7 +130,14 @@ public class DavaMasrafi {
         double sahitSayisiToplam = turSayisiHesap(sahitSayisi, 29);
       
         toplamTutar = mahkemeTuruToplam + davaDegeri + harcToplam + tarafSayisiToplam + sahitSayisiToplam + diger;
-        round(toplamTutar,2);
+        toplamTutar = Math.round(toplamTutar * 100.0) / 100.0;
+        
+        VeriTabaniIslemleri vti = new VeriTabaniIslemleri();
+        vti.sqlKomut = "INSERT INTO TBLMASRAFLAR(mahkemeTuruToplam, harcToplam, tarafSayisiToplam, sahitSayisiToplam, toplamTutar)"
+                       +"VALUES("+mahkemeTuruToplam+","+harcToplam+","+tarafSayisiToplam+","
+                                 +sahitSayisiToplam+","+toplamTutar+")";
+        vti.ekle();
+        
     }
 
 

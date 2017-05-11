@@ -54,17 +54,15 @@ savunma VARCHAR(500),
 idMahkemeBilgiler INT/*mahkemebilgiler tablosunun id si*/
 );
 
+//MASRAFLAR TABLOSUNU SİLİP YERİNE YENİ ŞEKLİ İLE TABLO OLUŞTURUN
 CREATE TABLE TBLMASRAFLAR
 (
 id INT GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1) PRIMARY KEY,
-mahkemeHarci DOUBLE,
-davaDegeri DOUBLE,
-maktuHarc DOUBLE,
-nispiHarc DOUBLE,
-tarafSayisiTutar DOUBLE,
-sahitSayisiTutar DOUBLE,
-avukatUcreti DOUBLE,
-digerMasraflar DOUBLE
+mahkemeTuruToplam DOUBLE,
+harcToplam DOUBLE,
+tarafSayisiToplam DOUBLE,
+sahitSayisiToplam DOUBLE,
+toplamTutar DOUBLE,
 );
 
 CREATE TABLE TBLICRA_BILGILER
