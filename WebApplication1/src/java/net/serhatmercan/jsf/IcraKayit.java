@@ -134,9 +134,8 @@ public class IcraKayit
         VeriTabaniIslemleri vti = new VeriTabaniIslemleri();
         vti.sqlKomut ="INSERT INTO TBLICRALAR(DAVAKONUSU, MAHKEMEYERI, HAKIMADSOYAD, AVUKATADSOYAD, DURUSMATARIHI, HUKUMTARIHI, "
                      +"KARARYIL, KARARNO, IPOTEKKONULANURUNLER, REHINKONULANURUNLER, HACIZALINANURUNLER, ALACAKTOPLAMTUTARI, HACIZTOPLAMTUTARI) "
-                     +"VALUES("+davaKonusu+","+mahkemeYeri+","+hakimAdSoyad+","+avukatAdSoyad+","+DbFunctions.stringToDate(durusmaTarihi)+","
-                               +DbFunctions.stringToDate(hukumTarihi)+","+DbFunctions.stringToDate("10/11/2000")+","+DbFunctions.stringToDate("09/08/2001")+","
-                               +ipotekKonulanUrunler+","+rehinKonulanUrunler+","+hacizAlinanUrunler+","+alacakToplamTutari+","
+                     +"VALUES('"+davaKonusu+"','"+mahkemeYeri+"','"+hakimAdSoyad+"','"+avukatAdSoyad+"',"+DbFunctions.stringToDate(durusmaTarihi)+","
+                               +ipotekKonulanUrunler+"','"+rehinKonulanUrunler+"','"+hacizAlinanUrunler+"',"+alacakToplamTutari+","
                                +hacizToplamTutari+")";
         //Sadece SQL Kısmı doğru yazılacak 
         vti.ekle();
