@@ -36,29 +36,19 @@ public class ScheduleView implements Serializable {
  
     private ScheduleModel eventModel;
      
-    private ScheduleModel lazyEventModel;
  
     private ScheduleEvent event = new DefaultScheduleEvent();
  
     @PostConstruct
     public void init() {
+        
         eventModel = new DefaultScheduleModel();
         eventModel.addEvent(new DefaultScheduleEvent("Champions League Match", previousDay8Pm(), previousDay11Pm()));
         eventModel.addEvent(new DefaultScheduleEvent("Birthday Party", today1Pm(), today6Pm()));
         eventModel.addEvent(new DefaultScheduleEvent("Breakfast at Tiffanys", nextDay9Am(), nextDay11Am()));
         eventModel.addEvent(new DefaultScheduleEvent("Plant the new garden stuff", theDayAfter3Pm(), fourDaysLater3pm()));
          
-        lazyEventModel = new LazyScheduleModel() {
-             
-            @Override
-            public void loadEvents(Date start, Date end) {
-                Date random = getRandomDate(start);
-                addEvent(new DefaultScheduleEvent("Lazy Event 1", random, random));
-                 
-                random = getRandomDate(start);
-                addEvent(new DefaultScheduleEvent("Lazy Event 2", random, random));
-            }   
-        };
+        
     }
      
     public Date getRandomDate(Date base) {
@@ -80,14 +70,12 @@ public class ScheduleView implements Serializable {
         return eventModel;
     }
      
-    public ScheduleModel getLazyEventModel() {
-        return lazyEventModel;
-    }
+
  
     private Calendar today() {
         Calendar calendar = Calendar.getInstance();
         calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), 0, 0, 0);
- 
+  
         return calendar;
     }
      
