@@ -14,7 +14,7 @@ public class DavaMasrafi {
     private double davaDegeri   =0;
     private double toplamTutar  =0;    
     private String mahkemeTuru  =null;
-    private String harcTuru     =null;
+    private String harcTuru     ="maktu";
     private String tarafSayisi  =null;
     private String sahitSayisi  =null;
     private final double diger  =56;
@@ -24,7 +24,7 @@ public class DavaMasrafi {
         davaDegeri  =0;
         toplamTutar =0;    
         mahkemeTuru =null;
-        harcTuru    =null;
+        harcTuru    ="maktu";
         tarafSayisi =null;
         sahitSayisi =null;
     }

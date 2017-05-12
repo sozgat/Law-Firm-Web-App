@@ -8,15 +8,16 @@ import java.util.logging.Logger;
 
 public class VeriTabaniIslemleri {
     
-public String sqlKomut;    
+public String sqlKomut;
+public String sayfa;
 
-public void ekle()
+public String ekle()
 {
     PreparedStatement ps = null;
     Connection baglanti = DbFunctions.getCon();
       
-    if(baglanti == null){       //return "anasayfa.xhtml";
-                        }
+    if(baglanti == null)       return "hataolustu.xhtml";
+                        
     try 
     {
         ps=baglanti.prepareStatement(sqlKomut);
@@ -25,12 +26,12 @@ public void ekle()
     catch (SQLException ex) 
     {
         Logger.getLogger(DavaKayit.class.getName()).log(Level.SEVERE, null, ex);
-        //return "davakayit.xhtml";//hata mesaji verdirmeliyiz.
+        return "hataolustu.xhtml";
     }
     finally
     {
      DbFunctions.baglantiKapa(baglanti);
-    //return "";
+     return sayfa;
     }    
     }
 }   

@@ -23,7 +23,7 @@ public class IcraKayit
     private String durusmaTarihi;//Gecmiste yapilmis olan durusmanin tarihi
     private String hukumTarihi;
     private String davaKonusu;
-    private String kararNo;//kararYil ve kararNo olarak db de 2ye ayirdik.
+    private String kararNo;
     private double alacakToplamTutari;
     private String avukatAdSoyad;
     private String ipotekKonulanUrunler;
@@ -127,7 +127,6 @@ public class IcraKayit
         this.hacizToplamTutari = hacizToplamTutari;
     }
     
-    //-----------------------------Getter Setter Sonu-----------------------------
     
     public String kaydet()
     {
@@ -137,9 +136,9 @@ public class IcraKayit
                      +"VALUES('"+davaKonusu+"','"+mahkemeYeri+"','"+hakimAdSoyad+"','"+avukatAdSoyad+"',"+DbFunctions.stringToDate(durusmaTarihi)+","
                                +DbFunctions.stringToDate(hukumTarihi)+","+DbFunctions.stringToDateKarar(kararNo,0)+","+DbFunctions.stringToDateKarar(kararNo,1)+",'"
                                +ipotekKonulanUrunler+"','"+rehinKonulanUrunler+"','"+hacizAlinanUrunler+"',"+alacakToplamTutari+","
-                               +hacizToplamTutari+")";
-        //Sadece SQL Kısmı doğru yazılacak 
-        vti.ekle();
-        return "icrabilgilerkayit.xhtml";//Deneme
+                               +hacizToplamTutari+")";        
+        vti.sayfa="icrabilgilerkayit.xhtml";
+        return vti.ekle();
+        
     }
 }
