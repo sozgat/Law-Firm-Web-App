@@ -83,17 +83,22 @@
                 <td><h:commandButton value="ARA" action="#{BeanDavalariGor.goruntule()}" ></h:commandButton></td>    
             </tr>
         </table>
-            <table cellspacing="8" border="0" width="92%">
+            <table cellspacing="8" border="0" width="100%">
             <ui:repeat value="#{BeanDavalariGor.dbKayitlari}" var="d">
                     <tr>
-                        <td width="10%">#{d.davaEsasNo}</td>
-                        <td width="20%">#{d.mahkemeTipi}</td>
-                        <td width="20%">#{d.davaTipi}</td>
-                        <td width="14%">#{d.durusmaTarih}</td>
-                        <td width="20%">#{d.avukatAdSoyad}</td>
-                        <td>#{d.mahkemeKarari}</td>
-                        <td><h:commandButton value="GÜNCELLE"></h:commandButton></td>
-                        <td><h:commandButton value="SİL"> </h:commandButton></td>
+                        <td width="11%">#{d.davaEsasNo}</td>
+                        <td width="25%">#{d.mahkemeTipi}</td>
+                        <td width="25%">#{d.davaTipi}</td>
+                        <td width="15%">#{d.durusmaTarih}</td>
+                        <td width="30%">#{d.avukatAdSoyad}</td>
+                        <td width="30%">#{d.mahkemeKarari}</td>
+                        <td width="30%"><h:commandButton value="DETAYLARI GÖR"></h:commandButton></td>
+                        <td>
+                        <h:commandButton value="GÜNCELLE"></h:commandButton>
+                        <h:commandButton value="SİL"> </h:commandButton>
+                        </td>
+                        
+                        
                     </tr>
                 </ui:repeat>
         </table>    
