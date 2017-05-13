@@ -1,0 +1,81 @@
+package net.serhatmercan.jsf;
+
+import javax.enterprise.context.SessionScoped;
+import java.io.Serializable;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.faces.bean.ManagedBean;
+
+@ManagedBean
+@SessionScoped
+public class HesapAyarlari implements Serializable 
+{
+    private String kullaniciAd="sf";//Simdilik burada default tanimliyorum, daha sonra kullanici adini sistemden cekicez.
+    private String eskiSifre;
+    private String sifre1;
+    private String sifre2;
+    
+    public HesapAyarlari() {
+    }
+
+    public String getEskiSifre() {
+        return eskiSifre;
+    }
+
+    public void setEskiSifre(String eskiSifre) {
+        this.eskiSifre = eskiSifre;
+    }
+
+    public String getSifre1() {
+        return sifre1;
+    }
+
+    public void setSifre1(String sifre1) {
+        this.sifre1 = sifre1;
+    }
+
+    public String getSifre2() {
+        return sifre2;
+    }
+
+    public void setSifre2(String sifre2) {
+        this.sifre2 = sifre2;
+    }
+
+    
+    public String degistir()
+    {
+        if(!sifre1.equals(sifre2))
+            {
+                //setMessage("Şifreler Uyuşmuyor!");//Said Hata mesaji sende.
+                return "";
+            }
+        Connection baglanti = DbFunctions.getCon();
+        PreparedStatement ps = null;
+        
+        if(baglanti == null)
+        {
+            //(Mehmet)Kullaniciya Veritabanina Baglanti Hatasi mesaji gosterelim. said sayfanin biyerine textbox mi eklersin duruma gore buraya ekleriz.
+            return "kayitol.xhtml";
+        }
+
+        String updateKomutu = "UPDATE TBLKULLANICILAR2 SET SIFRE='"+sifre1+"' WHERE KULLANICIAD='"+kullaniciAd+"'";
+
+        try 
+        {
+            ps = baglanti.prepareStatement(updateKomutu);
+            ps.executeUpdate();
+        }
+        catch (SQLException ex) 
+        {
+            //Hata mesaji sende Said. ("Veritabaninda guncelleme yapilirken hata olustu!");
+            return "";
+        }
+        finally
+        {
+            DbFunctions.baglantiKapa(baglanti);
+        }
+        return "index.xhtml";
+    }
+}

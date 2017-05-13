@@ -1,6 +1,5 @@
 package net.serhatmercan.jsf;
 
-import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
 import java.sql.Connection;
@@ -21,22 +20,22 @@ import javax.faces.bean.ManagedBean;
 @SessionScoped
 public class DavalariGor implements Serializable 
 {
-    private String mahkemeTipi = null;
-    private String davaTipi = null;
-    private int davaEsasNo=-1;
+    private String mahkemeTipi;
+    private String davaTipi;
+    private int davaEsasNo=0;
     private String durusmaGun;
     private String durusmaAy;
     private String durusmaYil;
     private String avukatAd;
     private String avukatSoyad;
     private String mahkemeKarari;
-    List<String> dbKayitlari = null;
+    List<DavaGorClass> dbKayitlari = null;
 
-    public List<String> getDbKayitlari() {
+    public List<DavaGorClass> getDbKayitlari() {
         return dbKayitlari;
     }
 
-    public void setDbKayitlari(List<String> dbKayitlari) {
+    public void setDbKayitlari(List<DavaGorClass> dbKayitlari) {
         this.dbKayitlari = dbKayitlari;
     }
 
@@ -120,24 +119,52 @@ public class DavalariGor implements Serializable
         PreparedStatement ps = null;
         ResultSet rs = null;
         String bilgiler = " WHERE ";        
-        dbKayitlari = new ArrayList<String>();
+        dbKayitlari = new ArrayList<DavaGorClass>();
         
         if(!mahkemeTipi.equals("SEÇİLMEDİ")) bilgiler += ("MAHKEMETIPI='"+mahkemeTipi+"' AND ");
         if(!davaTipi.equals("SEÇİLMEDİ")) bilgiler += ("DAVATIPI='"+davaTipi+"' AND ");
-        if(davaEsasNo != -1) bilgiler += ("DAVAESASNO='"+davaEsasNo+"'");
+        if(davaEsasNo != 0) bilgiler += ("DAVAESASNO="+davaEsasNo+" AND ");
         
-        if(bilgiler.substring(bilgiler.length()-4).equals("AND ")) 
+        if(!durusmaGun.equals("") && !durusmaAy.equals("") && !durusmaYil.equals(""))
+            bilgiler += ("DAVATARIH="+DbFunctions.stringToDate(durusmaGun+"/"+durusmaAy+"/"+durusmaYil)+" AND ");
+        else if(!durusmaGun.equals("") && !durusmaAy.equals(""))
+            bilgiler += ("DAY(DAVATARIH)="+durusmaGun+" AND MONTH(DAVATARIH)="+durusmaAy+" AND ");
+        else if(!durusmaGun.equals("") && !durusmaYil.equals(""))
+            bilgiler += ("DAY(DAVATARIH)="+durusmaGun+" AND YEAR(DAVATARIH)="+durusmaYil+" AND ");
+        else if(!durusmaAy.equals("") && !durusmaYil.equals(""))
+            bilgiler += ("MONTH(DAVATARIH)="+durusmaAy+" AND YEAR(DAVATARIH)="+durusmaYil+" AND ");
+        else if(!durusmaGun.equals(""))
+            bilgiler += ("DAY(DAVATARIH)="+durusmaGun+" AND ");
+        else if(!durusmaAy.equals(""))
+            bilgiler += ("MONTH(DAVATARIH)="+durusmaAy+" AND ");
+        else if(!durusmaYil.equals(""))
+            bilgiler += ("YEAR(DAVATARIH)="+durusmaYil+" AND ");
+        
+        if(!avukatAd.equals("") && !avukatSoyad.equals("") ) bilgiler += ("AVUKATADSOYAD='"+avukatAd+" "+avukatSoyad+"' AND ");
+        else if(!avukatAd.equals("")) bilgiler += ("AVUKATADSOYAD LIKE '%"+avukatAd+"%' AND ");
+        else if(!avukatSoyad.equals("")) bilgiler += ("AVUKATADSOYAD LIKE '%"+avukatSoyad+"%' AND ");
+        
+        if(!mahkemeKarari.equals("SEÇİLMEDİ")) bilgiler += ("MAHKEMEKARAR='"+mahkemeKarari+"'");
+        
+        if(bilgiler.substring(bilgiler.length()-4).equals("AND "))
             bilgiler =bilgiler.substring(0, bilgiler.length()-5);
             
         if(bilgiler.equals(" WHERE ")) bilgiler = "";
         
         try {                                    
-            ps = con.prepareStatement("select MAHKEMETIPI,DAVATIPI,DAVAESASNO,DAVATARIH,AVUKATADSOYAD,MAHKEMEKARAR FROM TBLMAHKEME_BILGILER"+bilgiler);
+            ps = con.prepareStatement("SELECT MAHKEMETIPI,DAVATIPI,DAVAESASNO,DAVATARIH,AVUKATADSOYAD,MAHKEMEKARAR FROM TBLMAHKEME_BILGILER"+bilgiler);
             rs = ps.executeQuery();
             
-            while (rs.next()) {                
-                dbKayitlari.add(rs.getString("MAHKEMETIPI")+"   "+rs.getString("DAVATIPI")+"   "+rs.getInt("DAVAESASNO")+"   "+
-                                rs.getDate("DAVATARIH")+"   "+rs.getString("AVUKATADSOYAD")+"   "+rs.getString("MAHKEMEKARAR"));    
+            while (rs.next()) {
+                DavaGorClass sutunlar = new DavaGorClass();
+                sutunlar.mahkemeTipi = rs.getString("MAHKEMETIPI");
+                sutunlar.davaTipi = rs.getString("DAVATIPI");
+                sutunlar.davaEsasNo = rs.getInt("DAVAESASNO");
+                sutunlar.durusmaTarih = DbFunctions.dateToString(rs.getDate("DAVATARIH").toString());
+                sutunlar.avukatAdSoyad = rs.getString("AVUKATADSOYAD");
+                sutunlar.mahkemeKarari = rs.getString("MAHKEMEKARAR");
+                
+                dbKayitlari.add(sutunlar);
             }
             
             

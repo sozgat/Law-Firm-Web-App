@@ -111,12 +111,12 @@ div.panel {
             <div class="form">
                 <h:form id="myForm">
                     <p style="color: #2C6C8E">ŞİFRE DEĞİŞTİRME</p>
-                    <h:inputSecret class="input" pt:placeholder="MEVCUT ŞİFRENİZ" />
-                    <h:message class="error" for="newPassword1" id="newPassword1Error" />
-                    <h:inputSecret class="input" pt:placeholder="YENİ ŞİFRENİZ" />
-                    <h:inputSecret class="input" pt:placeholder="YENİ ŞİFREYİ TEKRAR GİRİN" />
+                    <h:inputSecret class="input" pt:placeholder="MEVCUT ŞİFRENİZ" value="#{hesapAyarlari.eskiSifre}"/>
+                    <h:message class="error" for="newPassword1" id="newPassword1Error"/>
+                    <h:inputSecret class="input" pt:placeholder="YENİ ŞİFRENİZ" value="#{hesapAyarlari.sifre1}"/>
+                    <h:inputSecret class="input" pt:placeholder="YENİ ŞİFREYİ TEKRAR GİRİN" value="#{hesapAyarlari.sifre2}"/>
                     <h:message class="error" for="newPassword2" id="newPassword2Error" />
-                    <h:commandButton class="button"  value="ŞİFREMİ DEĞİŞTİR" />
+                    <h:commandButton class="button"  value="ŞİFREMİ DEĞİŞTİR" action="#{hesapAyarlari.degistir()}"/>
                    
 
                 </h:form>

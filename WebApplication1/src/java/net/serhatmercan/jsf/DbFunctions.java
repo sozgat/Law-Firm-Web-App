@@ -48,4 +48,10 @@ public class DbFunctions {
         else 
             return formats[1];
     }
+    
+    public static String dateToString(String date)
+    {
+        String[] formats = date.split("-");
+        return formats[2]+"/"+formats[1]+"/"+formats[0];
+    }
 }

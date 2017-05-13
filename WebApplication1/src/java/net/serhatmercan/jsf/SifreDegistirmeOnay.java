@@ -84,38 +84,5 @@ public class SifreDegistirmeOnay
     public String giriseDon()
     {
         return "index.xhtml";
-        /*Bu kodu sifre guncelleme bolumunde kullaniriz.
-        if(!sifre1.equals(sifre2))
-        {
-            //setMessage("Şifreler Uyuşmuyor!");
-            return "";
-        }
-        Connection baglanti = DbFunctions.getCon();
-        PreparedStatement ps = null;
-        
-        if(baglanti == null)
-        {
-            //(Mehmet)Kullaniciya Veritabanina Baglanti Hatasi mesaji gosterelim. said sayfanin biyerine textbox mi eklersin duruma gore buraya ekleriz.
-            return "kayitol.xhtml";
-        }
-        
-        String updateKomutu = "UPDATE TBLKULLANICILAR2 SET SIFRE='"+sifre1+"' WHERE EMAIL='"+mail+"'";
-        
-        try 
-        {
-            ps = baglanti.prepareStatement(updateKomutu);
-            ps.executeUpdate();
-        }
-        catch (SQLException ex) 
-        {
-            Logger.getLogger(SifreDegistirmeOnay.class.getName()).log(Level.SEVERE, null, ex);
-            setMessage("Veritabaninda guncelleme yapilirken hata olustu!");
-            return "";
-        }
-        finally
-        {
-            DbFunctions.baglantiKapa(baglanti);
-        }
-        return "index.xhtml";*/
     }
 }
