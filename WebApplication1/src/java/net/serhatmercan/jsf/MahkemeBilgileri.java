@@ -130,9 +130,8 @@ public class MahkemeBilgileri {
         }
         
         String sqlKomut = "INSERT INTO TBLMAHKEME_BILGILER(davaEsasNo, mahkemeTipi, mahkemeYeri, davaTipi, davaKonusu, "
-                + "hakimAd,"
-                + "mahkemeKarar, avukatAdSoyad, davaMasrafId) "
-                + "VALUES("+davaEsasNo+",'"+mahkemeTipi+"','"+mahkemeYeri+"', '"+davaTipi+"','"+davaKonusu+"','"+hakimAd+"','"
+                + "hakimAd, hukumTarih, davaTarih, kararYil, kararNo,mahkemeKarar, avukatAdSoyad, davaMasrafId) "
+                + "VALUES("+davaEsasNo+",'"+mahkemeTipi+"','"+mahkemeYeri+"', '"+davaTipi+"','"+davaKonusu+"','"+hakimAd+"',"+DbFunctions.stringToDate(hukumTarihi)+","+DbFunctions.stringToDate(davaTarihi)+","+DbFunctions.stringToDateKarar(kararNo, 0)+","+DbFunctions.stringToDateKarar(kararNo, 1)+",'"
                 +mahkemeKarari+"','"+"SS MM"+"',"+1+")";
         /*
          hukumTarih, davaTarih, kararYil, kararNo"
