@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
        xmlns:f="http://xmlns.jcp.org/jsf/core"
-       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>DAVALARI GÖR</title>
        <link type="text/css" rel="stylesheet" href="css/anasayfa_css.css"/> 
@@ -83,6 +84,8 @@
                 <td><h:commandButton value="ARA" action="#{BeanDavalariGor.goruntule()}" ></h:commandButton></td>    
             </tr>
         </table>
+            </h:form>
+             <h:form>
             <table cellspacing="8" border="0" width="100%">
             <ui:repeat value="#{BeanDavalariGor.dbKayitlari}" var="d">
                     <tr>
@@ -92,17 +95,19 @@
                         <td width="15%">#{d.durusmaTarih}</td>
                         <td width="30%">#{d.avukatAdSoyad}</td>
                         <td width="30%">#{d.mahkemeKarari}</td>
-                        <td width="30%"><h:commandButton value="DETAYLARI GÖR"></h:commandButton></td>
-                        <td>
-                        <h:commandButton value="GÜNCELLE"></h:commandButton>
-                        <h:commandButton value="SİL"> </h:commandButton>
+                        <td width="30%">
+                            <p:commandButton value="DETAYLARI GÖR"  action="davadetaylarigor.xhtml"></p:commandButton>  </td>
+                        <td>                 
+                            <p:commandButton value="SİL" actionListener="#{BeanDavalariGor.sil(d.davaEsasNo)}" oncomplete=""/>
+                              
                         </td>
                         
                         
                     </tr>
                 </ui:repeat>
         </table>    
-        </h:form>
+                  </h:form>
+        
         
         
     </h:body>

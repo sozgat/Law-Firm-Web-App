@@ -136,6 +136,8 @@ public class DavaMasrafi {
         vti.sqlKomut = "INSERT INTO TBLMASRAFLAR(mahkemeTuruToplam, harcToplam, tarafSayisiToplam, sahitSayisiToplam, toplamTutar)"
                        +"VALUES("+mahkemeTuruToplam+","+harcToplam+","+tarafSayisiToplam+","
                                  +sahitSayisiToplam+","+toplamTutar+")";
+       
+        
         vti.ekle();
         
     }

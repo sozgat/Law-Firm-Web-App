@@ -11,13 +11,15 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
+import javax.faces.event.ActionEvent;
 
 /**
  *
  * @author Toshiba
  */
 @ManagedBean(name="BeanDavalariGor")
-@SessionScoped
+@ViewScoped
 public class DavalariGor implements Serializable 
 {
     private String mahkemeTipi;
@@ -112,6 +114,12 @@ public class DavalariGor implements Serializable
     }
     
     //Getter ve Setter Sonu.----------------------------
+    
+    public void sil(ActionEvent event){
+       
+        
+        
+    }
     
     public void goruntule(){
         
