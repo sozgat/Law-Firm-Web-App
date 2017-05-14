@@ -2,6 +2,7 @@ package net.serhatmercan.jsf;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,21 +24,17 @@ public class MahkemeBilgileri {
     private String davaTarihi;
     private String kararNo;
     private String mahkemeKarari;
+    private String avukatAdSoyad;
+
     
- /*   public MahkemeBilgileri(){
-        mahkemeTipi="";
-        mahkemeYeri="";
-        davaTipi="";
-        davaKonusu="";
-        davaEsasNo=0;
-        hakimAd="";
-        /*hukumTarihi="00/00/0000";
-        davaTarihi="00/00/0000";
-        kararNo="0000/0";
-        mahkemeKarari="";
+    public String getAvukatAdSoyad() {
+        return avukatAdSoyad;
     }
-*/
     
+    public void setAvukatAdSoyad(String avukatAdSoyad) {
+        this.avukatAdSoyad = avukatAdSoyad;
+    }
+
     public String getMahkemeTipi() {
         return mahkemeTipi;
     }
@@ -129,15 +126,35 @@ public class MahkemeBilgileri {
             return "anasayfa.xhtml";//Burayi ayri bir hata sayfasina dondurelim yada hata mesaji gosterip ayni sayfada tutalim
         }
         
+        //Once Masraflar Tablosundan Son Eklenen Verinin id sini cekicez.
+        ResultSet rs = null;
+        int davaMasrafId;
+        String sqlSorgu = "Select * From TBLMASRAFLAR ORDER BY id DESC FETCH FIRST 1 ROWS ONLY";
+        
+        try 
+        {
+            ps = baglanti.prepareStatement(sqlSorgu);
+            ps.execute();
+            rs = ps.getResultSet();
+            
+            if(rs.next())
+                davaMasrafId = rs.getInt("id");//mahkemebilgileri tablosuna kayit eklerken davamasrafid degerini burdan alicaz.
+            else
+                return "hataolustu.xhtml";
+        }
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(DavaKayit.class.getName()).log(Level.SEVERE, null, ex);
+            return "hataolustu.xhtml";
+        }
+        
+        //Simdi TBLMAHKEME_BILGILER Tablosuna Veriyi Ekliyoruz.
+        
         String sqlKomut = "INSERT INTO TBLMAHKEME_BILGILER(davaEsasNo, mahkemeTipi, mahkemeYeri, davaTipi, davaKonusu, "
                 + "hakimAd, hukumTarih, davaTarih, kararYil, kararNo,mahkemeKarar, avukatAdSoyad, davaMasrafId) "
                 + "VALUES("+davaEsasNo+",'"+mahkemeTipi+"','"+mahkemeYeri+"', '"+davaTipi+"','"+davaKonusu+"','"+hakimAd+"',"+DbFunctions.stringToDate(hukumTarihi)+","+DbFunctions.stringToDate(davaTarihi)+","+DbFunctions.stringToDateKarar(kararNo, 0)+","+DbFunctions.stringToDateKarar(kararNo, 1)+",'"
-                +mahkemeKarari+"','"+"SS MM"+"',"+1+")";
-        /*
-         hukumTarih, davaTarih, kararYil, kararNo"
-        +DbFunctions.stringToDate("19/12/2007")+","+DbFunctions.stringToDate("19/12/2007")+","
-         +DbFunctions.stringToDateKarar("2007/123",0)+","+DbFunctions.stringToDateKarar("2007/123",1)
-        */
+                +mahkemeKarari+"','"+avukatAdSoyad+"',"+davaMasrafId+")";
+        
         try
         {
             ps=baglanti.prepareStatement(sqlKomut);
@@ -148,9 +165,11 @@ public class MahkemeBilgileri {
         {
             Logger.getLogger(DavaKayit.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("MahkemeBilgiler tablosuna kayit eklenirken hata olustu!");
+            DbFunctions.baglantiKapa(baglanti);
             return "hataolustu.xhtml";
         }
         
+        DbFunctions.baglantiKapa(baglanti);
         return "davabilgilerikayit.xhtml";
     }
     
