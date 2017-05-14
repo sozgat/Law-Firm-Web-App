@@ -51,7 +51,9 @@
                          <td> <h:inputText style="border-radius: 5px ;" value="#{d.ad}"/> </td>
                     
                      <td>TC KİMLİK NO:</td>
-                     <td><h:inputText style="border-radius: 5px ;" value="#{d.tcKimlikNo}"/></td>
+                     <td><h:inputText style="border-radius: 5px ;" maxlength="11" value="#{d.tcKimlikNo}">
+                          
+                         </h:inputText></td>
                 </tr>
                     <tr>
                         <td> SOYADI: </td>
@@ -61,7 +63,7 @@
                         <td>
                             DOĞUM TARİHİ: </td>
                         <td>
-                            <h:inputText style="border-radius: 5px ;" value="#{d.dogumTarihi}" pt:placeholder="GG/AA/YYYY"/>
+                            <h:inputText style="border-radius: 5px ;" maxlength="10" value="#{d.dogumTarihi}" pt:placeholder="GG/AA/YYYY"/>
                         </td>
                 </tr>
                     <tr>

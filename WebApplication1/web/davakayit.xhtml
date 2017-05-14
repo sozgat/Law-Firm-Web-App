@@ -144,7 +144,9 @@ li.dropdown {
                     <td>MAHKEME YERİ:</td>
                     <td><h:inputText value="#{mahkemeBilgileri.mahkemeYeri}" style="border-radius: 5px ;" /> </td>
                     <td>HÜKÜM TARİHİ:</td>
-                    <td> <h:inputText value="#{mahkemeBilgileri.hukumTarihi}" style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" /> </td>
+                    <td> <h:inputText value="#{mahkemeBilgileri.hukumTarihi}" maxlength="10" style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" >
+                         
+                        </h:inputText> </td>
                 </tr>
                 <tr>
                     <td>DAVANIN TİPİ: </td>
@@ -158,13 +160,15 @@ li.dropdown {
                         </h:selectOneMenu></td>
                     
                     <td>DURUŞMA TARİHİ: </td>
-                    <td><h:inputText value="#{mahkemeBilgileri.davaTarihi}" style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" /> </td>
+                    <td><h:inputText value="#{mahkemeBilgileri.davaTarihi}" maxlength="10" style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" >
+                         
+                        </h:inputText> </td>
                 </tr>
                 <tr>
                     <td>DAVANIN KONUSU: </td>
                     <td><h:inputText style="border-radius: 5px ;" value="#{mahkemeBilgileri.davaKonusu}"/> </td>
                     <td>KARAR NO:</td>
-                    <td><h:inputText value="#{mahkemeBilgileri.kararNo}" style="border-radius: 5px ;" pt:placeholder="örn: 2017/999"/></td>
+                    <td><h:inputText value="#{mahkemeBilgileri.kararNo}" maxlength="8" style="border-radius: 5px ;" pt:placeholder="örn: 2017/999"/></td>
                 </tr>
 
                 <tr>

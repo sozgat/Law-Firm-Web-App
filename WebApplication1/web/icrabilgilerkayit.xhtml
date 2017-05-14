@@ -34,7 +34,8 @@
                          <td> <h:inputText style="border-radius: 5px ;" value="#{icraDavaBilgileri.ad}"/> </td>
                     
                      <td>TC KİMLİK NO:</td>
-                     <td><h:inputText style="border-radius: 5px ;" value="#{icraDavaBilgileri.tcKimlikNo}"/></td>
+                     <td><h:inputText style="border-radius: 5px ;" maxlength="11" value="#{icraDavaBilgileri.tcKimlikNo}"> 
+                         </h:inputText></td>
                 </tr>
                     <tr>
                         <td> SOYADI: </td>
@@ -44,7 +45,7 @@
                         <td>
                             DOĞUM TARİHİ: </td>
                         <td>
-                            <h:inputText style="border-radius: 5px ;" value="#{icraDavaBilgileri.dogumTarihi}" pt:placeholder="GG/AA/YYYY"/>
+                            <h:inputText style="border-radius: 5px ;" maxlength="10" value="#{icraDavaBilgileri.dogumTarihi}" pt:placeholder="GG/AA/YYYY"/>
                         </td>
                 </tr>
                     <tr style="height: 25%">
