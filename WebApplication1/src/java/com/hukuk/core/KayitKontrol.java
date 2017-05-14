@@ -1,5 +1,5 @@
 
-package net.serhatmercan.jsf;
+package com.hukuk.core;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

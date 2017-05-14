@@ -1,4 +1,4 @@
-package net.serhatmercan.jsf;
+package com.hukuk.core;
 
 public class MahkemeBilgileriKontrol {
     

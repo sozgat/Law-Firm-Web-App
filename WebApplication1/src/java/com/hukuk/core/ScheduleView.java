@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package net.serhatmercan.jsf;
+package com.hukuk.core;
 
 /**
  *
@@ -11,9 +11,11 @@ package net.serhatmercan.jsf;
  */
 
  
+import com.hukuk.services.TakvimService;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -43,12 +45,16 @@ public class ScheduleView implements Serializable {
     public void init() {
         
         eventModel = new DefaultScheduleModel();
-        eventModel.addEvent(new DefaultScheduleEvent("Champions League Match", previousDay8Pm(), previousDay11Pm()));
-        eventModel.addEvent(new DefaultScheduleEvent("Birthday Party", today1Pm(), today6Pm()));
-        eventModel.addEvent(new DefaultScheduleEvent("Breakfast at Tiffanys", nextDay9Am(), nextDay11Am()));
-        eventModel.addEvent(new DefaultScheduleEvent("Plant the new garden stuff", theDayAfter3Pm(), fourDaysLater3pm()));
-         
+        //eventModel.addEvent(new DefaultScheduleEvent("Champions League Match", previousDay8Pm(), previousDay11Pm()));
+        //eventModel.addEvent(new DefaultScheduleEvent("Birthday Party", today1Pm(), today6Pm()));
+        //eventModel.addEvent(new DefaultScheduleEvent("Breakfast at Tiffanys", nextDay9Am(), nextDay11Am()));
+        //eventModel.addEvent(new DefaultScheduleEvent("Plant the new garden stuff", theDayAfter3Pm(), fourDaysLater3pm()));
+        List<DefaultScheduleEvent> eventList = TakvimService.getEventList();
         
+        for (DefaultScheduleEvent event : eventList) {
+            eventModel.addEvent(event);
+        }
+      
     }
      
     public Date getRandomDate(Date base) {
@@ -157,13 +163,33 @@ public class ScheduleView implements Serializable {
         this.event = event;
     }
      
+     public String removeEvent(ActionEvent actionEvent) {
+        if(event.getId() != null){
+            
+             eventModel.updateEvent(event);
+             TakvimService.removeEvent((int)event.getData());
+        }
+        
+        event = new DefaultScheduleEvent(); 
+        
+        return "takvim.xhtml";
+    }
+    
+    
+    
     public void addEvent(ActionEvent actionEvent) {
-        if(event.getId() == null)
-            eventModel.addEvent(event);
-        else
-            eventModel.updateEvent(event);
-         
-        event = new DefaultScheduleEvent();
+        if(event.getId() == null){
+             int kayitNO = TakvimService.addEvent(event.getTitle(), event.getStartDate(), event.getEndDate());
+             
+             event = new DefaultScheduleEvent(event.getTitle(), event.getStartDate(), event.getEndDate(), kayitNO);
+             eventModel.addEvent(event);
+        }
+        else{
+             eventModel.updateEvent(event);
+             TakvimService.updateEvent((int)event.getData() , event.getTitle(), event.getStartDate(), event.getEndDate());
+        }
+        
+    event = new DefaultScheduleEvent();  
     }
      
     public void onEventSelect(SelectEvent selectEvent) {

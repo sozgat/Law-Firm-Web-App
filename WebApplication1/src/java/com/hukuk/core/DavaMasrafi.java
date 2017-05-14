@@ -1,4 +1,4 @@
-package net.serhatmercan.jsf;
+package com.hukuk.core;
 
 import java.text.DecimalFormat;
 import javax.faces.bean.ManagedBean;

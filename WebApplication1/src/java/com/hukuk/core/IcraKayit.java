@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package net.serhatmercan.jsf;
+package com.hukuk.core;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;

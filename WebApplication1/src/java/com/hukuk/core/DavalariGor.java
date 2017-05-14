@@ -1,4 +1,4 @@
-package net.serhatmercan.jsf;
+package com.hukuk.core;
 
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;

@@ -1,8 +1,10 @@
-package net.serhatmercan.jsf;
+package com.hukuk.core;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -53,5 +55,9 @@ public class DbFunctions {
     {
         String[] formats = date.split("-");
         return formats[2]+"/"+formats[1]+"/"+formats[0];
+    }
+    public static Date toDate(Timestamp timestamp) {
+        long millisec = timestamp.getTime() + (timestamp.getNanos() / 1000000);
+        return new Date(millisec);
     }
 }
