@@ -128,6 +128,10 @@
                 <caption style="font-family: sans-serif;text-align: center; font-size: 25px ;box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);background-color: #6698B3;color: #FFFFFF">
                     Mahkeme Bilgileri</caption>
                 <tr>
+                    <td><a class="eklekaydet" href="#openModal" style="text-decoration: none;" > DAVA MASRAFI HESAPLA </a></td>
+                   
+                </tr>
+                <tr>
                     <td>MAHKEME TİPİ:</td>
                     <td><h:selectOneMenu style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" value="#{mahkemeBilgileri.mahkemeTipi}">
                             <f:selectItem itemValue="SULH HUKUK MAHKEMESİ" itemLabel="SULH HUKUK MAHKEMESİ"/>
@@ -195,11 +199,12 @@
                         </h:selectOneMenu></td>
                 </tr>
                 <tr>
-                    <td><a class="eklekaydet" href="#openModal" style="text-decoration: none" > DAVA MASRAFI HESAPLA </a></td>
-                    <td> TOPLAM HARÇ VE GİDER AVANSI:
-                        <h:inputText style="border-radius: 5px ;" value="#{davaMasrafi.toplamTutar}"/> TL</td>
+                    
+                    <td> TOPLAM HARÇ VE GİDER AVANSI:</td>
+                    <td>   <h:inputText style="border-radius: 5px ;" value="#{davaMasrafi.toplamTutar}"/> TL</td>
                     <td>AVUKAT ADI SOYADI:</td>
                     <td><h:inputText style="border-radius: 5px ;" value="#{mahkemeBilgileri.avukatAdSoyad}"/></td>
+                    
                 </tr>
             </table>
 
