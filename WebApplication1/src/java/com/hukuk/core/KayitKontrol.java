@@ -8,19 +8,19 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.bean.RequestScoped;
 
-@ManagedBean(name = "BeanKayitKontrol") // Bean ismi
-@SessionScoped
+@ManagedBean(name = "BeanKayitKontrol")
+@RequestScoped
 
-public class KayitKontrol { // Class isimleri buyuk harfle basliyor.
+public class KayitKontrol {
        
-    private String tcKimlikNo; // TC Kimlik No üzerinde işlem yapmayacağımız için String tanımladım. Değişim yapılabilir.
+    private String tcKimlikNo;
     private String ad;
     private String soyad;
-    private String dogumTarihi; // Dogum tarihini date felan mı yapsak, veritabanında ben date yapıcam oraya kaydederken sorun yasarmıyız?(Mehmet)
+    private String dogumTarihi;
     private String buroAdi;
-    private int buroNo;
+    private String buroNo;
     private String kullaniciAdi;
     private String sifre;
     private String email;
@@ -58,11 +58,11 @@ public class KayitKontrol { // Class isimleri buyuk harfle basliyor.
         this.buroAdi = buroAdi;
     }
 
-    public int getBuroNo() {
+    public String getBuroNo() {
         return buroNo;
     }
 
-    public void setBuroNo(int buroNo) {
+    public void setBuroNo(String buroNo) {
         this.buroNo = buroNo;
     }
 
@@ -100,6 +100,8 @@ public class KayitKontrol { // Class isimleri buyuk harfle basliyor.
     
     public String kaydet()
     {
+        int buroSicilNo = Integer.parseInt(buroNo);
+        
         PreparedStatement ps = null;
         Connection baglanti = DbFunctions.getCon();
         
@@ -108,42 +110,27 @@ public class KayitKontrol { // Class isimleri buyuk harfle basliyor.
             //(Mehmet)Kullaniciya Veritabanina Baglanti Hatasi mesaji gosterelim. said sayfanin biyerine textbox mi eklersin duruma gore buraya ekleriz.
             return "kayitol.xhtml";
         }
-        String eklemeKodu = "INSERT INTO TBLKULLANICILAR2"//---!---(Mehmet)DB de duzeltme yaptıktan sonra isimdeki 2 yi silicez.
+        String eklemeKodu = "INSERT INTO TBLKULLANICILAR2"
                 + "(ad,soyad,dogumTarih,tcKimlikNo,kullaniciAd,sifre,email,buroNo) "
                 + "VALUES('"+ getAd() +"','"+ getSoyad() +"',"+ DbFunctions.stringToDate(getDogumTarihi())
-                + ",'"+ getTcKimlikNo() +"','"+ getKullaniciAdi() +"','"+ getSifre() +"','"+ getEmail() +"',"+ getBuroNo() +")";
+                + ",'"+ getTcKimlikNo() +"','"+ getKullaniciAdi() +"','"+ getSifre() +"','"+ getEmail() +"',"+ buroSicilNo +")";
         
-        try {
-          /*Hocanin yaptigi gibi yapmaya calistim fakat sql komutu calismadi, duzeltebilirsek
-            yorum satirina aldigim bu satirlari tekrar kullaniriz.(Mehmet)
-            ps.setString(1, getAd());
-            ps.setString(2, getSoyad());
-            ps.setString(3, DbFunctions.stringToDate(getDogumTarihi()));
-            ps.setString(4, "d");
-            ps.setString(5, "s");
-            ps.setString(6, "s");
-            ps.setString(7, "d");
-            ps.setInt(8, getBuroNo());
-            */
+        try 
+        {
             ps = baglanti.prepareStatement(eklemeKodu);
             ps.execute();
             System.out.println("Kayit eklendi.");
-            
-            
-        } catch (SQLException ex) {
+        } 
+        catch (SQLException ex) 
+        {
             Logger.getLogger(KayitKontrol.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Kayit sirasinda hata olustu!");//(Mehmet)HTML kismindada Hata mesaji verebilriiz.
-            return "kayitol.xhtml";
+            System.out.println("Kayit sirasinda hata olustu!");
+            return "hataolustu.xhtml";
         }
         finally
         {
             DbFunctions.baglantiKapa(baglanti);
            return "yonlendirme.xhtml";
-        }
-        
+        }  
     }
-    
-    
-    
-    
 }
