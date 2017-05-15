@@ -163,7 +163,7 @@ li.dropdown {
                 <tr>
                     <td><a class="eklekaydet" href="#openModal" style="text-decoration: none" > DAVA MASRAFI HESAPLA </a></td>
                     <td> TOPLAM HARÇ VE GİDER AVANSI:
-                        <h:inputText style="border-radius: 5px ;" value="#{davaMasrafi.toplamTutar}"/> TL</td>
+                        <h:inputText style="border-radius: 5px ;" value="#{mahkemeBilgileri.davaTutar}"/> TL</td>
                     <td>AVUKAT ADI SOYADI:</td>
                     <td><h:inputText style="border-radius: 5px ;" value="#{mahkemeBilgileri.avukatAdSoyad}"/></td>
                 </tr>
@@ -171,7 +171,7 @@ li.dropdown {
    
     <br></br>
     
-                <h:commandButton value="GÜNCELLE" class="eklekaydet"  style="width: 250px;text-align: center; margin: 0 550px 0" />
+    <h:commandButton action="#{mahkemeBilgileri.guncelle()}" value="GÜNCELLE" class="eklekaydet" style="width: 250px;text-align: center; margin: 0 550px 0" />
                 <br></br>
                 <br></br>
                 <h:commandButton value="DAVA BİLGİLERİ" action="davabilgilerdetayi.xhtml" class="eklekaydet"  style="width: 250px;text-align: center; margin: 0 550px 0" />
@@ -251,7 +251,7 @@ li.dropdown {
                     </tr>
                     <tr>
                         <td></td>
-                        <td> <h:commandButton action="#{davaMasrafi.hesapla()}" value="HESAPLA"  style="border-radius: 5px ;"></h:commandButton></td>
+                        <td> <h:commandButton action="#{davaMasrafi.guncelle()}" value="HESAPLA"  style="border-radius: 5px ;"></h:commandButton></td>
                         <td> <h:commandButton  value="TEMİZLE" style="border-radius: 5px ;" action="#{davaMasrafi.temizle()}" /> </td>  
                         <td></td>
                     </tr>

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,7 +28,16 @@ public class MahkemeBilgileri {
     public String kararNo;
     public String mahkemeKarari;
     public String avukatAdSoyad;
+    public double davaTutar;
+    private int davaEsasNoYeni;
 
+    public double getDavaTutar() {
+        return davaTutar;
+    }
+
+    public void setDavaTutar(double davaTutar) {
+        this.davaTutar = davaTutar;
+    }
     
     public String getAvukatAdSoyad() {
         return avukatAdSoyad;
@@ -180,6 +190,7 @@ public class MahkemeBilgileri {
         Map<String,String> params = fc.getExternalContext().getRequestParameterMap();                                
         String no =  params.get("davaEsasNo"); 
         davaEsasNo = Integer.parseInt(no);
+        davaEsasNoYeni = davaEsasNo;
         
         Connection con = DbFunctions.getCon();
         PreparedStatement ps = null;
@@ -188,11 +199,11 @@ public class MahkemeBilgileri {
         
         
     try {                                    
-            ps = con.prepareStatement("SELECT * FROM TBLMAHKEME_BILGILER WHERE DAVAESASNO="+davaEsasNo);
+            ps = con.prepareStatement("SELECT TOPLAMTUTAR,MAHKEMETIPI,HAKIMAD,MAHKEMEYERI,HUKUMTARIH,DAVATIPI,DAVATARIH,DAVAKONUSU,DAVAESASNO,MAHKEMEKARAR,AVUKATADSOYAD,KARARYIL,KARARNO FROM TBLMAHKEME_BILGILER,TBLMASRAFLAR WHERE DAVAESASNO="+davaEsasNo+" AND DAVAMASRAFID=TBLMASRAFLAR.ID");
             rs = ps.executeQuery();
             
             while (rs.next()) {
-                //MahkemeBilgileri mb = new MahkemeBilgileri();
+                
                 mahkemeTipi = rs.getString("MAHKEMETIPI");
                 hakimAd =     rs.getString("HAKIMAD"); 
                 mahkemeYeri = rs.getString("MAHKEMEYERI");
@@ -202,10 +213,17 @@ public class MahkemeBilgileri {
                 davaKonusu =  rs.getString("DAVAKONUSU");
                 davaEsasNo =  rs.getInt("DAVAESASNO");
                 mahkemeKarari = rs.getString("MAHKEMEKARAR");
-                //KARAR NO EKSİK
-                //DAVA MASRAF HESABI EKSİK
                 avukatAdSoyad = rs.getString("AVUKATADSOYAD");
-
+                
+                Date kararYilDate = rs.getDate("KARARYIL");
+                String kararYilString = kararYilDate.toString();
+                int kararNoInteger = rs.getInt("KARARNO");
+                
+                davaTutar = rs.getDouble("TOPLAMTUTAR");
+                
+                kararNo = kararYilString.substring(0, 4)+ "/"+Integer.toString(kararNoInteger) ;
+                
+                           
             }
             
             
@@ -221,5 +239,25 @@ public class MahkemeBilgileri {
              
     return "davadetaylarigor.xhtml";
     }
+    
+    public void guncelle(){
+    
+    VeriTabaniIslemleri vti = new VeriTabaniIslemleri();
+    vti.sqlKomut = "UPDATE TBLMAHKEME_BILGILER SET DAVAESASNO="+davaEsasNo+","+
+                                                   "MAHKEMETIPI='"+mahkemeTipi+"',"+
+                                                   "MAHKEMEYERI='"+mahkemeYeri+"',"+
+                                                   "DAVATIPI='"+davaTipi+"',"+
+                                                   "DAVAKONUSU='"+davaKonusu+"',"+
+                                                   "HAKIMAD='"+hakimAd+"',"+
+                                                   "HUKUMTARIH="+DbFunctions.stringToDate(hukumTarihi)+","+
+                                                   "DAVATARIH="+DbFunctions.stringToDate(davaTarihi)+","+
+                                                   "KARARYIL="+DbFunctions.stringToDateKarar(kararNo, 0)+","+
+                                                   "KARARNO="+DbFunctions.stringToDateKarar(kararNo, 1)+","+
+                                                   "MAHKEMEKARAR='"+mahkemeKarari+"',"+
+                                                   "AVUKATADSOYAD='"+avukatAdSoyad+"' WHERE DAVAESASNO="+davaEsasNoYeni;                                                               
+    vti.uygula();
+             
+    }
+    
     
 }

@@ -1,9 +1,7 @@
 package com.hukuk.core;
 
-import java.text.DecimalFormat;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import static jdk.nashorn.internal.objects.NativeMath.round;
 
 @ManagedBean
 @SessionScoped
@@ -142,6 +140,24 @@ public class DavaMasrafi {
         
     }
 
-
+    public void guncelle()
+    {
+        double mahkemeTuruToplam = mahkemeTuruHesapla();
+        double harcToplam        = harcHesapla();
+        double tarafSayisiToplam = turSayisiHesap(tarafSayisi, 45);
+        double sahitSayisiToplam = turSayisiHesap(sahitSayisi, 29);
+      
+        toplamTutar = mahkemeTuruToplam + davaDegeri + harcToplam + tarafSayisiToplam + sahitSayisiToplam + diger;
+        toplamTutar = Math.round(toplamTutar * 100.0) / 100.0;
+        
+        VeriTabaniIslemleri vti = new VeriTabaniIslemleri();
+        vti.sqlKomut = "UPDATE TBLMASRAFLAR SET MAHKEMETURUTOPLAM="+mahkemeTuruToplam+","+                                                
+                                                "HARCTOPLAM="+harcToplam+","+
+                                                "TARAFSAYISITOPLAM="+tarafSayisiToplam+","+
+                                                "SAHITSAYISITOPLAM="+sahitSayisiToplam+","+
+                                                "TOPLAMTUTAR="+toplamTutar;
+        
+        vti.uygula();
+    }        
     
 }
