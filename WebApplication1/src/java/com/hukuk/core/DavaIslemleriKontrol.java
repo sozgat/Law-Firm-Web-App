@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
@@ -36,9 +37,13 @@ public class DavaIslemleriKontrol {
     }
     
     public String save() throws SQLException{
-        MahkemeBilgileri mb = new MahkemeBilgileri();
-        davaEsasNo = mb.getDavaEsasNo();
+        
         int mahkemeBilgilerId;
+        
+        FacesContext fc = FacesContext.getCurrentInstance();
+        Map<String,String> params = fc.getExternalContext().getRequestParameterMap();                                
+        String no =  params.get("davaEsasNo"); 
+        davaEsasNo = Integer.parseInt(no);
         
         PreparedStatement ps = null;
         Connection baglanti = DbFunctions.getCon();
@@ -54,7 +59,7 @@ public class DavaIslemleriKontrol {
             rs = ps.getResultSet();
             
             if(rs.next())
-                mahkemeBilgilerId = rs.getInt("id");
+                mahkemeBilgilerId = rs.getInt("ID");
             else
                 return "hataolustu.xhtml";
         }
@@ -70,7 +75,7 @@ public class DavaIslemleriKontrol {
             sqlKomut="INSERT INTO TBLDAVA_BILGILER(davaTuru, ad, soyad, tcKimlikNo, dogumTarih, savunma, idMahkemeBilgiler)"
                     + "VALUES('"+davaGrup1.getDavaTuru()+"', '"+davaGrup1.getAd()+"', '"
                     +davaGrup1.getSoyad()+"','"+davaGrup1.getTcKimlikNo()+"',"+DbFunctions.stringToDate(davaGrup1.getDogumTarihi())
-                    +",'"+davaGrup1.getSavunmasi()+"',"+mahkemeBilgilerId+")";
+                    +",'"+davaGrup1.getSavunmasi()+"',"+10+")";
             ps=baglanti.prepareStatement(sqlKomut);                       
                         
             ps.execute();

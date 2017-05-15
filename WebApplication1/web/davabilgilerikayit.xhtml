@@ -84,7 +84,9 @@
                         <h:commandButton value="EKLE" class="eklekaydet" style="width: 150px"  action="#{davaIslemleriKontrol.add()}">
                             <f:ajax render="@form" execute="@form"/>
                         </h:commandButton>
-                        <h:commandButton value="KAYDET" class="eklekaydet"  style="width: 150px" action="#{davaIslemleriKontrol.save()}" /> 
+                        <h:commandButton value="KAYDET" class="eklekaydet"  style="width: 150px" action="#{davaIslemleriKontrol.save()}" >
+                            <f:param name = "davaEsasNo" value = "#{mahkemeBilgileri.davaEsasNo}" />
+                        </h:commandButton>    
                     </td>
             </tr>
                         </table>
