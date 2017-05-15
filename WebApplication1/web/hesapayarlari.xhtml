@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>HESAP AYARLARI</title>
         <style>
@@ -111,11 +112,15 @@ div.panel {
             <div class="form">
                 <h:form id="myForm">
                     <p style="color: #2C6C8E">ŞİFRE DEĞİŞTİRME</p>
-                    <h:inputSecret class="input" pt:placeholder="MEVCUT ŞİFRENİZ" value="#{hesapAyarlari.eskiSifre}"/>
-                    <h:message class="error" for="newPassword1" id="newPassword1Error"/>
-                    <h:inputSecret class="input" pt:placeholder="YENİ ŞİFRENİZ" value="#{hesapAyarlari.sifre1}"/>
-                    <h:inputSecret class="input" pt:placeholder="YENİ ŞİFREYİ TEKRAR GİRİN" value="#{hesapAyarlari.sifre2}"/>
-                    <h:message class="error" for="newPassword2" id="newPassword2Error" />
+                    <h:inputText class="input" pt:placeholder="KULLANICI ADINIZ" value="#{hesapAyarlari.kullaniciAd}" />
+                    <h:inputSecret class="input" pt:placeholder="MEVCUT ŞİFRENİZ" value="#{hesapAyarlari.eskiSifre}" />
+                    <h:inputSecret class="input" pt:placeholder="YENİ ŞİFRENİZ" value="#{hesapAyarlari.sifre1}" required="true" requiredMessage="Car Id is mandatory"
+                                   validatorMessage="ŞİFRENİZ EN AZ 1 ADET BÜYÜK HARF, KÜÇÜK HARF VE RAKAM İÇERMELİDİR!">
+                        <f:validateRegex pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" /> 
+                    </h:inputSecret>
+                    <h:inputSecret class="input" pt:placeholder="YENİ ŞİFREYİ TEKRAR GİRİN" value="#{hesapAyarlari.sifre2}" validatorMessage="ŞİFRENİZ EN AZ 1 ADET BÜYÜK HARF, KÜÇÜK HARF VE RAKAM İÇERMELİDİR!">
+                        <f:validateRegex pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" /> 
+                    </h:inputSecret> 
                     <h:commandButton class="button"  value="ŞİFREMİ DEĞİŞTİR" action="#{hesapAyarlari.degistir()}"/>
                    
 

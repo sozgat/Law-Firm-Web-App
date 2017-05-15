@@ -5,16 +5,26 @@ import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 @ManagedBean
 @SessionScoped
 public class HesapAyarlari implements Serializable 
 {
-    private String kullaniciAd="sf";//Simdilik burada default tanimliyorum, daha sonra kullanici adini sistemden cekicez.
+    private String kullaniciAd;//Simdilik burada default tanimliyorum, daha sonra kullanici adini sistemden cekicez.
     private String eskiSifre;
     private String sifre1;
     private String sifre2;
+
+    public String getKullaniciAd() {
+        return kullaniciAd;
+    }
+
+    public void setKullaniciAd(String kullaniciAd) {
+        this.kullaniciAd = kullaniciAd;
+    }
     
     public HesapAyarlari() {
     }
@@ -48,8 +58,7 @@ public class HesapAyarlari implements Serializable
     {
         if(!sifre1.equals(sifre2))
             {
-                //setMessage("Şifreler Uyuşmuyor!");//Said Hata mesaji sende.
-                return "";
+                FacesContext.getCurrentInstance().addMessage("myForm:newPassword1", new FacesMessage("ŞİFRELER UYUŞMUYOR!", "ŞİFRELER UYUŞMUYOR!"));
             }
         Connection baglanti = DbFunctions.getCon();
         PreparedStatement ps = null;
