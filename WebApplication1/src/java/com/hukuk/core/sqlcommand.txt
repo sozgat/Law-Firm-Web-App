@@ -54,7 +54,6 @@ savunma VARCHAR(500),
 idMahkemeBilgiler INT/*mahkemebilgiler tablosunun id si*/
 );
 
-//MASRAFLAR TABLOSUNU SİLİP YERİNE YENİ ŞEKLİ İLE TABLO OLUŞTURUN
 CREATE TABLE TBLMASRAFLAR
 (
 id INT GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1) PRIMARY KEY,
@@ -102,3 +101,5 @@ baslik VARCHAR(100),
 baslangic TIMESTAMP,
 bitis TIMESTAMP
 );
+
+/*Beyler yeni tablo eklerseniz DbOlustur fonksiyonunun içinede eklemeyi unutmayin!*/
