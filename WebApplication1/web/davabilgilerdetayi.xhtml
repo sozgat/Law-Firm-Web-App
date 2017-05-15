@@ -6,7 +6,7 @@
        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>DAVA BİLGİLERİ EKLE</title>
+        <title>DAVA BİLGİLER DETAYI</title>
         <link href="css/davakayit.css" rel="stylesheet" type="text/css" />
         <link href="css/eklesilkaydetbutton.css" rel="stylesheet" type="text/css"/>
     </h:head>
@@ -84,7 +84,7 @@
                         <h:commandButton value="EKLE" class="eklekaydet" style="width: 150px"  action="#{davaIslemleriKontrol.add()}">
                             <f:ajax render="@form" execute="@form"/>
                         </h:commandButton>
-                        <h:commandButton value="GÜNCELLE" class="eklekaydet"  style="width: 150px" action="#{davaIslemleriKontrol.save()}" >
+                        <h:commandButton value="KAYDET" class="eklekaydet"  style="width: 150px" action="#{davaIslemleriKontrol.save()}" >
                             <f:param name = "davaEsasNo" value = "#{mahkemeBilgileri.davaEsasNo}" />
                         </h:commandButton>    
                     </td>
