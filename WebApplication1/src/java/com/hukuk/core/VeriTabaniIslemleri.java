@@ -11,7 +11,7 @@ public class VeriTabaniIslemleri {
 public String sqlKomut;
 public String sayfa;
 
-public String ekle()
+public String uygula()
 {
     PreparedStatement ps = null;
     Connection baglanti = DbFunctions.getCon();

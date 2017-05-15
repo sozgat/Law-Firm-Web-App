@@ -138,7 +138,7 @@ public class DavaMasrafi {
                                  +sahitSayisiToplam+","+toplamTutar+")";
        
         
-        vti.ekle();
+        vti.uygula();
         
     }
 

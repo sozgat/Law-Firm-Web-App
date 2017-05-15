@@ -4,27 +4,29 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 @ManagedBean
 @SessionScoped
 
 public class MahkemeBilgileri {
     
-    private String mahkemeTipi;
-    private String mahkemeYeri;
-    private String davaTipi;
-    private String davaKonusu;
-    private int davaEsasNo;
-    private String hakimAd;
-    private String hukumTarihi;
-    private String davaTarihi;
-    private String kararNo;
-    private String mahkemeKarari;
-    private String avukatAdSoyad;
+    public String mahkemeTipi;
+    public String mahkemeYeri;
+    public String davaTipi;
+    public String davaKonusu;
+    public int davaEsasNo;
+    public String hakimAd;
+    public String hukumTarihi;
+    public String davaTarihi;
+    public String kararNo;
+    public String mahkemeKarari;
+    public String avukatAdSoyad;
 
     
     public String getAvukatAdSoyad() {
@@ -172,6 +174,52 @@ public class MahkemeBilgileri {
         DbFunctions.baglantiKapa(baglanti);
         return "davabilgilerikayit.xhtml";
     }
-    
+    public String degis(){
+        
+        FacesContext fc = FacesContext.getCurrentInstance();
+        Map<String,String> params = fc.getExternalContext().getRequestParameterMap();                                
+        String no =  params.get("davaEsasNo"); 
+        davaEsasNo = Integer.parseInt(no);
+        
+        Connection con = DbFunctions.getCon();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        
+        
+    try {                                    
+            ps = con.prepareStatement("SELECT * FROM TBLMAHKEME_BILGILER WHERE DAVAESASNO="+davaEsasNo);
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                //MahkemeBilgileri mb = new MahkemeBilgileri();
+                mahkemeTipi = rs.getString("MAHKEMETIPI");
+                hakimAd =     rs.getString("HAKIMAD"); 
+                mahkemeYeri = rs.getString("MAHKEMEYERI");
+                hukumTarihi = DbFunctions.dateToString(rs.getDate("HUKUMTARIH").toString());
+                davaTipi =    rs.getString("DAVATIPI");
+                davaTarihi =  DbFunctions.dateToString(rs.getDate("DAVATARIH").toString());
+                davaKonusu =  rs.getString("DAVAKONUSU");
+                davaEsasNo =  rs.getInt("DAVAESASNO");
+                mahkemeKarari = rs.getString("MAHKEMEKARAR");
+                //KARAR NO EKSİK
+                //DAVA MASRAF HESABI EKSİK
+                avukatAdSoyad = rs.getString("AVUKATADSOYAD");
+
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DavalariGor.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            try {
+                con.close();                
+            } catch (SQLException ex) {
+                Logger.getLogger(DavalariGor.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+             
+    return "davadetaylarigor.xhtml";
+    }
     
 }

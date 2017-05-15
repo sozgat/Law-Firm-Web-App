@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>DAVA DETAYLARI</title>
           <style>
@@ -117,7 +117,8 @@ li.dropdown {
                 </tr>
                 <tr>
                     <td>MAHKEME YERİ:</td>
-                    <td><h:inputText value="#{mahkemeBilgileri.mahkemeYeri}" style="border-radius: 5px ;" /> </td>
+                    <td><h:inputText 
+                            value="#{mahkemeBilgileri.mahkemeYeri}" style="border-radius: 5px ;" /> </td>
                     <td>HÜKÜM TARİHİ:</td>
                     <td> <h:inputText value="#{mahkemeBilgileri.hukumTarihi}" maxlength="10" style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" >
                          

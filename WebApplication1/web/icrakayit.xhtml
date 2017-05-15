@@ -138,9 +138,17 @@ li.dropdown {
                 </tr>
                 <tr>
                     <td>DURUŞMA TARİHİ: </td>
-                    <td><h:inputText value="#{icraKayit.durusmaTarihi}" maxlength="10" style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" /> </td>
+                    <td><h:inputText value="#{icraKayit.durusmaTarihi}" maxlength="10" style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" required="true"
+                                      requiredMessage="DURUŞMA TARiHİNİZİ GİRİN!"
+                                      validatorMessage="DURUŞMA TARİHİNİ HATALI GİRDİNİZ! ÖRNEK YAZIM: 01/01/2017">
+
+                            <f:validateRegex pattern="[0-9]{1,2}(/|-)[0-9]{1,2}(/|-)[0-9]{4}" /> </h:inputText></td>
                     <td>HÜKÜM TARİHİ:</td>
-                    <td><h:inputText value="#{icraKayit.hukumTarihi}" maxlength="10" style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" /> </td>
+                    <td><h:inputText value="#{icraKayit.hukumTarihi}" maxlength="10" style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" required="true"
+                                      requiredMessage="HÜKÜM TARiHİNİZİ GİRİN!"
+                                      validatorMessage="HÜKÜM TARİHİNİ HATALI GİRDİNİZ! ÖRNEK YAZIM: 01/01/2017">
+
+                            <f:validateRegex pattern="[0-9]{1,2}(/|-)[0-9]{1,2}(/|-)[0-9]{4}" /> </h:inputText> </td>
                 </tr>
                 <tr>
                     <td>DAVANIN KONUSU: </td>

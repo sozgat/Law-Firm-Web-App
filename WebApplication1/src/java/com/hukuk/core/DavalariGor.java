@@ -8,10 +8,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
 /**
@@ -24,7 +26,7 @@ public class DavalariGor implements Serializable
 {
     private String mahkemeTipi;
     private String davaTipi;
-    private int davaEsasNo=0;
+    private int    davaEsasNo=0;
     private String durusmaGun;
     private String durusmaAy;
     private String durusmaYil;
@@ -112,14 +114,19 @@ public class DavalariGor implements Serializable
     public void setMahkemeKarari(String mahkemeKarari) {
         this.mahkemeKarari = mahkemeKarari;
     }
+          
+    public void sil(){
+    FacesContext fc = FacesContext.getCurrentInstance();
+    Map<String,String> params = fc.getExternalContext().getRequestParameterMap();                                
+    String no =  params.get("davaEsasNo"); 
+    davaEsasNo = Integer.parseInt(no);
     
-    //Getter ve Setter Sonu.----------------------------
-    
-    public void sil(ActionEvent event){
-       
-        
-        
+    VeriTabaniIslemleri vti = new VeriTabaniIslemleri();
+    vti.sqlKomut = "DELETE FROM TBLMAHKEME_BILGILER WHERE DAVAESASNO="+davaEsasNo;
+    vti.uygula();
     }
+    
+   
     
     public void goruntule(){
         

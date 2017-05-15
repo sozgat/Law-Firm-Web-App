@@ -138,7 +138,7 @@ public class IcraKayit
                                +ipotekKonulanUrunler+"','"+rehinKonulanUrunler+"','"+hacizAlinanUrunler+"',"+alacakToplamTutari+","
                                +hacizToplamTutari+")";        
         vti.sayfa="icrabilgilerkayit.xhtml";
-        return vti.ekle();
+        return vti.uygula();
         
     }
 }
