@@ -50,7 +50,7 @@ public class DavaIslemleriKontrol {
         String sqlKomut;
         
         ResultSet rs = null;
-        String sqlSorgu = "Select * From TBLMASRAFLAR WHERE DAVAESASNO="+davaEsasNo+" FETCH FIRST 1 ROWS ONLY";
+        String sqlSorgu = "SELECT ID FROM TBLMAHKEME_BILGILER WHERE DAVAESASNO="+davaEsasNo+" FETCH FIRST 1 ROWS ONLY";
         
         try 
         {
@@ -75,7 +75,7 @@ public class DavaIslemleriKontrol {
             sqlKomut="INSERT INTO TBLDAVA_BILGILER(davaTuru, ad, soyad, tcKimlikNo, dogumTarih, savunma, idMahkemeBilgiler)"
                     + "VALUES('"+davaGrup1.getDavaTuru()+"', '"+davaGrup1.getAd()+"', '"
                     +davaGrup1.getSoyad()+"','"+davaGrup1.getTcKimlikNo()+"',"+DbFunctions.stringToDate(davaGrup1.getDogumTarihi())
-                    +",'"+davaGrup1.getSavunmasi()+"',"+10+")";
+                    +",'"+davaGrup1.getSavunmasi()+"',"+mahkemeBilgilerId+")";
             ps=baglanti.prepareStatement(sqlKomut);                       
                         
             ps.execute();
