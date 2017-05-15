@@ -43,6 +43,7 @@
                 <f:validateRegex pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"/>      
             </h:inputSecret>
             <h:commandButton class="button" value="KAYIT OL" action="#{BeanKayitKontrol.kaydet()}"/>
+            <h:outputLabel style="color:  #FF0000" value="#{BeanKayitKontrol.hataMesaji}"/>
         </h:form>
         </div>
         </div>

@@ -84,6 +84,7 @@ public class KullaniciGiris {
                 if(rs.getString("SIFRE").equals(getSifre()))
                 {
                     DbFunctions.baglantiKapa(baglanti);
+                    hataMesaji="";
                     return "anasayfa.xhtml";//(Mehmet)Sifre dogru
                 }
                 else

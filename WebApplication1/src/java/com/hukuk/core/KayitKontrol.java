@@ -14,7 +14,15 @@ import javax.faces.bean.RequestScoped;
 @RequestScoped
 
 public class KayitKontrol {
-       
+    private String hataMesaji;
+
+    public String getHataMesaji() {
+        return hataMesaji;
+    }
+
+    public void setHataMesaji(String hataMesaji) {
+        this.hataMesaji = hataMesaji;
+    }
     private String tcKimlikNo;
     private String ad;
     private String soyad;
@@ -107,7 +115,7 @@ public class KayitKontrol {
         
         if(baglanti == null)
         {
-            //(Mehmet)Kullaniciya Veritabanina Baglanti Hatasi mesaji gosterelim. said sayfanin biyerine textbox mi eklersin duruma gore buraya ekleriz.
+            hataMesaji="VERİ TABANINA BAĞLANAMADI!";
             return "kayitol.xhtml";
         }
         String eklemeKodu = "INSERT INTO TBLKULLANICILAR2"
