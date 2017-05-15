@@ -13,6 +13,15 @@ import javax.faces.context.FacesContext;
 @SessionScoped
 public class HesapAyarlari implements Serializable 
 {
+    private String hataMesaji;
+
+    public String getHataMesaji() {
+        return hataMesaji;
+    }
+
+    public void setHataMesaji(String hataMesaji) {
+        this.hataMesaji = hataMesaji;
+    }
     private String kullaniciAd;//Simdilik burada default tanimliyorum, daha sonra kullanici adini sistemden cekicez.
     private String eskiSifre;
     private String sifre1;
@@ -58,15 +67,17 @@ public class HesapAyarlari implements Serializable
     {
         if(!sifre1.equals(sifre2))
             {
-                FacesContext.getCurrentInstance().addMessage("myForm:newPassword1", new FacesMessage("ŞİFRELER UYUŞMUYOR!", "ŞİFRELER UYUŞMUYOR!"));
+                hataMesaji = "YENİ ŞİFRELER UYUŞMUYOR!";
+                return "";
             }
         Connection baglanti = DbFunctions.getCon();
         PreparedStatement ps = null;
         
         if(baglanti == null)
         {
+             hataMesaji = "VERİ TABANI BAĞLANTI HATASI!";
             //(Mehmet)Kullaniciya Veritabanina Baglanti Hatasi mesaji gosterelim. said sayfanin biyerine textbox mi eklersin duruma gore buraya ekleriz.
-            return "kayitol.xhtml";
+            return "hataolustu.xhtml";
         }
 
         String updateKomutu = "UPDATE TBLKULLANICILAR2 SET SIFRE='"+sifre1+"' WHERE KULLANICIAD='"+kullaniciAd+"'";

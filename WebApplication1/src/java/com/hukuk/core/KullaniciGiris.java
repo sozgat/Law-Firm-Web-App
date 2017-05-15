@@ -67,7 +67,7 @@ public class KullaniciGiris {
         {
             
             //(Mehmet)Kullaniciya Veritabanina Baglanti Hatasi mesaji gosterelim. said sayfanin biyerine textbox mi eklersin duruma gore buraya ekleriz.
-             FacesContext.getCurrentInstance().addMessage("myForm:newPassword1", new FacesMessage("VERİ TABANINA BAĞLANMADI", "VERİ TABANINA BAĞLANMADI"));
+             hataMesaji = "VERİ TABANINA BAĞLANAMADI!";
             return "";
         }
         
@@ -90,7 +90,7 @@ public class KullaniciGiris {
                 {
                     System.out.println("Sifrenizi hatali girdiniz!");
                     DbFunctions.baglantiKapa(baglanti);
-                     FacesContext.getCurrentInstance().addMessage("myForm:newPassword1", new FacesMessage("ŞİFRENİZİ HATALI GİRDİNİZ!", "ŞİFRENİZİ HATALI GİRDİNİZ!"));
+                     hataMesaji = "ŞİFRENİZİ HATALI GİRDİNİZ!";
                     return "";
                     //(Mehmet)Sifre Hatali popup'i verdirebiliriz. Ben farketmemiz icin bu sayfaya yonlendiridim.
                 }
@@ -98,8 +98,7 @@ public class KullaniciGiris {
             else
             {
                 DbFunctions.baglantiKapa(baglanti);
-                FacesContext.getCurrentInstance().addMessage("myForm:newPassword1", 
-                        new FacesMessage("BÖYLE BİR KULLANICI BULUNAMADI!", "BÖYLE BİR KULLANICI BULUNAMADI!"));
+                 hataMesaji = "BÖYLE BİR KULLANICI BULUNAMADI!";
                     return "";
                 //(Mehmet)Boyle bir kullanici bulunamadi mesaji verdiricez.
             }
@@ -108,7 +107,7 @@ public class KullaniciGiris {
             Logger.getLogger(KullaniciGiris.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Sorgulama yaparken hata olustu!");
             DbFunctions.baglantiKapa(baglanti);
-            FacesContext.getCurrentInstance().addMessage("myForm:newPassword1", new FacesMessage("VERİ TABANI SORGULAMA HATASI", "VERİ TABANI ERİŞİM SORUNU"));
+            hataMesaji = "VERİ TABANINA SORGULAMASINDA HATA!";
             return "";//(Mehmet)Veritabani sorgulamasinda hata meydana geldi mesaji
         }
     }

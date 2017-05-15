@@ -114,15 +114,16 @@ div.panel {
                     <p style="color: #2C6C8E">ŞİFRE DEĞİŞTİRME</p>
                     <h:inputText class="input" pt:placeholder="KULLANICI ADINIZ" value="#{hesapAyarlari.kullaniciAd}" />
                     <h:inputSecret class="input" pt:placeholder="MEVCUT ŞİFRENİZ" value="#{hesapAyarlari.eskiSifre}" />
-                    <h:inputSecret class="input" pt:placeholder="YENİ ŞİFRENİZ" value="#{hesapAyarlari.sifre1}" required="true" requiredMessage="Car Id is mandatory"
-                                   validatorMessage="ŞİFRENİZ EN AZ 1 ADET BÜYÜK HARF, KÜÇÜK HARF VE RAKAM İÇERMELİDİR!">
+                    <h:inputSecret class="input" pt:placeholder="YENİ ŞİFRENİZ" value="#{hesapAyarlari.sifre1}" >
                         <f:validateRegex pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" /> 
                     </h:inputSecret>
-                    <h:inputSecret class="input" pt:placeholder="YENİ ŞİFREYİ TEKRAR GİRİN" value="#{hesapAyarlari.sifre2}" validatorMessage="ŞİFRENİZ EN AZ 1 ADET BÜYÜK HARF, KÜÇÜK HARF VE RAKAM İÇERMELİDİR!">
+                    <h:inputSecret class="input" pt:placeholder="YENİ ŞİFREYİ TEKRAR GİRİN" value="#{hesapAyarlari.sifre2}" >
                         <f:validateRegex pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" /> 
                     </h:inputSecret> 
                     <h:commandButton class="button"  value="ŞİFREMİ DEĞİŞTİR" action="#{hesapAyarlari.degistir()}"/>
-                   
+                    <h:outputLabel value="HATIRLATMA! ŞİFRENİZ EN AZ 1 ADET BÜYÜK,KÜÇÜK HARFTEN VE RAKAMDAN OLUŞMALIDIR!"/>
+                    <br></br>
+                    <h:outputLabel style="color:  #FF0000" value="#{hesapAyarlari.hataMesaji}"/>
 
                 </h:form>
             </div>

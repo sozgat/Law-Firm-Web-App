@@ -18,7 +18,7 @@
                     <h:commandButton class="button" value="KAYIT OL" action="kayitol.xhtml"/>
                     <h:commandButton class="button" value="DB OLUŞTUR" action="#{BeanKullaniciGiris.dbOlustur()}"/>
                     <p> <a href="faces/sifremiunuttum.xhtml" style="color: #2C6C8E; text-decoration: none"> Şifremi Unuttum</a></p>
-                    <h:outputLabel value="#{BeanKullaniciGiris.hataMesaji}"/><!--Said uyari mesajini böyle ekledim zevkine göre degistirebilirsin.-->
+                    <h:outputLabel style="color: #FF0000" value="#{BeanKullaniciGiris.hataMesaji}"/><!--Said uyari mesajini böyle ekledim zevkine göre degistirebilirsin.-->
                 </h:form>
             </div>
         </div>
