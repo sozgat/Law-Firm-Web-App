@@ -96,7 +96,7 @@
                         <td width="30%">#{d.avukatAdSoyad}</td>
                         <td width="30%">#{d.mahkemeKarari}</td>
                         <td width="30%">                            
-                            <p:commandButton value="DETAYLARI GÖR" action="#{mahkemeBilgileri.degis()}">
+                            <p:commandButton value="DETAYLARI GÖR" actionListener="davadetaylarigor.xhtml" action="#{mahkemeBilgileri.degis()}">
                                  <f:param name = "davaEsasNo" value = "#{d.davaEsasNo}" />
                             </p:commandButton>
                         </td>    

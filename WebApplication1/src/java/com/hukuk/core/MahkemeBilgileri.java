@@ -237,7 +237,7 @@ public class MahkemeBilgileri {
             }
         }
              
-    return "davadetaylarigor.xhtml";
+    return "davadetaylarigor.xhtml?faces-redirect=true";
     }
     
     public void guncelle(){

@@ -124,6 +124,10 @@ public class DavalariGor implements Serializable
     VeriTabaniIslemleri vti = new VeriTabaniIslemleri();
     vti.sqlKomut = "DELETE FROM TBLMAHKEME_BILGILER WHERE DAVAESASNO="+davaEsasNo;
     vti.uygula();
+    
+    /*VeriTabaniIslemleri vti2 = new VeriTabaniIslemleri();
+    vti2.sqlKomut = "DELETE FROM TBLDAVA_BILGILER WHERE TBLDAVA_BILGILER.IDMAHKEMEBILGILER=(SELECT ID FROM TBLMAHKEME_BILGILER WHERE DAVAESASNO=10)";
+    vti2.uygula();*/
     }
     
    

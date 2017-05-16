@@ -72,8 +72,6 @@ public class ScheduleView implements Serializable {
         return eventModel;
     }
      
-
- 
     private Calendar today() {
         Calendar calendar = Calendar.getInstance();
         calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.get(Calendar.DATE), 0, 0, 0);

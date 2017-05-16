@@ -39,10 +39,9 @@
                             </h:selectOneMenu>
                         </td>
                     <td class="td2">
-                        <h:commandButton value="SİL"  class="sil"   action="#{davaIslemleriKontrol.remove(d)}">
-                            
-                            <f:ajax render="@form" execute="@form"/>
-                            </h:commandButton>
+                        <h:commandButton value="SİL"  class="sil"   action="#{davaIslemleriKontrol.sil()}">                                                                                         
+                            <f:param name = "tcKimlikNo" value = "#{d.tcKimlikNo}" />
+                        </h:commandButton>
                         </td>
                     
                 </tr>

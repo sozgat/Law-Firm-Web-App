@@ -4,7 +4,7 @@ public class DavaGorClass
 {
     public String mahkemeTipi;
     public String davaTipi;
-    public int davaEsasNo;
+    public int    davaEsasNo;
     public String durusmaTarih;
     public String avukatAdSoyad;
     public String mahkemeKarari;

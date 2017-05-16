@@ -13,7 +13,6 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
 
 @ManagedBean
 @SessionScoped
@@ -85,6 +84,16 @@ public class DavaIslemleriKontrol {
     
     }
     
+    public void sil(){
+        FacesContext fc = FacesContext.getCurrentInstance();
+        Map<String,String> params = fc.getExternalContext().getRequestParameterMap();                                
+        String no =  params.get("tcKimlikNo"); 
+        int tcKimlikNo = Integer.parseInt(no);
+        
+        VeriTabaniIslemleri vti = new VeriTabaniIslemleri();
+        vti.sqlKomut = "DELETE FROM TBLDAVA_BILGILER WHERE TCKIMLIKNO="+tcKimlikNo;
+        vti.uygula();
+    }
 
 
     public List<DavaIslemleri> getDavaGrup() {
