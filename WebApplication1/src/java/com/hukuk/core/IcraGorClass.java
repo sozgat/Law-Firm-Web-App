@@ -2,11 +2,20 @@ package com.hukuk.core;
 
 public class IcraGorClass 
 {
+    private int id;
     private String durusmaTarih;
     private String avukatAdSoyad;
     private String kararNo;
     private String hukumTarih;
     private double alacakTutar;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getDurusmaTarih() {
         return durusmaTarih;

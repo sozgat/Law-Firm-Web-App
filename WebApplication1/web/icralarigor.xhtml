@@ -143,8 +143,8 @@
                             </p:commandButton>
                         </td>    
                         <td>                                             
-                            <p:commandButton value="SİL" >
-                                 <f:param name = "değişkenadı" />
+                            <p:commandButton value="SİL" action="#{icralariGor.sil()}">
+                                <f:param name = "icraId" value="#{d.id}"/>
                             </p:commandButton>  
                         </td>
                     </tr>

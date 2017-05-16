@@ -7,9 +7,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 @ManagedBean
 @SessionScoped
@@ -137,6 +139,20 @@ public class IcralariGor implements Serializable {
         this.dbKayitlari = dbKayitlari;
     }
     
+    public String sil()
+    {
+        int icraId;
+        FacesContext fc = FacesContext.getCurrentInstance();
+        Map<String,String> params = fc.getExternalContext().getRequestParameterMap();                                
+        String id =  params.get("icraId"); 
+        icraId = Integer.parseInt(id);
+        
+        VeriTabaniIslemleri vti = new VeriTabaniIslemleri();
+        vti.sqlKomut = "DELETE FROM TBLICRALAR WHERE ID=6";//+icraId
+        vti.uygula();
+        return "";
+    }
+    
     public void goruntule()
     {
         Connection baglanti = DbFunctions.getCon();
@@ -202,7 +218,7 @@ public class IcralariGor implements Serializable {
         
         try
         {
-            ps = baglanti.prepareStatement("SELECT DURUSMATARIHI, AVUKATADSOYAD, KARARYIL, KARARNO, HUKUMTARIHI, ALACAKTOPLAMTUTARI FROM TBLICRALAR"+bilgiler);
+            ps = baglanti.prepareStatement("SELECT ID,DURUSMATARIHI, AVUKATADSOYAD, KARARYIL, KARARNO, HUKUMTARIHI, ALACAKTOPLAMTUTARI FROM TBLICRALAR"+bilgiler);
             ps.execute();
             rs = ps.getResultSet();
             
@@ -215,7 +231,7 @@ public class IcralariGor implements Serializable {
                 veriler.setKararNo(dizi[0]+"/"+ rs.getString("KARARNO"));
                 veriler.setHukumTarih(DbFunctions.dateToString(rs.getDate("HUKUMTARIHI").toString()));
                 veriler.setAlacakTutar(rs.getDouble("ALACAKTOPLAMTUTARI"));
-                
+                veriler.setId(rs.getInt("ID"));
                 dbKayitlari.add(veriler);
             }
         }
