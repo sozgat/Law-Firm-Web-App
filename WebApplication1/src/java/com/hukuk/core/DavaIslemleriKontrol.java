@@ -162,7 +162,8 @@ public class DavaIslemleriKontrol {
         davaGrup.clear();
     }
 
-    public void guncelle(){
+    public void guncelle(){        
+        
         for (DavaIslemleri davaGrup1 : davaGrup) 
             {
             VeriTabaniIslemleri vti = new VeriTabaniIslemleri();
@@ -171,7 +172,10 @@ public class DavaIslemleriKontrol {
                                                         "SOYAD='"+davaGrup1.soyad+"',"+
                                                         "TCKIMLIKNO='"+davaGrup1.tcKimlikNo+"',"+
                                                         "DOGUMTARIH="+DbFunctions.stringToDate(davaGrup1.dogumTarihi)+","+
-                                                        "SAVUNMA='"+davaGrup1.savunmasi+"'";
+                                                        "SAVUNMA='"+davaGrup1.savunmasi+"' "+
+                                                        "WHERE TCKIMLIKNO='"+davaGrup1.tcKimlikNo+"' "+
+                                                        "AND TBLDAVA_BILGILER.IDMAHKEMEBILGILER=" +
+                                                        "(SELECT ID FROM TBLMAHKEME_BILGILER WHERE DAVAESASNO="+davaEsasNo+")";
             vti.uygula();                
             }    
 
