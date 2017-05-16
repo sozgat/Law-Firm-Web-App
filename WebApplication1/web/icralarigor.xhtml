@@ -97,52 +97,48 @@
                 </tr>
                 <tr>
                     <td>
-                        <h:inputText style="width: 40px;  border-radius: 5px" pt:placeholder="  GG"></h:inputText>
-                        <h:inputText style="width: 40px;  border-radius: 5px" pt:placeholder="  AA"></h:inputText>
-                        <h:inputText style="width: 80px; border-radius: 5px" pt:placeholder="     YYYY"></h:inputText>
+                        <h:inputText style="width: 40px;  border-radius: 5px" pt:placeholder="  GG" value="#{icralariGor.durusmaGun}"></h:inputText>
+                        <h:inputText style="width: 40px;  border-radius: 5px" pt:placeholder="  AA" value="#{icralariGor.durusmaAy}"></h:inputText>
+                        <h:inputText style="width: 80px; border-radius: 5px" pt:placeholder="     YYYY" value="#{icralariGor.durusmaYil}"></h:inputText>
                     </td>
                     <td>
-                        <h:inputText style="width: 120px; border-radius: 5px" pt:placeholder="örn:SAİD"></h:inputText>
-                        <h:inputText style="width: 120px; border-radius: 5px" pt:placeholder="örn:ÖZGAT"></h:inputText>
-                    </td>
-
-                    <td>
-                        <h:inputText style="width: 80px; border-radius: 5px" pt:placeholder="     YYYY"></h:inputText>
-                        <h:inputText style="width: 60px;  border-radius: 5px" pt:placeholder="örn:213"></h:inputText>
+                        <h:inputText style="width: 120px; border-radius: 5px" pt:placeholder="örn:SAİD" value="#{icralariGor.avukatAd}"></h:inputText>
+                        <h:inputText style="width: 120px; border-radius: 5px" pt:placeholder="örn:ÖZGAT" value="#{icralariGor.avukatSoyad}"></h:inputText>
                     </td>
 
                     <td>
-                        <h:inputText style="width: 40px;  border-radius: 5px" pt:placeholder="  GG">
+                        <h:inputText style="width: 80px; border-radius: 5px" pt:placeholder="     YYYY" value="#{icralariGor.kararYil}"></h:inputText>
+                        <h:inputText style="width: 60px;  border-radius: 5px" pt:placeholder="örn:213" value="#{icralariGor.kararNo}"></h:inputText>
+                    </td>
 
-                        </h:inputText><h:inputText style="width: 40px;  border-radius: 5px" pt:placeholder="  AA">
+                    <td>
+                        <h:inputText style="width: 40px;  border-radius: 5px" pt:placeholder="  GG" value="#{icralariGor.hukumGun}">
 
-                        </h:inputText><h:inputText style="width: 80px; border-radius: 5px" pt:placeholder="     YYYY"></h:inputText>
+                        </h:inputText><h:inputText style="width: 40px;  border-radius: 5px" pt:placeholder="  AA" value="#{icralariGor.hukumAy}">
+
+                        </h:inputText><h:inputText style="width: 80px; border-radius: 5px" pt:placeholder="     YYYY" value="#{icralariGor.hukumYil}"></h:inputText>
                     </td>
 
                     <td style="text-align: center">
-                        <h:inputText style="width: 80px; border-radius: 5px; text-align: center" pt:placeholder="min" ></h:inputText> -
-                        <h:inputText style="width: 80px; border-radius: 5px; text-align: center" pt:placeholder="max"></h:inputText>
+                        <h:inputText style="width: 80px; border-radius: 5px; text-align: center" pt:placeholder="min" value="#{icralariGor.alacakMin}"></h:inputText> -
+                        <h:inputText style="width: 80px; border-radius: 5px; text-align: center" pt:placeholder="max" value="#{icralariGor.alacakMax}"></h:inputText>
                     </td>
-                    <td><h:commandButton value="ARA"></h:commandButton></td>
+                    <td><h:commandButton value="ARA" action="#{icralariGor.goruntule()}"></h:commandButton></td>
                 </tr>
             </table>
         </h:form>
-        <a href="icradavadetayi.xhtml">İCRA DAVA DETAY SAYFASI DENEME LİNKİ</a>
-        <br></br>
-        <br></br>
-        <a href="icradavabilgilerdetayi.xhtml">İCRA DAVA BİLGİLER DETAY SAYFASI DENEME LİNKİ</a>
         <h:form>
             <table cellspacing="8" border="0" width="100%">
-                <ui:repeat>
+                <ui:repeat value="#{icralariGor.dbKayitlari}" var="d">
                     <tr>
-                        <td width="11%"></td>
-                        <td width="25%"></td>
-                        <td width="25%"></td>
-                        <td width="15%"></td>
-                        <td width="30%"></td>
+                        <td width="11%">#{d.durusmaTarih}</td>
+                        <td width="25%">#{d.avukatAdSoyad}</td>
+                        <td width="25%">#{d.kararNo}</td>
+                        <td width="15%">#{d.hukumTarih}</td>
+                        <td width="30%">#{d.alacakTutar}</td>
                         <td width="30%"></td>
                         <td width="30%">                            
-                            <p:commandButton value="DETAYLARI GÖR" >
+                            <p:commandButton style="font-size: 12px " value="DETAYLARI GÖR" >
                                  <f:param name = "değişkenadı"  />
                             </p:commandButton>
                         </td>    
