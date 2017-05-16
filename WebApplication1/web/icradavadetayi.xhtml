@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+       xmlns:h="http://xmlns.jcp.org/jsf/html"
+       xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>İCRA DAVA DETAYLARI</title>
+        <style>
+             .modalDialog {
+	position: fixed;
+	font-family: "Roboto", sans-serif;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+	z-index: 99999;
+	opacity:0;
+	-webkit-transition: opacity 400ms ease-in;
+	-moz-transition: opacity 400ms ease-in;
+	transition: opacity 400ms ease-in;
+	pointer-events: none;
+}
+.modalDialog:target {
+	opacity:1;
+	pointer-events: auto;
+}
+
+.modalDialog > div {
+	width: 800px;
+	position: relative;
+	margin: 10% auto;
+	padding: 5px 20px 13px 20px;
+	border-radius: 10px;
+	background: #2C6C8E;
+	background: -moz-linear-gradient(#2C6C8E, #2C6C8E);
+	background: -webkit-linear-gradient(#CBDAE2, #CBDAE2);
+	background: -o-linear-gradient(#2C6C8E, #2C6C8E);
+}
+        </style>
+        
+        <link href="css/davakayit.css" rel="stylesheet" type="text/css" />
+        <link href="css/inputbox.css" rel="stylesheet" type="text/css" />
+        <link href="css/eklesilkaydetbutton.css" rel="stylesheet" type="text/css"/>
+        <link  href="css/davamasrafihesapla.css" rel="stylesheet" type="text/css"/>
+    </h:head>
+    <h:body style="background-color: #CBDAE2">
+        
+        <h:form style="border-radius: 5px">
+
+            <table>
+                <caption style="font-family: sans-serif;text-align: center; font-size: 25px ;box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);background-color: #6698B3;color: #FFFFFF">
+                   İcra Mahkeme Bilgileri</caption>
+                <tr>
+                    <td>MAHKEME YERİ: </td>
+                    <td><h:inputText value="#{icraKayit.mahkemeYeri}" style="border-radius: 5px ;"/> </td>
+                    <td>HAKİM:</td> 
+                    <td><h:inputText value="#{icraKayit.hakimAdSoyad}" style="border-radius: 5px ;" /> </td>
+                    
+
+                </tr>
+                <tr>
+                    <td>DURUŞMA TARİHİ: </td>
+                    <td><h:inputText value="#{icraKayit.durusmaTarihi}" maxlength="10" style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" required="true"
+                                      requiredMessage="DURUŞMA TARiHİNİZİ GİRİN!"
+                                      validatorMessage="DURUŞMA TARİHİNİ HATALI GİRDİNİZ! ÖRNEK YAZIM: 01/01/2017">
+
+                            <f:validateRegex pattern="[0-9]{1,2}(/|-)[0-9]{1,2}(/|-)[0-9]{4}" /> </h:inputText></td>
+                    <td>HÜKÜM TARİHİ:</td>
+                    <td><h:inputText value="#{icraKayit.hukumTarihi}" maxlength="10" style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" required="true"
+                                      requiredMessage="HÜKÜM TARiHİNİZİ GİRİN!"
+                                      validatorMessage="HÜKÜM TARİHİNİ HATALI GİRDİNİZ! ÖRNEK YAZIM: 01/01/2017">
+
+                            <f:validateRegex pattern="[0-9]{1,2}(/|-)[0-9]{1,2}(/|-)[0-9]{4}" /> </h:inputText> </td>
+                </tr>
+                <tr>
+                    <td>DAVANIN KONUSU: </td>
+                    <td><h:inputText value="#{icraKayit.davaKonusu}" style="border-radius: 5px ;"  /> </td>
+                    <td>KARAR NO:</td>
+                    <td><h:inputText value="#{icraKayit.kararNo}" style="border-radius: 5px ;" pt:placeholder="örn: 2017/999"/></td>
+                </tr>
+                <tr>
+                    <td>BORÇ TUTARI:</td>
+                    <td><h:inputText value="#{icraKayit.alacakToplamTutari}" style="border-radius: 5px ;"  /> TL</td>
+                    <td>AVUKAT ADI SOYADI:</td>
+                    <td><h:inputText value="#{icraKayit.avukatAdSoyad}" style="border-radius: 5px ;"  /></td>
+                </tr>
+                <tr>
+                    <td>
+                            İPOTEK KONULAN ÜRÜNLER:
+                        </td>
+                        <td style="height: 100%">
+                            <h:inputTextarea value="#{icraKayit.ipotekKonulanUrunler}" style="width: 400px; height: 80px;max-width: 400px;max-height: 80px; border-radius: 5px" rows="15"> 
+                            </h:inputTextarea>
+                        </td>
+                    <td>
+                            REHİN KONULAN ÜRÜNLER:
+                        </td>
+                        <td style="height: 100%">
+                            <h:inputTextarea value="#{icraKayit.rehinKonulanUrunler}" style="width: 400px; height: 80px;max-width: 400px;max-height: 80px; border-radius: 5px" rows="15"> 
+                            </h:inputTextarea>
+                        </td>
+                </tr>
+                <tr>
+                    <td>
+                            HACİZ ALINAN ÜRÜNLER:
+                        </td>
+                        <td style="height: 100%">
+                            <h:inputTextarea value="#{icraKayit.hacizAlinanUrunler}" style="width: 400px; height: 80px;max-width: 400px;max-height: 80px; border-radius: 5px" rows="15"> 
+                            </h:inputTextarea>
+                        </td>
+                    <td>HACİZ ALINAN ÜRÜN TOPLAM TUTARI:</td>
+                    <td><h:inputText value="#{icraKayit.hacizToplamTutari}" style="border-radius: 5px ;" /> TL</td>
+                        
+                </tr>
+                
+            </table>
+               <br></br>
+               <h:commandButton value="GÜNCELLE" class="eklekaydet" style="width: 250px;text-align: center; margin: 0 550px 0" />
+                <br></br>
+                <br></br>
+                <h:commandButton value="İCRA DAVA BİLGİLERİ" class="eklekaydet"  style="width: 250px;text-align: center; margin: 0 550px 0" />
+                <br></br>
+                <br></br>
+                 <a href="anasayfa.xhtml" style="color:  #2C6C8E ;text-decoration: none; margin: 0 610px 0">ANASAYFAYA GİT</a>  
+                </h:form>
+        
+    </h:body>
+</html>
+
