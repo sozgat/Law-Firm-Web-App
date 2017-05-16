@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -21,6 +22,14 @@ public class DavaIslemleriKontrol {
     
     private List<DavaIslemleri> davaGrup = null;
     private int davaEsasNo;
+    
+     public List<DavaIslemleri> getDavaGrup() {
+        return davaGrup;
+    }
+
+    public void setDavaGrup(List<DavaIslemleri> davaGroup) {
+        this.davaGrup = davaGroup;
+    }
     
     @PostConstruct
     public void init(){
@@ -84,24 +93,91 @@ public class DavaIslemleriKontrol {
     
     }
     
+    public void goruntule(){
+        FacesContext fc = FacesContext.getCurrentInstance();
+        Map<String,String> params = fc.getExternalContext().getRequestParameterMap();                                
+        String no =  params.get("davaEsasNo"); 
+        davaEsasNo = Integer.parseInt(no);
+        
+        PreparedStatement ps = null;
+        Connection con = DbFunctions.getCon();        
+        
+        ResultSet rs = null;
+        
+        try {                                    
+            ps = con.prepareStatement("SELECT * FROM TBLDAVA_BILGILER WHERE TBLDAVA_BILGILER.IDMAHKEMEBILGILER="
+                                    + "(SELECT ID FROM TBLMAHKEME_BILGILER WHERE DAVAESASNO="+davaEsasNo+")");
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                
+                DavaIslemleri di = new DavaIslemleri();
+                di.davaTuru =   rs.getString("DAVATURU");
+                di.ad =         rs.getString("AD");
+                di.soyad =      rs.getString("SOYAD");
+                di.tcKimlikNo = rs.getString("TCKIMLIKNO");
+                
+                Date dogumTarihDate = rs.getDate("DOGUMTARIH");
+                String dogumTarihString = dogumTarihDate.toString();
+                String [] parts = dogumTarihString.split("-");
+                di.dogumTarihi = parts[2]+"/"+parts[1]+"/"+parts[0];
+                
+                di.savunmasi = rs.getString("SAVUNMA");
+                          
+                davaGrup.add(di);                
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DavalariGor.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            try {
+                con.close();                
+            } catch (SQLException ex) {
+                Logger.getLogger(DavalariGor.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
     public void sil(){
         FacesContext fc = FacesContext.getCurrentInstance();
         Map<String,String> params = fc.getExternalContext().getRequestParameterMap();                                
         String no =  params.get("tcKimlikNo"); 
-        int tcKimlikNo = Integer.parseInt(no);
         
         VeriTabaniIslemleri vti = new VeriTabaniIslemleri();
-        vti.sqlKomut = "DELETE FROM TBLDAVA_BILGILER WHERE TCKIMLIKNO="+tcKimlikNo;
+        vti.sqlKomut =  "DELETE FROM TBLDAVA_BILGILER WHERE TCKIMLIKNO='"+no+"'"+
+                        " AND TBLDAVA_BILGILER.IDMAHKEMEBILGILER=" +
+                        "(SELECT ID FROM TBLMAHKEME_BILGILER WHERE DAVAESASNO="+davaEsasNo+")";
         vti.uygula();
     }
 
-
-    public List<DavaIslemleri> getDavaGrup() {
-        return davaGrup;
+    public void temizle(){
+        DavaIslemleri di = new DavaIslemleri();
+        di.ad = "";
+        di.soyad = "";
+        di.davaTuru = "";
+        di.dogumTarihi ="";
+        di.tcKimlikNo ="";
+        di.savunmasi="";
+        davaGrup.clear();
     }
 
-    public void setDavaGrup(List<DavaIslemleri> davaGroup) {
-        this.davaGrup = davaGroup;
+    public void guncelle(){
+        for (DavaIslemleri davaGrup1 : davaGrup) 
+            {
+            VeriTabaniIslemleri vti = new VeriTabaniIslemleri();
+            vti.sqlKomut = "UPDATE TBLDAVA_BILGILER SET DAVATURU='"+davaGrup1.davaTuru+"',"+
+                                                        "AD='"+davaGrup1.ad+"',"+
+                                                        "SOYAD='"+davaGrup1.soyad+"',"+
+                                                        "TCKIMLIKNO='"+davaGrup1.tcKimlikNo+"',"+
+                                                        "DOGUMTARIH="+DbFunctions.stringToDate(davaGrup1.dogumTarihi)+","+
+                                                        "SAVUNMA='"+davaGrup1.savunmasi+"'";
+            vti.uygula();                
+            }    
+
     }
-    
+
+
+
 }
+

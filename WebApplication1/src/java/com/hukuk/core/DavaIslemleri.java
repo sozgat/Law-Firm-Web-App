@@ -1,12 +1,12 @@
 package com.hukuk.core;
 public class DavaIslemleri {
 
-    private String davaTuru;
-    private String ad;
-    private String soyad;
-    private String tcKimlikNo;
-    private String dogumTarihi;
-    private String savunmasi;
+    public String davaTuru;
+    public String ad;
+    public String soyad;
+    public String tcKimlikNo;
+    public String dogumTarihi;
+    public String savunmasi;
     
     public DavaIslemleri(){
         
