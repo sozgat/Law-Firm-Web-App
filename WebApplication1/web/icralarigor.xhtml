@@ -1,120 +1,159 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-       xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>İCRALARI GÖR</title><style>
             ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #6698B3;
-}
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: #6698B3;
+            }
 
-li {
-    float: left;
-}
+            li {
+                float: left;
+            }
 
-li a, .dropbtn {
-    font-family: "Roboto", sans-serif;
-    display: inline-block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
+            li a, .dropbtn {
+                font-family: "Roboto", sans-serif;
+                display: inline-block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
 
-li a:hover, .dropdown:hover .dropbtn {
-    background-color: #A8CDE0;
-}
+            li a:hover, .dropdown:hover .dropbtn {
+                background-color: #A8CDE0;
+            }
 
-li.dropdown {
-    display: inline-block;
-}
+            li.dropdown {
+                display: inline-block;
+            }
 
-.dropdown-content {
-    
-    display: none;
-    position: absolute;
-    background-color: #6698B3;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
+            .dropdown-content {
 
-.dropdown-content a {
-    font-family: "Roboto", sans-serif;
-    color: white;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-    text-align: left;
-}
+                display: none;
+                position: absolute;
+                background-color: #6698B3;
+                min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                z-index: 1;
+            }
 
-.dropdown-content a:hover {background-color: #A8CDE0}
+            .dropdown-content a {
+                font-family: "Roboto", sans-serif;
+                color: white;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                text-align: left;
+            }
 
-.dropdown:hover .dropdown-content {
-    display: block;
-}
+            .dropdown-content a:hover {background-color: #A8CDE0}
+
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
         </style>
     </h:head>
     <h:body style="background-color: #CBDAE2">
-          <ul>
+        <ul>
             <li><a href="anasayfa.xhtml">ANASAYFA</a></li>
-            
+
             <li class="dropdown">
-           <a href="javascript:void(0)" class="dropbtn">DAVA</a>
-        <div class="dropdown-content">
-         <a href="davakayit.xhtml">DAVA KAYIT</a>
-         <a href="davalarigor.xhtml">DAVALARI GÖR</a>
-        </div></li>
+                <a href="javascript:void(0)" class="dropbtn">DAVA</a>
+                <div class="dropdown-content">
+                    <a href="davakayit.xhtml">DAVA KAYIT</a>
+                    <a href="davalarigor.xhtml">DAVALARI GÖR</a>
+                </div></li>
             <li class="dropdown">
-           <a href="javascript:void(0)" class="dropbtn">İCRA</a>
-        <div class="dropdown-content">
-         <a href="icrakayit.xhtml">İCRA KAYIT</a>
-         <a href="icralarigor.xhtml">İCRALARI GÖR</a>
-        </div></li>
-            
-            
+                <a href="javascript:void(0)" class="dropbtn">İCRA</a>
+                <div class="dropdown-content">
+                    <a href="icrakayit.xhtml">İCRA KAYIT</a>
+                    <a href="icralarigor.xhtml">İCRALARI GÖR</a>
+                </div></li>
+
+
             <li><a href="takvim.xhtml">TAKVİM</a></li>
             <li><a href="hesapayarlari.xhtml">HESAP AYARLARI</a></li>
             <li><a href="index.xhtml">ÇIKIŞ</a></li>
         </ul>
         <br></br>
         <h:form>
-       <table>
-            <tr>
-                <th>DURUŞMA TARİHİ</th>
-                <th>AVUKAT ADI SOYADI</th>
-                <th>DAVACI (ALACAKLI) ADI SOYADI</th>
-                <th>DAVALI (BORÇLU) ADI SOYADI</th>
-                <th>ALACAK TOPLAM TUTAR</th>
-            </tr>
-           <tr>
-               <td><h:inputText style="width: 40px;  border-radius: 5px" pt:placeholder="  GG">
-                    
-                            </h:inputText><h:inputText style="width: 40px;  border-radius: 5px" pt:placeholder="  AA">
-                                
-                            </h:inputText><h:inputText style="width: 80px; border-radius: 5px" pt:placeholder="     YYYY"></h:inputText></td>
-                            <td><h:inputText style="width: 120px; border-radius: 5px" pt:placeholder="örn:SAİD"></h:inputText>
-                <h:inputText style="width: 120px; border-radius: 5px" pt:placeholder="örn:ÖZGAT"></h:inputText>
-                </td>
-               <td><h:inputText style="width: 130px; border-radius: 5px" pt:placeholder="örn:SERHAT"></h:inputText>
-                <h:inputText style="width: 130px; border-radius: 5px" pt:placeholder="örn:MERCAN"></h:inputText>
-                </td>
-               <td><h:inputText style="width: 130px; border-radius: 5px;" pt:placeholder="örn:MEHMET"></h:inputText>
-                <h:inputText style="width: 130px; border-radius: 5px" pt:placeholder="örn:AĞCA"></h:inputText>
-                </td>
-               <td style="text-align: center">
-                   <h:inputText style="width: 80px; border-radius: 5px; text-align: center" pt:placeholder="min" ></h:inputText> -
-                   <h:inputText style="width: 80px; border-radius: 5px; text-align: center" pt:placeholder="max"></h:inputText>
-               </td>
-                <td><h:commandButton value="ARA"></h:commandButton></td>
-           </tr>
-       </table>
-           </h:form>
+            <table>
+                <tr>
+                    <th>DURUŞMA TARİHİ</th>
+                    <th>AVUKAT ADI SOYADI</th>
+                    <th>KARAR YIL - NO</th>
+                    <th>HÜKÜM TARİHİ</th>
+                    <th>ALACAK TOPLAM TUTAR</th>
+                </tr>
+                <tr>
+                    <td>
+                        <h:inputText style="width: 40px;  border-radius: 5px" pt:placeholder="  GG"></h:inputText>
+                        <h:inputText style="width: 40px;  border-radius: 5px" pt:placeholder="  AA"></h:inputText>
+                        <h:inputText style="width: 80px; border-radius: 5px" pt:placeholder="     YYYY"></h:inputText>
+                    </td>
+                    <td>
+                        <h:inputText style="width: 120px; border-radius: 5px" pt:placeholder="örn:SAİD"></h:inputText>
+                        <h:inputText style="width: 120px; border-radius: 5px" pt:placeholder="örn:ÖZGAT"></h:inputText>
+                    </td>
+
+                    <td>
+                        <h:inputText style="width: 80px; border-radius: 5px" pt:placeholder="     YYYY"></h:inputText>
+                        <h:inputText style="width: 60px;  border-radius: 5px" pt:placeholder="örn:213"></h:inputText>
+                    </td>
+
+                    <td>
+                        <h:inputText style="width: 40px;  border-radius: 5px" pt:placeholder="  GG">
+
+                        </h:inputText><h:inputText style="width: 40px;  border-radius: 5px" pt:placeholder="  AA">
+
+                        </h:inputText><h:inputText style="width: 80px; border-radius: 5px" pt:placeholder="     YYYY"></h:inputText>
+                    </td>
+
+                    <td style="text-align: center">
+                        <h:inputText style="width: 80px; border-radius: 5px; text-align: center" pt:placeholder="min" ></h:inputText> -
+                        <h:inputText style="width: 80px; border-radius: 5px; text-align: center" pt:placeholder="max"></h:inputText>
+                    </td>
+                    <td><h:commandButton value="ARA"></h:commandButton></td>
+                </tr>
+            </table>
+        </h:form>
+        
+        <h:form>
+            <table cellspacing="8" border="0" width="100%">
+                <ui:repeat>
+                    <tr>
+                        <td width="11%"></td>
+                        <td width="25%"></td>
+                        <td width="25%"></td>
+                        <td width="15%"></td>
+                        <td width="30%"></td>
+                        <td width="30%"></td>
+                        <td width="30%">                            
+                            <p:commandButton value="DETAYLARI GÖR" >
+                                 <f:param name = "değişkenadı"  />
+                            </p:commandButton>
+                        </td>    
+                        <td>                                             
+                            <p:commandButton value="SİL" >
+                                 <f:param name = "değişkenadı" />
+                            </p:commandButton>  
+                        </td>
+                    </tr>
+                </ui:repeat>
+        </table>    
+                  </h:form>
+        
+        
     </h:body>
 </html>
 
