@@ -90,13 +90,13 @@
             <ui:repeat value="#{BeanDavalariGor.dbKayitlari}" var="d">
                     <tr>
                         <td width="11%">#{d.davaEsasNo}</td>
-                        <td width="25%">#{d.mahkemeTipi}</td>
-                        <td width="25%">#{d.davaTipi}</td>
+                        <td width="20%">#{d.mahkemeTipi}</td>
+                        <td width="22%">#{d.davaTipi}</td>
                         <td width="15%">#{d.durusmaTarih}</td>
-                        <td width="30%">#{d.avukatAdSoyad}</td>
-                        <td width="30%">#{d.mahkemeKarari}</td>
+                        <td width="20%">#{d.avukatAdSoyad}</td>
+                        <td width="20%">#{d.mahkemeKarari}</td>
                         <td width="30%">                            
-                            <p:commandButton value="DETAYLARI GÖR" actionListener="davadetaylarigor.xhtml" action="#{mahkemeBilgileri.degis()}">
+                            <p:commandButton style="font-size: 12px " value="DETAYLARI GÖR" actionListener="davadetaylarigor.xhtml" action="#{mahkemeBilgileri.degis()}">
                                  <f:param name = "davaEsasNo" value = "#{d.davaEsasNo}" />
                             </p:commandButton>
                         </td>    
