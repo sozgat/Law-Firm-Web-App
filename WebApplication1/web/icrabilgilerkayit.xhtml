@@ -19,7 +19,7 @@
                             <ui:repeat value="#{icraUserController.davaGroup}" var="d">
                 <tr>                    
                     <td class="td2">
-                        <h:selectOneMenu style="background-color: #FFFFFF; width: 50%; height: 20px; border-radius: 5px" value="#{icraDavaBilgileri.davaTuru}">
+                        <h:selectOneMenu style="background-color: #FFFFFF; width: 50%; height: 20px; border-radius: 5px" value="#{d.davaTuru}">
                                 <f:selectItem itemLabel="Davacı (Alacaklı) Bilgileri" itemValue="Davacı (Alacaklı) Bilgileri"/>
                                 <f:selectItem itemLabel="Davalı (Borçlu) Bilgileri" itemValue="Davalı (Borçlu) Bilgileri"/>
                             </h:selectOneMenu>
@@ -33,21 +33,21 @@
                 </tr>
                      <tr>
                          <td> ADI:</td>
-                         <td> <h:inputText style="border-radius: 5px ;" value="#{icraDavaBilgileri.ad}"/> </td>
+                         <td> <h:inputText style="border-radius: 5px ;" value="#{d.ad}"/> </td>
                     
                      <td>TC KİMLİK NO:</td>
-                     <td><h:inputText style="border-radius: 5px ;" maxlength="11" value="#{icraDavaBilgileri.tcKimlikNo}"> 
+                     <td><h:inputText style="border-radius: 5px ;" maxlength="11" value="#{d.tcKimlikNo}"> 
                          </h:inputText></td>
                 </tr>
                     <tr>
                         <td> SOYADI: </td>
                         <td>
-                            <h:inputText style="border-radius: 5px ;" value="#{icraDavaBilgileri.soyad}"/>
+                            <h:inputText style="border-radius: 5px ;" value="#{d.soyad}"/>
                     </td>
                         <td>
                             DOĞUM TARİHİ: </td>
                         <td>
-                            <h:inputText style="border-radius: 5px ;" maxlength="10" value="#{icraDavaBilgileri.dogumTarihi}" pt:placeholder="GG/AA/YYYY"/>
+                            <h:inputText style="border-radius: 5px ;" maxlength="10" value="#{d.dogumTarihi}" pt:placeholder="GG/AA/YYYY"/>
                         </td>
                 </tr>
                     <tr style="height: 25%">
@@ -55,7 +55,7 @@
                             SAVUNMASI:
                         </td>
                         <td style="height: 100%">
-                            <h:inputTextarea style="width: 500px; height: 80px;max-width: 500px;max-height: 80px; border-radius: 5px" rows="15" value="#{icraDavaBilgileri.savunmasi}"> 
+                            <h:inputTextarea style="width: 500px; height: 80px;max-width: 500px;max-height: 80px; border-radius: 5px" rows="15" value="#{d.savunmasi}"> 
                             </h:inputTextarea>
                         </td>
                         <td></td>
@@ -69,7 +69,9 @@
                         <h:commandButton value="EKLE" class="eklekaydet"  style="width: 150px" action="#{icraUserController.add()}">
                             <f:ajax render="@form" execute="@form"/>
                         </h:commandButton>
-                        <h:commandButton value="KAYDET" class="eklekaydet" style="width: 150px" action="#{BeanIcraKayit.kaydet()}"/><!--icraUserController.save()-->
+                        <h:commandButton value="KAYDET" class="eklekaydet" style="width: 150px" action="#{icraUserController.save()}">
+                            <f:param name="icraId" value="#{icraKayit.icraId}"/>
+                        </h:commandButton>
                     </td>
             </tr>
                         </table>

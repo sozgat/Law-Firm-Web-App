@@ -7,9 +7,11 @@ package com.hukuk.core;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -36,7 +38,24 @@ public class IcraUserController {
     }
     
     public String save(){
-        return "result.xhtml?faces-redirect=true";
+        int icraId;
+        
+        FacesContext fc = FacesContext.getCurrentInstance();
+        Map<String,String> params = fc.getExternalContext().getRequestParameterMap();
+        String id = params.get("icraId");
+        icraId = Integer.parseInt(id);
+        
+        VeriTabaniIslemleri vti = new VeriTabaniIslemleri();
+        
+        for(DavaIslemleri davaGroup1 : davaGroup)
+        {
+            vti.sqlKomut = "INSERT INTO TBLICRA_BILGILER(TIP,AD,SOYAD,TCKIMLIKNO,DOGUMTARIH,SAVUNMA,IDICRALAR) "
+                    + "VALUES('"+davaGroup1.getDavaTuru()+"','"+davaGroup1.getAd()+"','"+davaGroup1.getSoyad()+"','"+davaGroup1.getTcKimlikNo()+
+                    "',"+DbFunctions.stringToDate(davaGroup1.getDogumTarihi())+",'"+davaGroup1.getSavunmasi()+"',"+icraId+")";
+            vti.uygula();
+        }
+        
+        return "anasayfa.xhtml";
     }
 
     public List<DavaIslemleri> getDavaGroup() {
