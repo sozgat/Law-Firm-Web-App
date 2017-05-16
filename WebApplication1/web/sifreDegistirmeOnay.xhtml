@@ -6,11 +6,24 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head><!--Said ben kafama gore olusturdum bu sayfayi, sen tasarimi istedigin gibi duzelt-->
         <title>Şifreyi Değiştirme Sayfası</title>
+        <link href="css/kayitol.css" rel="stylesheet" type="text/css"/>
 </h:head>
-<h:body>
-    <h:form>
-        <h:outputLabel value="#{BeanSifreDegistirmeOnay.message}"/><br/>
-        <h:commandButton action="#{BeanSifreDegistirmeOnay.giriseDon()}" value="Giriş Sayfasına Dön" type="submit"/>
-    </h:form>
-</h:body>
+    <h:body style="background-color: #CBDAE2;">
+        <div class="login-page">
+            <div class="form">
+                <h:form id="myForm">
+                    <h:outputLabel class="input" value="#{BeanSifreDegistirmeOnay.message}"/>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <br></br>
+                    <h:commandButton  class="button " action="#{BeanSifreDegistirmeOnay.giriseDon()}" value="Giriş Sayfasına Dön"/>
+                </h:form>
+            </div>
+        </div>  
+    </h:body>
+    
+    
+    
+    
 </html>
