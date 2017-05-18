@@ -180,7 +180,7 @@ public class MahkemeBilgileri {
             DbFunctions.baglantiKapa(baglanti);
             return "hataolustu.xhtml";
         }
-        
+        //temizle();
         DbFunctions.baglantiKapa(baglanti);
         return "davabilgilerikayit.xhtml";
     }

@@ -9,10 +9,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -36,8 +40,8 @@ public class IcraKayit
     private String rehinKonulanUrunler;
     private String hacizAlinanUrunler;
     private double hacizToplamTutari;
+    private int icraId=0;
     
-    public int icraId;
 
     public int getIcraId() {
         return icraId;
@@ -186,4 +190,74 @@ public class IcraKayit
         DbFunctions.baglantiKapa(baglanti);
         return donucekUrl;
     }
+    
+    public String detaylariGor(){
+                
+        FacesContext fc = FacesContext.getCurrentInstance();
+        Map<String,String> params = fc.getExternalContext().getRequestParameterMap();                                
+        String no =  params.get("icraId"); 
+        icraId = Integer.parseInt(no);
+        
+        Connection con = DbFunctions.getCon();
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+ 
+    try {                                    
+            ps = con.prepareStatement("SELECT * FROM TBLICRALAR WHERE ID="+icraId);
+            rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                                
+                mahkemeYeri     = rs.getString("MAHKEMEYERI");
+                hakimAdSoyad    = rs.getString("HAKIMADSOYAD");
+                durusmaTarihi   = DbFunctions.dateToString(rs.getDate("DURUSMATARIHI").toString());                
+                hukumTarihi     = DbFunctions.dateToString(rs.getDate("HUKUMTARIHI").toString());
+                davaKonusu      = rs.getString("DAVAKONUSU");
+                Date kararYilDate       = rs.getDate("KARARYIL");
+                String kararYilString   = kararYilDate.toString();
+                int kararNoInteger      = rs.getInt("KARARNO");
+                kararNo = kararYilString.substring(0, 4)+ "/"+Integer.toString(kararNoInteger) ;
+                alacakToplamTutari      = rs.getDouble("ALACAKTOPLAMTUTARI");
+                avukatAdSoyad   = rs.getString("AVUKATADSOYAD");
+                ipotekKonulanUrunler    = rs.getString("IPOTEKKONULANURUNLER");
+                rehinKonulanUrunler     = rs.getString("REHINKONULANURUNLER");
+                hacizAlinanUrunler      = rs.getString("HACIZALINANURUNLER");                
+                hacizToplamTutari       = rs.getDouble("HACIZTOPLAMTUTARI");
+            }
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DavalariGor.class.getName()).log(Level.SEVERE, null, ex);
+        } finally{
+            try {
+                con.close();                
+            } catch (SQLException ex) {
+                Logger.getLogger(DavalariGor.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    
+  
+        
+        return "icradavadetayi.xhtml?faces-redirect=true";
+        
+    } 
+    
+    public void guncelle(){
+    
+    VeriTabaniIslemleri vti = new VeriTabaniIslemleri();
+    vti.sqlKomut = "UPDATE TBLICRALAR SET DAVAKONUSU='"+davaKonusu+"',"+
+                                           "MAHKEMEYERI='"+mahkemeYeri+"',"+
+                                           "HAKIMADSOYAD='"+hakimAdSoyad+"',"+                                                   
+                                           "DURUSMATARIHI="+DbFunctions.stringToDate(durusmaTarihi)+","+
+                                           "HUKUMTARIHI="+DbFunctions.stringToDate(hukumTarihi)+","+
+                                           "KARARYIL="+DbFunctions.stringToDateKarar(kararNo, 0)+","+
+                                           "KARARNO="+DbFunctions.stringToDateKarar(kararNo, 1)+","+
+                                           "IPOTEKKONULANURUNLER='"+ipotekKonulanUrunler+"',"+
+                                           "REHINKONULANURUNLER='"+rehinKonulanUrunler+"',"+
+                                           "HACIZALINANURUNLER='"+hacizAlinanUrunler+"',"+
+                                           "ALACAKTOPLAMTUTARI="+alacakToplamTutari+","+
+                                           "HACIZTOPLAMTUTARI="+hacizToplamTutari+" WHERE AVUKATADSOYAD='"+avukatAdSoyad+"'";
+    vti.uygula();
+    }
+    
 }

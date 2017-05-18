@@ -24,10 +24,7 @@
                         <h:commandButton value="GÖRÜNTÜLE" action="#{davaIslemleriKontrol.goruntule()}" >
                             <f:param name = "davaEsasNo" value = "#{mahkemeBilgileri.davaEsasNo}" />
                         </h:commandButton>
-                    </td>
-                    <td>
-                        <h:commandButton value="TEMİZLE" action="#{davaIslemleriKontrol.temizle()}" />                                                    
-                    </td>
+                    </td>                    
 
                 </tr>
             </table>
@@ -88,6 +85,7 @@
             <tr>
                     <td>                        
                         <h:commandButton value="GÜNCELLE" class="eklekaydet"  style="width: 150px" action="#{davaIslemleriKontrol.guncelle()}" />                                                    
+                        <h:outputText value="#{icraUserController.durum}"/>
                     </td>
             </tr>
                         </table>

@@ -7,14 +7,16 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 @ManagedBean
-@SessionScoped
+@ViewScoped
 public class IcralariGor implements Serializable {
     
     private String durusmaGun;
@@ -29,12 +31,21 @@ public class IcralariGor implements Serializable {
     private String hukumYil;
     private String alacakMin;
     private String alacakMax;
+    private int icraId=0;
     
-    private ArrayList<IcraGorClass> dbKayitlari = null;
+    List<IcraGorClass> dbKayitlari = null;
     
     public IcralariGor() {
     }
 
+    public int getIcraId() {
+        return icraId;
+    }
+
+    public void setIcraId(int icraId) {
+        this.icraId = icraId;
+    }
+    
     public String getDurusmaGun() {
         return durusmaGun;
     }
@@ -131,26 +142,28 @@ public class IcralariGor implements Serializable {
         this.alacakMax = alacakMax;
     }
 
-    public ArrayList<IcraGorClass> getDbKayitlari() {
+    public List<IcraGorClass> getDbKayitlari() {
         return dbKayitlari;
     }
 
-    public void setDbKayitlari(ArrayList<IcraGorClass> dbKayitlari) {
+    public void setDbKayitlari(List<IcraGorClass> dbKayitlari) {
         this.dbKayitlari = dbKayitlari;
     }
     
-    public String sil()
+    public void sil()
     {
-        int icraId;
         FacesContext fc = FacesContext.getCurrentInstance();
         Map<String,String> params = fc.getExternalContext().getRequestParameterMap();                                
-        String id =  params.get("icraId"); 
-        icraId = Integer.parseInt(id);
+        String no =  params.get("icraId"); 
+        icraId = Integer.parseInt(no);        
         
         VeriTabaniIslemleri vti = new VeriTabaniIslemleri();
-        vti.sqlKomut = "DELETE FROM TBLICRALAR WHERE ID=6";//+icraId
+        vti.sqlKomut = "DELETE FROM TBLICRA_BILGILER WHERE IDICRALAR="+icraId;                       
         vti.uygula();
-        return "";
+                
+        vti.sqlKomut = "DELETE FROM TBLICRALAR WHERE ID="+icraId;
+        vti.uygula();
+        
     }
     
     public void goruntule()

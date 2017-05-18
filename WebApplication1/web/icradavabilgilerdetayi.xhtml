@@ -4,58 +4,61 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+       xmlns:f="http://xmlns.jcp.org/jsf/core"
+       xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>İCRA DAVA BİLGİLER DETAYI</title>
          <link href="css/davakayit.css" rel="stylesheet" type="text/css" />
         <link href="css/eklesilkaydetbutton.css" rel="stylesheet" type="text/css"/>
     </h:head>
     <h:body style="background-color: #CBDAE2">
+    <h:form>
         <p style="font-family: sans-serif;text-align: center; font-size: 25px ;box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);background-color: #6698B3;color: #FFFFFF">
         Davacı (Alacaklı), Davalı (Borçlu) İşlemleri </p>
         <table>
+            <td>İCRA ID </td>
+            <td><h:inputText style="border-radius: 5px ;" value="#{icraKayit.icraId}"/>
+            </td>
             <td>
-                        <h:commandButton value="GÖRÜNTÜLE">
-                            <f:param name = "davaEsasNo"/>
-                        </h:commandButton>
-                <h:commandButton style="margin: 0 20px 0" value="TEMİZLE" />                                                    
+                <h:commandButton value="GÖRÜNTÜLE" action="#{icraUserController.goruntule()}" >
+                            <f:param name = "icraId" value = "#{icraKayit.icraId}" />
+                </h:commandButton>                
                     </td>
         </table>
-    
+    </h:form>
                     <h:form>
                         <table class="table2">
                             <ui:repeat value="#{icraUserController.davaGroup}" var="d">
                 <tr>                    
                     <td class="td2">
-                        <h:selectOneMenu style="background-color: #FFFFFF; width: 50%; height: 20px; border-radius: 5px" value="#{icraDavaBilgileri.davaTuru}">
+                        <h:selectOneMenu style="background-color: #FFFFFF; width: 50%; height: 20px; border-radius: 5px" value="#{d.davaTuru}">
                                 <f:selectItem itemLabel="Davacı (Alacaklı) Bilgileri" itemValue="Davacı (Alacaklı) Bilgileri"/>
                                 <f:selectItem itemLabel="Davalı (Borçlu) Bilgileri" itemValue="Davalı (Borçlu) Bilgileri"/>
                             </h:selectOneMenu>
                         </td>
                     <td class="td2">
-                        <h:commandButton value="SİL"  class="sil"  action="#{icraUserController.remove(d)}">
-                            
-                            <f:ajax render="@form" execute="@form"/>
-                            </h:commandButton>
+                        <h:commandButton value="SİL"  class="sil"   action="#{icraUserController.sil()}">                                                                                         
+                            <f:param name = "tcKimlikNo" value = "#{d.tcKimlikNo}" />
+                        </h:commandButton>
                         </td>
                 </tr>
                      <tr>
                          <td> ADI:</td>
-                         <td> <h:inputText style="border-radius: 5px ;" value="#{icraDavaBilgileri.ad}"/> </td>
+                         <td> <h:inputText style="border-radius: 5px ;" value="#{d.ad}"/> </td>
                     
                      <td>TC KİMLİK NO:</td>
-                     <td><h:inputText style="border-radius: 5px ;" maxlength="11" value="#{icraDavaBilgileri.tcKimlikNo}" readonly="true"> 
+                     <td><h:inputText style="border-radius: 5px ;" maxlength="11" value="#{d.tcKimlikNo}" readonly="true"> 
                          </h:inputText></td>
                 </tr>
                     <tr>
                         <td> SOYADI: </td>
                         <td>
-                            <h:inputText style="border-radius: 5px ;" value="#{icraDavaBilgileri.soyad}"/>
+                            <h:inputText style="border-radius: 5px ;" value="#{d.soyad}"/>
                     </td>
                         <td>
                             DOĞUM TARİHİ: </td>
                         <td>
-                            <h:inputText style="border-radius: 5px ;" maxlength="10" value="#{icraDavaBilgileri.dogumTarihi}" pt:placeholder="GG/AA/YYYY"/>
+                            <h:inputText style="border-radius: 5px ;" maxlength="10" value="#{d.dogumTarihi}" pt:placeholder="GG/AA/YYYY"/>
                         </td>
                 </tr>
                     <tr style="height: 25%">
@@ -63,7 +66,7 @@
                             SAVUNMASI:
                         </td>
                         <td style="height: 100%">
-                            <h:inputTextarea style="width: 500px; height: 80px;max-width: 500px;max-height: 80px; border-radius: 5px" rows="15" value="#{icraDavaBilgileri.savunmasi}"> 
+                            <h:inputTextarea style="width: 500px; height: 80px;max-width: 500px;max-height: 80px; border-radius: 5px" rows="15" value="#{d.savunmasi}"> 
                             </h:inputTextarea>
                         </td>
                         <td></td>
@@ -74,7 +77,7 @@
             </ui:repeat>
             <tr>
                     <td>                        
-                        <h:commandButton value="GÜNCELLE" class="eklekaydet"  style="width: 150px"  />                                                    
+                        <h:commandButton value="GÜNCELLE" action="#{icraUserController.guncelle()}" class="eklekaydet"  style="width: 150px"  />                                                    
                     </td>
             </tr>
                         </table>

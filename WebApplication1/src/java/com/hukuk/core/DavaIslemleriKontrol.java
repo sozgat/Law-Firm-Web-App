@@ -88,7 +88,8 @@ public class DavaIslemleriKontrol {
                         
             ps.execute();
         }
-        DbFunctions.baglantiKapa(baglanti);
+        DbFunctions.baglantiKapa(baglanti);        
+        temizle();
         return "anasayfa.xhtml";
     
     }
@@ -149,6 +150,7 @@ public class DavaIslemleriKontrol {
                         " AND TBLDAVA_BILGILER.IDMAHKEMEBILGILER=" +
                         "(SELECT ID FROM TBLMAHKEME_BILGILER WHERE DAVAESASNO="+davaEsasNo+")";
         vti.uygula();
+        temizle();
     }
 
     public void temizle(){
@@ -177,7 +179,8 @@ public class DavaIslemleriKontrol {
                                                         "AND TBLDAVA_BILGILER.IDMAHKEMEBILGILER=" +
                                                         "(SELECT ID FROM TBLMAHKEME_BILGILER WHERE DAVAESASNO="+davaEsasNo+")";
             vti.uygula();                
-            }    
+            }
+        temizle();
 
     }
 

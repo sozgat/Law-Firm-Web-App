@@ -122,12 +122,17 @@ public class DavalariGor implements Serializable
     davaEsasNo = Integer.parseInt(no);
     
     VeriTabaniIslemleri vti = new VeriTabaniIslemleri();
+    vti.sqlKomut = "DELETE FROM TBLMASRAFLAR WHERE TBLMASRAFLAR.ID="+
+                    "(SELECT DAVAMASRAFID FROM TBLMAHKEME_BILGILER WHERE DAVAESASNO="+davaEsasNo+")";
+    vti.uygula();
+        
+    vti.sqlKomut = "DELETE FROM TBLDAVA_BILGILER WHERE TBLDAVA_BILGILER.IDMAHKEMEBILGILER="+
+                    "(SELECT ID FROM TBLMAHKEME_BILGILER WHERE DAVAESASNO="+davaEsasNo+")";
+    vti.uygula();
+        
     vti.sqlKomut = "DELETE FROM TBLMAHKEME_BILGILER WHERE DAVAESASNO="+davaEsasNo;
     vti.uygula();
     
-    /*VeriTabaniIslemleri vti2 = new VeriTabaniIslemleri();
-    vti2.sqlKomut = "DELETE FROM TBLDAVA_BILGILER WHERE TBLDAVA_BILGILER.IDMAHKEMEBILGILER=(SELECT ID FROM TBLMAHKEME_BILGILER WHERE DAVAESASNO=10)";
-    vti2.uygula();*/
     }
     
    
