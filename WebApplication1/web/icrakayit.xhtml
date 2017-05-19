@@ -124,28 +124,30 @@ li.dropdown {
         
         <br></br>
          <br></br>
-        <h:form style="border-radius: 5px">
+         <h:form style="border-radius: 5px" id="icrabilgiler">
 
             <table>
                 <caption style="font-family: sans-serif;text-align: center; font-size: 25px ;box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);background-color: #6698B3;color: #FFFFFF">
                    İcra Mahkeme Bilgileri</caption>
                 <tr>
                     <td>MAHKEME YERİ: </td>
-                    <td><h:inputText value="#{icraKayit.mahkemeYeri}" style="border-radius: 5px ;"/> </td>
+                    <td><h:inputText id="mahkemeyeri" value="#{icraKayit.mahkemeYeri}" style="border-radius: 5px ;"/> </td>
                     <td>HAKİM:</td> 
-                    <td><h:inputText value="#{icraKayit.hakimAdSoyad}" style="border-radius: 5px ;" /> </td>
+                    <td><h:inputText  id="hakim" value="#{icraKayit.hakimAdSoyad}" style="border-radius: 5px ;" /> </td>
                     
 
                 </tr>
                 <tr>
                     <td>DURUŞMA TARİHİ: </td>
-                    <td><h:inputText value="#{icraKayit.durusmaTarihi}" maxlength="10" style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" required="true"
+                    <td><h:inputText id="durusmatarihi" value="#{icraKayit.durusmaTarihi}" maxlength="10" style="border-radius: 5px ;" 
+                                     pt:placeholder="GG/AA/YYYY" required="true"
                                       requiredMessage="DURUŞMA TARiHİNİZİ GİRİN!"
                                       validatorMessage="DURUŞMA TARİHİNİ HATALI GİRDİNİZ! ÖRNEK YAZIM: 01/01/2017">
 
                             <f:validateRegex pattern="[0-9]{1,2}(/|-)[0-9]{1,2}(/|-)[0-9]{4}" /> </h:inputText></td>
                     <td>HÜKÜM TARİHİ:</td>
-                    <td><h:inputText value="#{icraKayit.hukumTarihi}" maxlength="10" style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" required="true"
+                    <td><h:inputText id="hukumtarihi" value="#{icraKayit.hukumTarihi}" maxlength="10" 
+                                     style="border-radius: 5px ;" pt:placeholder="GG/AA/YYYY" required="true"
                                       requiredMessage="HÜKÜM TARiHİNİZİ GİRİN!"
                                       validatorMessage="HÜKÜM TARİHİNİ HATALI GİRDİNİZ! ÖRNEK YAZIM: 01/01/2017">
 
@@ -153,29 +155,29 @@ li.dropdown {
                 </tr>
                 <tr>
                     <td>DAVANIN KONUSU: </td>
-                    <td><h:inputText value="#{icraKayit.davaKonusu}" style="border-radius: 5px ;"  /> </td>
+                    <td><h:inputText id="davaninkonusu" value="#{icraKayit.davaKonusu}" style="border-radius: 5px ;"  /> </td>
                     <td>KARAR NO:</td>
-                    <td><h:inputText value="#{icraKayit.kararNo}" style="border-radius: 5px ;" pt:placeholder="örn: 2017/999"/></td>
+                    <td><h:inputText id="kararno" value="#{icraKayit.kararNo}" style="border-radius: 5px ;" pt:placeholder="örn: 2017/999"/></td>
                 </tr>
                 <tr>
                     <td>BORÇ TUTARI:</td>
-                    <td><h:inputText value="#{icraKayit.alacakToplamTutari}" style="border-radius: 5px ;"  /> TL</td>
+                    <td><h:inputText id="borctutari" value="#{icraKayit.alacakToplamTutari}" style="border-radius: 5px ;"  /> TL</td>
                     <td>AVUKAT ADI SOYADI:</td>
-                    <td><h:inputText value="#{icraKayit.avukatAdSoyad}" style="border-radius: 5px ;"  /></td>
+                    <td><h:inputText id="avukatadisoyadi" value="#{icraKayit.avukatAdSoyad}" style="border-radius: 5px ;"  /></td>
                 </tr>
                 <tr>
                     <td>
                             İPOTEK KONULAN ÜRÜNLER:
                         </td>
                         <td style="height: 100%">
-                            <h:inputTextarea value="#{icraKayit.ipotekKonulanUrunler}" style="width: 400px; height: 80px;max-width: 400px;max-height: 80px; border-radius: 5px" rows="15"> 
+                            <h:inputTextarea id="ipotek" value="#{icraKayit.ipotekKonulanUrunler}" style="width: 400px; height: 80px;max-width: 400px;max-height: 80px; border-radius: 5px" rows="15"> 
                             </h:inputTextarea>
                         </td>
                     <td>
                             REHİN KONULAN ÜRÜNLER:
                         </td>
                         <td style="height: 100%">
-                            <h:inputTextarea value="#{icraKayit.rehinKonulanUrunler}" style="width: 400px; height: 80px;max-width: 400px;max-height: 80px; border-radius: 5px" rows="15"> 
+                            <h:inputTextarea id="rehin" value="#{icraKayit.rehinKonulanUrunler}" style="width: 400px; height: 80px;max-width: 400px;max-height: 80px; border-radius: 5px" rows="15"> 
                             </h:inputTextarea>
                         </td>
                 </tr>
@@ -184,11 +186,11 @@ li.dropdown {
                             HACİZ ALINAN ÜRÜNLER:
                         </td>
                         <td style="height: 100%">
-                            <h:inputTextarea value="#{icraKayit.hacizAlinanUrunler}" style="width: 400px; height: 80px;max-width: 400px;max-height: 80px; border-radius: 5px" rows="15"> 
+                            <h:inputTextarea id="haciz" value="#{icraKayit.hacizAlinanUrunler}" style="width: 400px; height: 80px;max-width: 400px;max-height: 80px; border-radius: 5px" rows="15"> 
                             </h:inputTextarea>
                         </td>
                     <td>HACİZ ALINAN ÜRÜN TOPLAM TUTARI:</td>
-                    <td><h:inputText value="#{icraKayit.hacizToplamTutari}" style="border-radius: 5px ;" /> TL</td>
+                    <td><h:inputText id="haciztoplamtutar" value="#{icraKayit.hacizToplamTutari}" style="border-radius: 5px ;" /> TL</td>
                         
                 </tr>
                 
@@ -196,13 +198,49 @@ li.dropdown {
                <br></br>
                <h:commandButton action="#{icraKayit.kaydet()}" value="İCRA BİLGİLERİNİ KAYDET" class="eklekaydet"  style="width: 250px;text-align: center; margin: 0 550px 0" 
                               />
+                <br></br>
+            <br></br>
+            
+           
+            <h:commandButton value="OTOMATİK DOLDUR " class="eklekaydet"  style="width: 250px;text-align: center; margin: 0 550px 0" 
+                             onclick="otomatikdoldur5()"/>
+            <br></br>
+            <br></br>
+            <h:commandButton value="OTOMATİK DOLDUR 2" class="eklekaydet"  style="width: 250px;text-align: center; margin: 0 550px 0" 
+                             onclick="otomatikdoldur6()"/>
                 </h:form>
 
- 
-                              
-
-         
-        
+ <script  type="text/javascript">
+           
+            function otomatikdoldur5(){
+              document.getElementById("icrabilgiler:mahkemeyeri").value="İSTANBUL";
+             document.getElementById("icrabilgiler:hakim").value="ANIL ÖZ";
+             document.getElementById("icrabilgiler:durusmatarihi").value="19/08/2012";
+             document.getElementById("icrabilgiler:hukumtarihi").value="27/09/2013";
+             document.getElementById("icrabilgiler:davaninkonusu").value="BORÇ";
+             document.getElementById("icrabilgiler:kararno").value="2013/398";
+             document.getElementById("icrabilgiler:borctutari").value="1500";
+             document.getElementById("icrabilgiler:avukatadisoyadi").value="SERHAT MERCAN";
+             document.getElementById("icrabilgiler:ipotek").value="YOK";
+             document.getElementById("icrabilgiler:rehin").value="YOK";
+             document.getElementById("icrabilgiler:haciz").value="3 adet 225 TL değerinde monitör";
+             document.getElementById("icrabilgiler:haciztoplamtutar").value="675";
+            }
+            function otomatikdoldur6(){
+               document.getElementById("icrabilgiler:mahkemeyeri").value="İSTANBUL";
+             document.getElementById("icrabilgiler:hakim").value="MELİKE RANA FIRAT";
+             document.getElementById("icrabilgiler:durusmatarihi").value="03/02/2017";
+             document.getElementById("icrabilgiler:hukumtarihi").value="27/04/2017";
+             document.getElementById("icrabilgiler:davaninkonusu").value="BORÇ";
+             document.getElementById("icrabilgiler:kararno").value="2017/984";
+             document.getElementById("icrabilgiler:borctutari").value="800";
+             document.getElementById("icrabilgiler:avukatadisoyadi").value="SERHAT MERCAN";
+             document.getElementById("icrabilgiler:ipotek").value="YOK";
+             document.getElementById("icrabilgiler:rehin").value="YOK";
+             document.getElementById("icrabilgiler:haciz").value="1 adet 650 TL değerinde televizyon,1 adet 50 TL değerinde saç kurutma makinesi, 1 adet 100 TL değerinde kitaplık";
+             document.getElementById("icrabilgiler:haciztoplamtutar").value="800";
+            }
+        </script>
     </h:body>
 </html>
 

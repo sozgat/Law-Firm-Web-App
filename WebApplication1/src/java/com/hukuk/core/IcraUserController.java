@@ -98,7 +98,7 @@ public class IcraUserController {
         Map<String,String> params = fc.getExternalContext().getRequestParameterMap();                                
         String no =  params.get("icraId"); 
         icraId = Integer.parseInt(no);
-        
+        davaGroup.clear();
         PreparedStatement ps = null;
         Connection con = DbFunctions.getCon();        
         
