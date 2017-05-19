@@ -167,7 +167,7 @@ public class DavaKayit{
         //Simdi mahkemebilgiler tablosundaki son eklenen verinin id sini cekicez.
         ResultSet rs = null;
         
-        String sqlSorgu = "Select * From TBLMAHKEME_BILGILER ORDER BY id DESC";
+        String sqlSorgu = "Select id From TBLMAHKEME_BILGILER ORDER BY id DESC";
         
         try 
         {

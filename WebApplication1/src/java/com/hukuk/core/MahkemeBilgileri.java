@@ -135,13 +135,32 @@ public class MahkemeBilgileri {
         if(baglanti == null)
         {
    
-            return "anasayfa.xhtml";//Burayi ayri bir hata sayfasina dondurelim yada hata mesaji gosterip ayni sayfada tutalim
+            return "hataolustu.xhtml";//Burayi ayri bir hata sayfasina dondurelim yada hata mesaji gosterip ayni sayfada tutalim
+        }
+        
+        //Once davaEsasNo yu kontrol edicez
+        ResultSet rs = null;
+        
+        String sqlSorgu = "Select DAVAESASNO From TBLMAHKEME_BILGILER WHERE DAVAESASNO="+davaEsasNo;
+        try 
+        {
+            ps = baglanti.prepareStatement(sqlSorgu);
+            ps.execute();
+            rs = ps.getResultSet();
+            
+            if(rs.next())
+                return "";//HATA MESAJİ VERDİRELİM. BÖYLE BİR DAVAESASNO ZATEN VAR! GİBİ            
+        }
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(DavaKayit.class.getName()).log(Level.SEVERE, null, ex);
+            return "hataolustu.xhtml";
         }
         
         //Once Masraflar Tablosundan Son Eklenen Verinin id sini cekicez.
-        ResultSet rs = null;
+        rs = null;
         int davaMasrafId;
-        String sqlSorgu = "Select * From TBLMASRAFLAR ORDER BY id DESC FETCH FIRST 1 ROWS ONLY";
+        sqlSorgu = "Select * From TBLMASRAFLAR ORDER BY id DESC FETCH FIRST 1 ROWS ONLY";
         
         try 
         {

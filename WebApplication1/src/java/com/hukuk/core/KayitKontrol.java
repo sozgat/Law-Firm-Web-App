@@ -134,7 +134,7 @@ public class KayitKontrol {
         {
             Logger.getLogger(KayitKontrol.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("Kayit sirasinda hata olustu!");
-            return "hataolustu.xhtml";
+            return "hataolustu2.xhtml";
         }
         finally
         {

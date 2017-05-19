@@ -65,8 +65,6 @@ public class KullaniciGiris {
         
         if(baglanti == null)
         {
-            
-            //(Mehmet)Kullaniciya Veritabanina Baglanti Hatasi mesaji gosterelim. said sayfanin biyerine textbox mi eklersin duruma gore buraya ekleriz.
              hataMesaji = "VERİ TABANINA BAĞLANAMADI!";
             return "";
         }
@@ -93,7 +91,6 @@ public class KullaniciGiris {
                     DbFunctions.baglantiKapa(baglanti);
                      hataMesaji = "ŞİFRENİZİ HATALI GİRDİNİZ!";
                     return "";
-                    //(Mehmet)Sifre Hatali popup'i verdirebiliriz. Ben farketmemiz icin bu sayfaya yonlendiridim.
                 }
             }
             else
@@ -200,7 +197,7 @@ public class KullaniciGiris {
         
         if(baglanti == null)
         {
-            return "hataolustu.xhtml";
+            return "hataolustu2.xhtml";
         }
         
         for(int i=0; i<tabloSayisi; i++)
@@ -215,7 +212,7 @@ public class KullaniciGiris {
             {
                 Logger.getLogger(KullaniciGiris.class.getName()).log(Level.SEVERE, null, ex);
                 DbFunctions.baglantiKapa(baglanti);
-                return "hataolustu.xhtml";
+                return "hataolustu2.xhtml";
             }
         }
         DbFunctions.baglantiKapa(baglanti);
