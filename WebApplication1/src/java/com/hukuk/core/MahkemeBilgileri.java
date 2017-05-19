@@ -30,6 +30,15 @@ public class MahkemeBilgileri {
     public String avukatAdSoyad;
     public double davaTutar;
     private int davaEsasNoYeni;
+     private String hataMesaji;
+
+    public String getHataMesaji() {
+        return hataMesaji;
+    }
+
+    public void setHataMesaji(String hataMesaji) {
+        this.hataMesaji = hataMesaji;
+    }
 
     public double getDavaTutar() {
         return davaTutar;
@@ -148,13 +157,18 @@ public class MahkemeBilgileri {
             ps.execute();
             rs = ps.getResultSet();
             
-            if(rs.next())
-                return "";//HATA MESAJİ VERDİRELİM. BÖYLE BİR DAVAESASNO ZATEN VAR! GİBİ            
+            if(rs.next()){
+            hataMesaji="GİRDİĞİNİZ - "+davaEsasNo+" - NUMARALI DAVA ESAS NO KULLANILIYOR. BAŞKA BİR DAVA ESAS NO GİRİNİZ!";
+            return "";
+            }
+            
+            //HATA MESAJİ VERDİRELİM. BÖYLE BİR DAVAESASNO ZATEN VAR! GİBİ            
+            
         }
         catch (SQLException ex) 
         {
             Logger.getLogger(DavaKayit.class.getName()).log(Level.SEVERE, null, ex);
-            return "hataolustu.xhtml";
+            return "";
         }
         
         //Once Masraflar Tablosundan Son Eklenen Verinin id sini cekicez.
@@ -188,9 +202,11 @@ public class MahkemeBilgileri {
         
         try
         {
+            hataMesaji="";
             ps=baglanti.prepareStatement(sqlKomut);
             ps.execute();
             System.out.println("MahkemeBilgiler Tablosuna Kayit Eklendi.");
+            
         }
         catch (SQLException ex)
         {
@@ -277,6 +293,8 @@ public class MahkemeBilgileri {
     vti.uygula();
              
     }
-    
+    public void hataMesajiTemizle(){
+        hataMesaji="";
+    }
     
 }
