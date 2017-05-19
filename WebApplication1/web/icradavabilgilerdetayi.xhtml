@@ -16,8 +16,9 @@
         <p style="font-family: sans-serif;text-align: center; font-size: 25px ;box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);background-color: #6698B3;color: #FFFFFF">
         Davacı (Alacaklı), Davalı (Borçlu) İşlemleri </p>
         <table>
-            <td>İCRA ID </td>
-            <td><h:inputText style="border-radius: 5px ;" value="#{icraKayit.icraId}"/>
+            <td>İCRA ID:
+                           
+            <h:outputLabel style="border-radius: 5px ;"  value="#{icraKayit.icraId}" ></h:outputLabel>
             </td>
             <td>
                 <h:commandButton value="GÖRÜNTÜLE" action="#{icraUserController.goruntule()}" >
@@ -47,8 +48,8 @@
                          <td> <h:inputText style="border-radius: 5px ;" value="#{d.ad}"/> </td>
                     
                      <td>TC KİMLİK NO:</td>
-                     <td><h:inputText style="border-radius: 5px ;" maxlength="11" value="#{d.tcKimlikNo}" readonly="true"> 
-                         </h:inputText></td>
+                     <td><h:outputLabel style="border-radius: 5px ;"  value="#{d.tcKimlikNo}" ></h:outputLabel>
+                         </td>
                 </tr>
                     <tr>
                         <td> SOYADI: </td>
@@ -81,8 +82,11 @@
                     </td>
             </tr>
                         </table>
-                        <br></br>
-             <a href="anasayfa.xhtml" style="color:  #2C6C8E ;text-decoration: none; margin: 0 600px 0">ANASAYFAYA GİT</a>
+                        
+            
+             <br></br>
+             <br></br>
+             <h:commandButton value="ANASAYFAYA GİT" action="#{icraUserController.anasayfa()}" class="eklekaydet"   style="width: 150px;margin: 0px 650px 0px"  /> 
 </h:form>
         
     </h:body>

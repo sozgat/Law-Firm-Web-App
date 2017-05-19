@@ -184,7 +184,10 @@ public class DavaIslemleriKontrol {
 
     }
 
-
+public String anasayfa(){
+        davaGrup.clear();
+        return "anasayfa.xhtml";
+    }
 
 }
 

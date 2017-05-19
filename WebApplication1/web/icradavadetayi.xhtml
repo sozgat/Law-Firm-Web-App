@@ -84,7 +84,9 @@
                     <td>BORÇ TUTARI:</td>
                     <td><h:inputText value="#{icraKayit.alacakToplamTutari}" style="border-radius: 5px ;"  /> TL</td>
                     <td>AVUKAT ADI SOYADI:</td>
-                    <td><h:inputText value="#{icraKayit.avukatAdSoyad}" style="border-radius: 5px ;"   readonly="true" /></td>
+                    <td>
+                        <h:outputLabel style="border-radius: 5px ;"  value="#{icraKayit.avukatAdSoyad}" ></h:outputLabel>
+                    </td>
                 </tr>
                 <tr>
                     <td>

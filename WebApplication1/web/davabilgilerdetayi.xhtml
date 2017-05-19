@@ -54,9 +54,9 @@
                          <td> <h:inputText style="border-radius: 5px ;" value="#{d.ad}"/> </td>
                     
                      <td>TC KİMLİK NO:</td>
-                     <td><h:inputText style="border-radius: 5px ;" maxlength="11" value="#{d.tcKimlikNo}" readonly="true">
-                          
-                         </h:inputText></td>
+                     <td>
+                         <h:outputLabel style="border-radius: 5px ;"  value="#{d.tcKimlikNo}" ></h:outputLabel>
+                     </td>
                 </tr>
                     <tr>
                         <td> SOYADI: </td>
@@ -90,7 +90,7 @@
             </tr>
                         </table>
             <br></br>
-             <a href="anasayfa.xhtml" style="color:  #2C6C8E ;text-decoration: none; margin: 0 600px 0">ANASAYFAYA GİT</a>
+            <h:commandButton value="ANASAYFAYA GİT" class="eklekaydet"  style="width: 150px;margin: 0px 650px 0px" action="#{davaIslemleriKontrol.anasayfa()}" />
 </h:form>
     </h:body>
 </html>

@@ -180,4 +180,8 @@ public class IcraUserController {
         di.savunmasi="";
         davaGroup.clear();
     }
+    public String anasayfa(){
+        davaGroup.clear(); 
+        return "anasayfa.xhtml";
+    }
 }
