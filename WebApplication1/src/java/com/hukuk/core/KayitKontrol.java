@@ -128,6 +128,7 @@ public class KayitKontrol {
             ps = baglanti.prepareStatement(eklemeKodu);
             ps.execute();
             System.out.println("Kayit eklendi.");
+            return "yonlendirme.xhtml";
         } 
         catch (SQLException ex) 
         {
@@ -138,7 +139,6 @@ public class KayitKontrol {
         finally
         {
             DbFunctions.baglantiKapa(baglanti);
-           return "yonlendirme.xhtml";
-        }  
+        }   
     }
 }

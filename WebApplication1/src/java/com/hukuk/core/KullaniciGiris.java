@@ -121,15 +121,15 @@ public class KullaniciGiris {
                 "ad VARCHAR(50)," +
                 "soyad VARCHAR(50)," +
                 "dogumTarih DATE," +
-                "tcKimlikNo VARCHAR(11) NOT NULL," +
-                "kullaniciAd VARCHAR(100) NOT NULL," +
+                "tcKimlikNo VARCHAR(11) NOT NULL UNIQUE," +
+                "kullaniciAd VARCHAR(100) NOT NULL UNIQUE," +
                 "sifre VARCHAR(100) NOT NULL," +
-                "email VARCHAR(150) NOT NULL," +
+                "email VARCHAR(150) NOT NULL UNIQUE," +
                 "buroNo INT)";
         
         dizi[1] = "CREATE TABLE TBLMAHKEME_BILGILER("
                 + "id INT GENERATED ALWAYS AS IDENTITY (START WITH 1, INCREMENT BY 1) PRIMARY KEY,"
-                + "davaEsasNo INT NOT NULL,"
+                + "davaEsasNo INT NOT NULL UNIQUE,"
                 + "mahkemeTipi VARCHAR(50),"
                 + "mahkemeYeri VARCHAR(500),"
                 + "davaTipi VARCHAR(50),"
@@ -148,7 +148,7 @@ public class KullaniciGiris {
                 + "davaTuru VARCHAR(50),"
                 + "ad VARCHAR(100),"
                 + "soyad VARCHAR(100),"
-                + "tcKimlikNo VARCHAR(11),"
+                + "tcKimlikNo VARCHAR(11) UNIQUE,"
                 + "dogumTarih DATE,"
                 + "savunma VARCHAR(500),"
                 + "idMahkemeBilgiler INT)";
@@ -166,7 +166,7 @@ public class KullaniciGiris {
                 + "tip VARCHAR(50),"
                 + "ad VARCHAR(100),"
                 + "soyad VARCHAR(100),"
-                + "tcKimlikNo VARCHAR(11),"
+                + "tcKimlikNo VARCHAR(11) UNIQUE,"
                 + "dogumTarih DATE,"
                 + "savunma VARCHAR(500),"
                 + "idIcralar INT)";
