@@ -133,7 +133,7 @@
                 </tr>
                 <tr>
                     <td>MAHKEME TİPİ:</td>
-                    <td><h:selectOneMenu style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" value="#{mahkemeBilgileri.mahkemeTipi}">
+                    <td><h:selectOneMenu id="mahkemetipi" style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" value="#{mahkemeBilgileri.mahkemeTipi}">
                             <f:selectItem itemValue="SULH HUKUK MAHKEMESİ" itemLabel="SULH HUKUK MAHKEMESİ"/>
                             <f:selectItem itemValue="ASLİYLE HUKUK MAHKEMESİ" itemLabel="ASLİYLE HUKUK MAHKEMESİ"/>
                             <f:selectItem itemValue="TİCARET MAHKEMESİ" itemLabel="TİCARET MAHKEMESİ"/>
@@ -158,7 +158,7 @@
                 </tr>
                 <tr>
                     <td>DAVANIN TİPİ: </td>
-                    <td><h:selectOneMenu style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" id="taraf" value="#{mahkemeBilgileri.davaTipi}" >
+                    <td><h:selectOneMenu style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" id="davanıntipi" value="#{mahkemeBilgileri.davaTipi}" >
                             <f:selectItem itemValue="KİRA DAVASI" itemLabel="KİRA DAVASI"/>
                             <f:selectItem itemValue="AİLE HUKUKU DAVASI" itemLabel="AİLE HUKUKU DAVASI"/>
                             <f:selectItem itemValue="NÜFUS DAVASI" itemLabel="NÜFUS DAVASI"/>
@@ -189,7 +189,7 @@
                     <td>DAVA ESAS NO: </td>
                     <td><h:inputText id="davaesasno" style="border-radius: 5px ;" value="#{mahkemeBilgileri.davaEsasNo}"/></td>
                     <td>MAHKEME KARARI</td>
-                    <td><h:selectOneMenu style="background-color: #FFFFFF; width: 60%; height: 20px; border-radius: 5px" value="#{mahkemeBilgileri.mahkemeKarari}" >
+                    <td><h:selectOneMenu id="mahkemekarari" style="background-color: #FFFFFF; width: 63%; height: 20px; border-radius: 5px" value="#{mahkemeBilgileri.mahkemeKarari}" >
                             <f:selectItem itemValue="BELİRSİZ" itemLabel="BELİRSİZ" />
                             <f:selectItem itemValue="BERAAT KARARI" itemLabel="BERAAT KARARI"/>
                             <f:selectItem itemValue="MAHKUMİYET KARARI" itemLabel="MAHKUMİYET KARARI"/>
@@ -321,7 +321,11 @@
                document.getElementById("mahkemebilgiler:davaninkonusu").value="PARA";
                document.getElementById("mahkemebilgiler:kararno").value="2017/123";
                document.getElementById("mahkemebilgiler:davaesasno").value="145";
-               document.getElementById("mahkemebilgiler:avukatadsoyad").value="MEHMET AĞCA";
+               document.getElementById("mahkemebilgiler:avukatadsoyad").value="İBRAHİM YILDIRIM";
+               document.getElementById("mahkemebilgiler:mahkemetipi").value="İŞ MAHKEMESİ";
+               document.getElementById("mahkemebilgiler:davanıntipi").value="KİRA DAVASI";
+               document.getElementById("mahkemebilgiler:mahkemekarari").value="BERAAT KARARI";
+               
             }
             function otomatikdoldur2(){
                
@@ -333,6 +337,9 @@
                document.getElementById("mahkemebilgiler:kararno").value="2016/125";
                document.getElementById("mahkemebilgiler:davaesasno").value="1135";
                document.getElementById("mahkemebilgiler:avukatadsoyad").value="İBRAHİM YILDIRIM";
+               document.getElementById("mahkemebilgiler:mahkemetipi").value="SULH HUKUK MAHKEMESİ";
+               document.getElementById("mahkemebilgiler:davanıntipi").value="KİŞİLER HUKUKU DAVASI";
+               document.getElementById("mahkemebilgiler:mahkemekarari").value="GÜVENLİK TEDBİRİ KARARI";
             }
             function otomatikdoldur3(){
                
@@ -343,7 +350,10 @@
                document.getElementById("mahkemebilgiler:davaninkonusu").value="HIRSIZLIK";
                document.getElementById("mahkemebilgiler:kararno").value="2017/985";
                document.getElementById("mahkemebilgiler:davaesasno").value="98";
-               document.getElementById("mahkemebilgiler:avukatadsoyad").value="ÖMER YILMAZ";
+               document.getElementById("mahkemebilgiler:avukatadsoyad").value="İBRAHİM YILDIRIM";
+               document.getElementById("mahkemebilgiler:mahkemetipi").value="SULH HUKUK MAHKEMESİ";
+               document.getElementById("mahkemebilgiler:davanıntipi").value="KİŞİLER HUKUKU DAVASI";
+               document.getElementById("mahkemebilgiler:mahkemekarari").value="MAHKUMİYET KARARI";
             }
         </script>
         

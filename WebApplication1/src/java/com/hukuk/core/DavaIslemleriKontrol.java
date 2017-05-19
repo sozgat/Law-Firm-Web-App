@@ -99,7 +99,7 @@ public class DavaIslemleriKontrol {
         Map<String,String> params = fc.getExternalContext().getRequestParameterMap();                                
         String no =  params.get("davaEsasNo"); 
         davaEsasNo = Integer.parseInt(no);
-        
+        davaGrup.clear();
         PreparedStatement ps = null;
         Connection con = DbFunctions.getCon();        
         
