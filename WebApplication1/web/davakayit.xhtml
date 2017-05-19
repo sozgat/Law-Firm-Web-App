@@ -187,7 +187,9 @@
 
                 <tr>
                     <td>DAVA ESAS NO: </td>
-                    <td><h:inputText id="davaesasno" style="border-radius: 5px ;" value="#{mahkemeBilgileri.davaEsasNo}"/></td>
+                    <td><h:inputText id="davaesasno" style="border-radius: 5px ;" value="#{mahkemeBilgileri.davaEsasNo}"/>
+                        
+                    </td>
                     <td>MAHKEME KARARI</td>
                     <td><h:selectOneMenu id="mahkemekarari" style="background-color: #FFFFFF; width: 63%; height: 20px; border-radius: 5px" value="#{mahkemeBilgileri.mahkemeKarari}" >
                             <f:selectItem itemValue="BELİRSİZ" itemLabel="BELİRSİZ" />
@@ -214,17 +216,19 @@
             <br></br>
             <br></br>
             
-            <h:commandButton value="OTOMATİK DOLDUR" class="eklekaydet"  style="width: 250px;text-align: center; margin: 0 550px 0" 
+            <h:commandButton value="OTOMATİK DOLDUR" class="eklekaydet"  action="#{mahkemeBilgileri.hataMesajiTemizle()}" style="width: 250px;text-align: center; margin: 0 550px 0" 
                              onclick="otomatikdoldur()"/>
             <br></br>
             <br></br>
-            <h:commandButton value="OTOMATİK DOLDUR 2" class="eklekaydet"  style="width: 250px;text-align: center; margin: 0 550px 0" 
+            <h:commandButton value="OTOMATİK DOLDUR 2" class="eklekaydet" action="#{mahkemeBilgileri.hataMesajiTemizle()}" style="width: 250px;text-align: center; margin: 0 550px 0" 
                              onclick="otomatikdoldur2()"/>
             <br></br>
             <br></br>
-            <h:commandButton value="OTOMATİK DOLDUR 3" class="eklekaydet"  style="width: 250px;text-align: center; margin: 0 550px 0" 
+            <h:commandButton value="OTOMATİK DOLDUR 3" class="eklekaydet" action="#{mahkemeBilgileri.hataMesajiTemizle()}"  style="width: 250px;text-align: center; margin: 0 550px 0" 
                              onclick="otomatikdoldur3()"/>
-
+            <br></br>
+            <br></br>
+            <h:outputLabel id="hatamesaji" style="color: #FF0000; margin: 0px 250px 0px;font-size: larger" value="#{mahkemeBilgileri.hataMesaji}"/>
         </h:form>
 
 
@@ -355,6 +359,8 @@
                document.getElementById("mahkemebilgiler:davanıntipi").value="KİŞİLER HUKUKU DAVASI";
                document.getElementById("mahkemebilgiler:mahkemekarari").value="MAHKUMİYET KARARI";
             }
+            
+           
         </script>
         
         
