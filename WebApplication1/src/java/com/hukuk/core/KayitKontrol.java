@@ -133,8 +133,8 @@ public class KayitKontrol {
         catch (SQLException ex) 
         {
             Logger.getLogger(KayitKontrol.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("Kayit sirasinda hata olustu!");
-            return "hataolustu2.xhtml";
+            hataMesaji="BU KULLANICI ZATEN KAYITLI, LÜTFEN YENİ BİR KULLANICI ADI DENEYİNİZ!";
+            return "";
         }
         finally
         {

@@ -11,16 +11,16 @@
     <h:body style="background-color: #CBDAE2; " >
         <div class="login-page">
         <div class="form">
-            <h:form>
-                <h:inputText class="input" maxlength="11" pt:placeholder="TC KİMLİK NUMARASI" required="true"
+            <h:form id="kayitol">
+                <h:inputText id="tc" class="input" maxlength="11" pt:placeholder="TC KİMLİK NUMARASI" required="true"
             requiredMessage="TC KİMLİK NUMARANIZI GİRİN!"
             validatorMessage="TC KİMLİK NUMARANIZ 11 HANEDEN OLUŞMAKTADIR!"
             value="#{BeanKayitKontrol.tcKimlikNo}">
             <f:validateLength minimum="11" maximum="11" />
             </h:inputText>
-            <h:inputText class="input" pt:placeholder="AD" value="#{BeanKayitKontrol.ad}"/>
-            <h:inputText class="input" pt:placeholder="SOYAD" value="#{BeanKayitKontrol.soyad}"/>
-            <h:inputText class="input" pt:placeholder="DOĞUM TARİHİ GG/AA/YYYY" required="true"
+            <h:inputText id="ad" class="input" pt:placeholder="AD" value="#{BeanKayitKontrol.ad}"/>
+            <h:inputText id="soyad" class="input" pt:placeholder="SOYAD" value="#{BeanKayitKontrol.soyad}"/>
+            <h:inputText id="dogumtarih" class="input" pt:placeholder="DOĞUM TARİHİ GG/AA/YYYY" required="true"
             requiredMessage="DOĞUM TARiHİNİZİ GİRİN!"
             validatorMessage="DOĞUM TARİHİNİZ HATALI GİRDİNİZ! ÖRNEK YAZIM: 01/01/2017"
             value="#{BeanKayitKontrol.dogumTarihi}">
@@ -28,14 +28,14 @@
             "[0-9]{1,2}(/|-)[0-9]{1,2}(/|-)[0-9]{4}" />
             </h:inputText>
             
-            <h:inputText class="input" pt:placeholder="BÜRO ADI" value="#{BeanKayitKontrol.buroAdi}"/>
-            <h:inputText class="input" pt:placeholder="BARO SİCİL NO" value="#{BeanKayitKontrol.buroNo}"/>
-             <h:inputText class="input" pt:placeholder="E-MAİL"
+            <h:inputText id="buroad" class="input" pt:placeholder="BÜRO ADI" value="#{BeanKayitKontrol.buroAdi}"/>
+            <h:inputText id="burono" class="input" pt:placeholder="BARO SİCİL NO" value="#{BeanKayitKontrol.buroNo}"/>
+             <h:inputText id="email" class="input" pt:placeholder="E-MAİL"
                          validatorMessage="E-MAİL FORMATINIZ YANLIŞ!" value="#{BeanKayitKontrol.email}">
             <f:validateRegex pattern=
             "\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*" />
             </h:inputText>
-            <h:inputText class="input" pt:placeholder="KULLANICI ADI" required="true"
+            <h:inputText id="kullaniciadi" class="input" pt:placeholder="KULLANICI ADI" required="true"
                          requiredMessage="KULLANICI ADI GİRİNİZ!" value="#{BeanKayitKontrol.kullaniciAdi}"/>
            
             <h:inputSecret class="input" pt:placeholder="ŞİFRE" validatorMessage="ŞİFRENİZ EN AZ 1 ADET BÜYÜK HARF, KÜÇÜK HARF VE RAKAM İÇERMELİDİR!" 
@@ -44,10 +44,56 @@
             </h:inputSecret>
             <h:commandButton class="button" value="KAYIT OL" action="#{BeanKayitKontrol.kaydet()}"/>
             <h:outputLabel style="color:  #FF0000" value="#{BeanKayitKontrol.hataMesaji}"/>
+            <h:commandButton class="button" value="OTOMATİK DOLDUR"  onclick="otomatikdoldur7()" > </h:commandButton>
+            <h:commandButton class="button" value="OTOMATİK DOLDUR2" onclick="otomatikdoldur8()" > </h:commandButton>
+            <h:commandButton class="button" value="OTOMATİK DOLDUR3" onclick="otomatikdoldur9()" > </h:commandButton>
         </h:form>
         </div>
         </div>
-      
+        <h:form>
+           
+        </h:form>
+        <script  type="text/javascript">
+            function otomatikdoldur7(){
+                document.getElementById("kayitol:tc").value="12345678901";
+                document.getElementById("kayitol:ad").value="SAİD";
+                document.getElementById("kayitol:soyad").value="ÖZGAT";
+                document.getElementById("kayitol:dogumtarih").value="10/07/1996";
+                document.getElementById("kayitol:buroad").value="HÜR";
+                document.getElementById("kayitol:burono").value="1254";
+                document.getElementById("kayitol:email").value="said.ozgat@hotmail.com";
+                document.getElementById("kayitol:kullaniciadi").value="said";
+            }
+            
+            function otomatikdoldur8(){
+                document.getElementById("kayitol:tc").value="13579246809";
+                document.getElementById("kayitol:ad").value="SERHAT";
+                document.getElementById("kayitol:soyad").value="MERCAN";
+                document.getElementById("kayitol:dogumtarih").value="15/05/1995";
+                document.getElementById("kayitol:buroad").value="ÖZGÜR";
+                document.getElementById("kayitol:burono").value="985";
+                document.getElementById("kayitol:email").value="serhatmercan67@gmail.com";
+                document.getElementById("kayitol:kullaniciadi").value="serhat";
+            }
+            function otomatikdoldur9(){
+                document.getElementById("kayitol:tc").value="28469513570";
+                document.getElementById("kayitol:ad").value="MEHMET";
+                document.getElementById("kayitol:soyad").value="AĞCA";
+                document.getElementById("kayitol:dogumtarih").value="20/03/1993";
+                document.getElementById("kayitol:buroad").value="GELENEK";
+                document.getElementById("kayitol:burono").value="6785";
+                document.getElementById("kayitol:email").value="mehmet.agca@yandex.com";
+                document.getElementById("kayitol:kullaniciadi").value="mehmet";
+            }
+            
+            
+            
+            
+            
+            
+        </script>
+        
+        
     </h:body>
 </html>
 
